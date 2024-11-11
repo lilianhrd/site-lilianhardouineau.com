@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Galerie de Vidéos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="top-header">
+        <div class="left-header">
+            <h1>Lilian Hardouineau</h1>
+            <h2>Director / Visual Artist</h2>
+        </div>
+        <div class="right-header">
+            <a href="mailto:lilian.hardouineau@gmail.com">Contact</a>
+            <a href="https://www.instagram.com/lilian.hrdn/" target="_blank">Instagram</a>
+            <a href="https://vimeo.com/lilianhardouineau" target="_blank">Vimeo</a>
+        </div>
+    </header>
+
+    <section class="video-gallery">
+        <div class="video-thumbnail" onclick="openVideo('https://player.vimeo.com/video/1026828291?autoplay=1')">
+            <img src="images/miniature21.jpg" alt="Miniature Vidéo 1">
+            <div class="video-text-container">
+                <span class="video-title">MUGLER</span>
+                <span class="video-subtitle">Holiday Fever</span>
+            </div>
+        </div>
+        <div class="video-thumbnail" onclick="openModernCarousel()">
+            <img src="images/miniature18.jpg" alt="Miniature Vidéo 2">
+            <div class="video-text-container">
+                <span class="video-title">LOUIS VUITTON</span>
+                <span class="video-subtitle">SS23</span>
+            </div>
+        </div>
+        <div class="video-thumbnail" onclick="openVideo('https://player.vimeo.com/video/921113482?autoplay=1')">
+            <img src="images/miniature1.jpg" alt="Miniature Vidéo 3">
+            <div class="video-text-container">
+                <span class="video-title">ROUGE DIOR</span>
+                <span class="video-subtitle">Anya Taylor-Joy</span>
+            </div>
+        </div>
+        <div class="video-thumbnail" onclick="openVideo('https://player.vimeo.com/video/983055965?autoplay=1')">
+            <img src="images/miniature2.jpg" alt="Miniature Vidéo 4">
+            <div class="video-text-container">
+                <span class="video-title">MILLE ET UNE NUITS</span>
+                <span class="video-subtitle">Teaser</span>
+            </div>
+        </div>
+        <div class="video-thumbnail" onclick="openVideo('https://player.vimeo.com/video/746998776?autoplay=1')">
+            <img src="images/miniature10.jpg" alt="Miniature Vidéo 5">
+            <div class="video-text-container">
+                <span class="video-title">MONCLER X HIGHSNOBIETY</span>
+            </div>
+        </div>
+        <div class="video-thumbnail" onclick="openVideo('https://player.vimeo.com/video/762770820?autoplay=1')">
+            <img src="images/miniature15.jpg" alt="Miniature Vidéo 6">
+            <div class="video-text-container">
+                <span class="video-title">EARTHEATER X NUMERO MAGAZINE</span>
+            </div>
+        </div>
+        <div class="video-thumbnail" onclick="openVideo('https://player.vimeo.com/video/723068266?autoplay=1')">
+            <img src="images/miniature7.jpg" alt="Miniature Vidéo 7">
+            <div class="video-text-container">
+                <span class="video-title">PABLO ALTAR</span>
+                <span class="video-subtitle">Everyday</span>
+            </div>
+        </div>
+        <div class="video-thumbnail" onclick="openVideo('https://player.vimeo.com/video/884821279?autoplay=1')">
+            <img src="images/miniature20.jpg" alt="Miniature Vidéo 8">
+            <div class="video-text-container">
+                <span class="video-title">SIMILI GUM</span>
+                <span class="video-subtitle">NRJ</span>
+            </div>
+        </div>
+        <div class="video-thumbnail" onclick="openAgarCarousel()">
+            <img src="images/miniature17.jpg" alt="Miniature Vidéo 9">
+            <div class="video-text-container">
+                <span class="video-title">AGAR AGAR</span>
+                <span class="video-subtitle">Teaser</span>
+            </div>
+        </div>
+        <!-- Vignette avec carrousel pour CYDFLM -->
+        <div class="video-thumbnail" onclick="openCydflmCarousel()">
+            <img src="images/miniature8.jpg" alt="Miniature Vidéo 10">
+            <div class="video-text-container">
+                <span class="video-title">CYDFLM</span>
+            </div>
+        </div>
+        <!-- Vignette avec carrousel pour COURRÈGES -->
+        <div class="video-thumbnail" onclick="openCourregesCarousel()">
+            <img src="images/miniature9.jpg" alt="Miniature Vidéo 11">
+            <div class="video-text-container">
+                <span class="video-title">COURRÈGES</span>
+                <span class="video-subtitle">Loop Bag / FW22</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal pour une vidéo unique -->
+    <div id="videoModal" class="modal">
+        <span class="close" onclick="closeVideo()">&times;</span>
+        <iframe id="videoFrame" width="100%" height="100%" src="" frameborder="0" allowfullscreen></iframe>
+    </div>
+
+    <!-- Modal pour le carrousel de vidéos Louis Vuitton -->
+    <div id="modernCarouselModal" class="modal">
+        <span class="close" onclick="closeModernCarousel()">&times;</span>
+        <div class="carousel-container">
+            <button class="carousel-button left" onclick="previousVideo()">❮</button>
+            <iframe id="carouselVideoFrame" class="carousel-video" src="" frameborder="0" allowfullscreen></iframe>
+            <button class="carousel-button right" onclick="nextVideo()">❯</button>
+            <div class="carousel-thumbnails" id="carouselThumbnails">
+                <!-- Les vignettes des vidéos Vimeo seront chargées dynamiquement ici -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal pour le carrousel de vidéos Agar Agar -->
+    <div id="agarCarouselModal" class="modal">
+        <span class="close" onclick="closeAgarCarousel()">&times;</span>
+        <div class="carousel-container">
+            <button class="carousel-button left" onclick="previousAgarVideo()">❮</button>
+            <iframe id="agarCarouselVideoFrame" class="carousel-video" src="" frameborder="0" allowfullscreen></iframe>
+            <button class="carousel-button right" onclick="nextAgarVideo()">❯</button>
+            <div class="carousel-thumbnails" id="agarCarouselThumbnails">
+                <!-- Les vignettes des vidéos Vimeo seront chargées dynamiquement ici -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal pour le carrousel de vidéos CYDFLM -->
+    <div id="cydflmCarouselModal" class="modal">
+        <span class="close" onclick="closeCydflmCarousel()">&times;</span>
+        <div class="carousel-container">
+            <button class="carousel-button left" onclick="previousCydflmVideo()">❮</button>
+            <iframe id="cydflmCarouselVideoFrame" class="carousel-video" src="" frameborder="0" allowfullscreen></iframe>
+            <button class="carousel-button right" onclick="nextCydflmVideo()">❯</button>
+            <div class="carousel-thumbnails" id="cydflmCarouselThumbnails">
+                <!-- Les vignettes des vidéos Vimeo seront chargées dynamiquement ici -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal pour le carrousel de vidéos COURRÈGES -->
+    <div id="courregesCarouselModal" class="modal">
+        <span class="close" onclick="closeCourregesCarousel()">&times;</span>
+        <div class="carousel-container">
