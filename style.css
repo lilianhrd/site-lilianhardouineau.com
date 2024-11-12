@@ -134,38 +134,102 @@ body {
 }
 
 /* Positionnement et style de la croix de fermeture (version mobile) */
+.close {
+    position: absolute; /* Absolu pour la positionner en fonction du lecteur vidéo */
+    top: 10px; /* Ajuste la croix juste au-dessus du lecteur */
+    right: 10px; /* Positionner la croix à droite du lecteur */
+    font-size: 30px;
+    color: #fff;
+    cursor: pointer;
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px; /* Largeur étendue de la zone de clic */
+    height: 50px; /* Hauteur étendue de la zone de clic */
+    padding: 5px; /* Ajuste la zone de clic */
+    transition: color 0.3s ease;
+    box-sizing: content-box; /* Permet au padding d'agrandir la zone cliquable */
+}
+
+.close:hover {
+    color: #aaa;
+}
+
+/* Ajustements pour positionner la croix proche du lecteur */
 @media (max-width: 768px) {
     .close {
-        position: fixed; /* Absolu pour la positionner en fonction du lecteur vidéo */
-        bottom: 20px; /* Place la croix au bas de la page */
-        left: 50%; /* Centrer horizontalement */
-        transform: translateX(-50%); /* Centrer correctement */
-        font-size: 30px;
-        color: #fff;
-        cursor: pointer;
-        z-index: 3000;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 50px; /* Largeur étendue de la zone de clic */
-        height: 50px; /* Hauteur étendue de la zone de clic */
-        padding: 5px; /* Ajuste la zone de clic */
-        transition: color 0.3s ease;
-        box-sizing: content-box; /* Permet au padding d'agrandir la zone cliquable */
+        top: 10px; /* Place la croix juste au-dessus du lecteur */
+        right: 10px; /* Ajuste l'espacement à droite */
     }
+}
 
-    .close:hover {
-        color: #aaa;
+
+/* Style moderne des miniatures du carrousel */
+.carousel-thumbnails {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.carousel-thumbnail {
+    width: 80px;
+    height: 60px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+    border-radius: 4px;
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.2); /* Légère ombre par défaut */
+}
+
+.carousel-thumbnail.active {
+    transform: scale(1.05); /* Légère mise en avant */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 15px rgba(255, 255, 255, 0.2); /* Effet lumineux */
+    opacity: 1; /* Contraste plus prononcé */
+}
+
+.carousel-thumbnail:hover {
+    transform: scale(1.05);
+    opacity: 0.85;
+}
+
+/* Boutons de navigation */
+.carousel-button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2em;
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2100;
+}
+
+.carousel-button.left {
+    left: -40px;
+}
+
+.carousel-button.right {
+    right: -40px;
+}
+
+/* Adaptation pour écrans moyens (tablettes) */
+@media (max-width: 1024px) {
+    .video-gallery {
+        grid-template-columns: repeat(2, 1fr); /* 2 colonnes */
+        padding: 15px 5px;
     }
+}
 
-    /* Si c'est un carrousel, placer la croix sous les vignettes */
-    .modal .carousel-thumbnails {
-        margin-bottom: 20px; /* Ajoute de l'espace sous les miniatures */
-    }
-
-    /* Ajustement pour le bouton de fermeture dans les carrousels */
-    .modal .close {
-        bottom: 10px; /* Place la croix sous les vignettes du carrousel */
+/* Adaptation pour petits écrans (smartphones) */
+@media (max-width: 768px) {
+    /* Modifier la grille des vignettes pour qu'elle passe en une seule colonne */
+    .video-gallery {
+        grid-template-columns: 1fr; /* Une seule colonne */
+        padding: 15px 5px;
     }
 
     /* Centrer les mentions en haut à droite */
@@ -217,20 +281,5 @@ body {
     /* Assurer que les titres et sous-titres des vignettes sont visibles */
     .video-text-container {
         opacity: 1 !important; /* Toujours visibles */
-    }
-}
-
-/* Styles pour la version bureau */
-@media (min-width: 769px) {
-    .left-header h1 {
-        font-size: 1.5em;
-    }
-
-    .left-header h2 {
-        font-size: 1.2em;
-    }
-
-    .right-header a {
-        font-size: 1em;
     }
 }
