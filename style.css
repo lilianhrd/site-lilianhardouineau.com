@@ -150,37 +150,16 @@ body {
     box-sizing: content-box;
 }
 
-//* Version bureau : positionnement des deux croix */
+/* Version bureau : croix positionnée en haut à droite */
 @media (min-width: 1024px) {
     .close {
         position: absolute;
-        top: 15px; /* Positionner la première croix */
-        right: 15px; /* Positionner la première croix à droite */
-        font-size: 30px;
-        color: #fff;
-        cursor: pointer;
-        z-index: 3000;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 50px; /* Largeur de la zone de la première croix */
-        height: 50px; /* Hauteur de la zone de la première croix */
-        padding: 0; /* Pas de padding */
-    }
-
-    /* Ajouter une deuxième croix juste en dessous */
-    .close::after {
-        content: "×"; /* La croix sous la croix principale */
-        position: absolute;
-        top: 35px; /* Ajuster pour la positionner juste en dessous de la première croix */
-        right: 15px; /* Même alignement à droite */
-        font-size: 30px;
-        color: #fff;
-        cursor: pointer;
-        z-index: 2000; /* Mettre la deuxième croix sous la première */
+        top: 15px; /* Ajustement précis de la croix par rapport au haut de la vidéo */
+        right: 15px; /* Ajustement précis à droite */
+        transform: none;
+        padding: 10px; /* Taille correcte pour la zone cliquable */
     }
 }
-
 
 /* Ajustements pour la version mobile */
 @media (max-width: 768px) {
