@@ -24,8 +24,8 @@ body {
 }
 
 .left-header h1 {
-    font-size: 1.2em; /* Réduire la taille de 'Lilian Hardouineau' pour l'uniformité */
-    font-weight: bold;
+    font-size: 1.5em; /* Taille de 'Lilian Hardouineau' */
+    font-weight: bold; /* Reste en gras */
     margin: 0;
     color: #fff;
 }
@@ -34,7 +34,7 @@ body {
     font-size: 0.8em; /* Réduire la taille de 'Director / Visual Artist' */
     margin: 0;
     color: #fff;
-    font-weight: normal; /* Réduire la graisse */
+    font-weight: normal; /* Pas de gras pour 'Director / Visual Artist' */
 }
 
 .right-header a {
