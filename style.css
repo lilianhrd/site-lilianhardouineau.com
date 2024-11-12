@@ -28,7 +28,7 @@ body {
     font-weight: bold; /* Rester en gras */
     margin: 0;
     color: #fff;
-    text-transform: none; /* Pas de majuscule pour la version bureau */
+    text-transform: none; /* En minuscule sur les deux versions */
 }
 
 .left-header h2 {
@@ -237,7 +237,7 @@ body {
         margin: 5px 0; /* Petites marges entre les éléments */
         text-align: left; /* Aligner à gauche */
         margin-left: 10px; /* Une petite marge avec le bord gauche */
-        text-transform: none; /* En normal pour la version mobile */
+        text-transform: none; /* En minuscule sur les deux versions */
     }
 
     .left-header h2 {
@@ -274,4 +274,3 @@ body {
         opacity: 1 !important; /* Toujours visibles */
     }
 }
-
