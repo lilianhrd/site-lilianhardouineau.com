@@ -164,7 +164,6 @@ body {
     }
 }
 
-
 /* Style moderne des miniatures du carrousel */
 .carousel-thumbnails {
     display: flex;
@@ -281,5 +280,23 @@ body {
     /* Assurer que les titres et sous-titres des vignettes sont visibles */
     .video-text-container {
         opacity: 1 !important; /* Toujours visibles */
+    }
+
+    /* Positionner la croix au bas de la page */
+    .modal .close {
+        position: fixed; /* Place la croix fixée en bas */
+        bottom: 20px; /* Positionner juste au-dessus du bas de la page */
+        left: 50%; /* Centrer la croix */
+        transform: translateX(-50%);
+        font-size: 30px;
+        color: #fff;
+        cursor: pointer;
+        z-index: 3000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        padding: 5px;
     }
 }
