@@ -28,7 +28,7 @@ body {
     font-weight: bold; /* Rester en gras */
     margin: 0;
     color: #fff;
-    text-transform: uppercase; /* Mettre en majuscule */
+    text-transform: uppercase; /* Mettre en majuscule sur version bureau */
 }
 
 .left-header h2 {
@@ -136,7 +136,7 @@ body {
 /* Positionnement et style de la croix de fermeture */
 .close {
     position: absolute;
-    top: 20px; /* Positionner plus haut sur la version mobile */
+    top: 60px; /* Placer plus bas sur la version mobile */
     right: 25px; /* Garde la position à droite */
     font-size: 30px;
     color: #fff;
@@ -177,7 +177,7 @@ body {
 
 .carousel-thumbnail.active {
     transform: scale(1.05); /* Légère mise en avant */
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 15px rgba(255, 255, 255, 0.2); /* Effet lumineux */
+    box-shadow: 0 0 10px rgba(255, 255, 0.5), 0 0 15px rgba(255, 255, 255, 0.2); /* Effet lumineux */
     opacity: 1; /* Contraste plus prononcé */
 }
 
@@ -237,7 +237,7 @@ body {
         margin: 5px 0; /* Petites marges entre les éléments */
         text-align: left; /* Aligner à gauche */
         margin-left: 10px; /* Une petite marge avec le bord gauche */
-        text-transform: uppercase; /* Mettre en majuscule */
+        text-transform: capitalize; /* Texte en majuscule uniquement sur la version bureau */
     }
 
     .left-header h2 {
