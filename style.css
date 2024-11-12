@@ -150,34 +150,24 @@ body {
     box-sizing: content-box;
 }
 
-/* Version bureau : positionnement de la croix */
-.close {
-    position: fixed; /* Utilisation de fixed pour la positionner relativement à la fenêtre */
-    top: 10px; /* Marge depuis le haut de la fenêtre */
-    right: 10px; /* Marge depuis le bord droit de la fenêtre */
-    font-size: 30px; /* Taille de la croix */
-    color: #fff;
-    cursor: pointer;
-    z-index: 3000;
-    width: 50px; /* Taille de la zone cliquable */
-    height: 50px; /* Taille de la zone cliquable */
-    display: flex;
-    align-items: center; /* Centrer la croix verticalement */
-    justify-content: center; /* Centrer la croix horizontalement */
-    padding: 0; /* Pas de padding supplémentaire */
-    box-sizing: border-box; /* Assurer que la taille inclut tout le contenu */
+/* Version bureau : croix positionnée en haut à droite */
+@media (min-width: 1024px) {
+    .close {
+        position: absolute;
+        top: 15px; /* Ajustement précis de la croix par rapport au haut de la vidéo */
+        right: 15px; /* Ajustement précis à droite */
+        transform: none;
+        padding: 10px; /* Taille correcte pour la zone cliquable */
+    }
 }
 
-.close:hover {
-    color: #aaa; /* Couleur au survol */
-}
-
-/* Pour la version mobile */
+/* Ajustements pour la version mobile */
 @media (max-width: 768px) {
     .close {
         position: fixed;
-        bottom: 20px; /* Positionner la croix plus bas pour mobile */
-        right: 20px; /* Aligner à droite */
+        bottom: 20px;
+        right: 10px;
+        transform: translateX(0);
         font-size: 30px;
         color: #fff;
         cursor: pointer;
@@ -187,71 +177,101 @@ body {
         justify-content: center;
         width: 50px;
         height: 50px;
-        padding: 0;
+        padding: 5px;
+    }
+
+    /* Modifier la grille des vignettes pour une seule colonne sur mobile */
+    .video-gallery {
+        grid-template-columns: 1fr; /* Une seule colonne */
+        padding: 15px 5px;
+    }
+
+    .video-text-container {
+        opacity: 1 !important;
+    }
+
+    /* Ajouter le dégradé subtil en haut de la page */
+    .video-gallery::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 50px;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), transparent);
+        z-index: 1;
+    }
+
+    /* Positionner les éléments à gauche et à droite */
+    .top-header {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px 5px;
+    }
+
+    .left-header h1 {
+        font-size: 1.1em;
+        color: #fff;
+        margin: 5px 0;
+        text-align: left;
+        margin-left: 10px;
+        text-transform: none; /* En minuscule sur mobile */
+    }
+
+    .left-header h2 {
+        font-size: 0.8em;
+        margin-top: 5px;
+        color: #fff;
+        text-align: left;
+        margin-left: 10px;
+        font-weight: normal;
+    }
+
+    .right-header {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        margin-right: 10px;
+    }
+
+    .right-header a {
+        font-size: 0.8em;
+        color: #fff;
+        margin: 5px 0;
+        text-decoration: none;
+    }
+
+    .right-header a:hover {
+        color: #aaa;
     }
 }
 
-/* Modifier la grille des vignettes pour une seule colonne sur mobile */
-.video-gallery {
-    grid-template-columns: 1fr; /* Une seule colonne */
-    padding: 15px 5px;
-}
-
-.video-text-container {
-    opacity: 1 !important;
-}
-
-/* Ajouter le dégradé subtil en haut de la page */
-.video-gallery::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 50px;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), transparent);
-    z-index: 1;
-}
-
-/* Positionner les éléments à gauche et à droite */
-.top-header {
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 10px 5px;
-}
-
-.left-header h1 {
-    font-size: 1.1em;
-    color: #fff;
-    margin: 5px 0;
-    text-align: left;
-    margin-left: 10px;
-    text-transform: none; /* En minuscule sur mobile */
-}
-
-.left-header h2 {
-    font-size: 0.8em;
-    margin-top: 5px;
-    color: #fff;
-    text-align: left;
-    margin-left: 10px;
-    font-weight: normal;
-}
-
-.right-header {
+/* Style moderne des miniatures du carrousel */
+.carousel-thumbnails {
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    margin-right: 10px;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    width: 100%;
 }
 
-.right-header a {
-    font-size: 0.8em;
-    color: #fff;
-    margin: 5px 0;
-    text-decoration: none;
+.carousel-thumbnail {
+    width: 60px;
+    height: 45px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+    border-radius: 4px;
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.2);
 }
 
-.right-header a:hover {
-    color: #aaa;
+.carousel-thumbnail.active {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 15px rgba(255, 255, 255, 0.2);
+    opacity: 1;
+}
+
+.carousel-thumbnail:hover {
+    transform: scale(1.05);
+    opacity: 0.85;
 }
