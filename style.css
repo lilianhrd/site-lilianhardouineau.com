@@ -35,7 +35,7 @@ body {
     font-size: 0.8em;
     margin: 0;
     color: #fff;
-    font-weight: normal;
+    font-weight: normal; /* Pas de gras */
 }
 
 .right-header a {
@@ -154,8 +154,8 @@ body {
 @media (min-width: 1024px) {
     .close {
         position: absolute;
-        top: 20px; /* Marge avec le haut de la vidéo */
-        right: 20px; /* Marge avec le côté droit */
+        top: 20px; /* Ajustement précis de la croix par rapport au haut de la vidéo */
+        right: 20px; /* Ajustement précis à droite */
         transform: none;
     }
 }
@@ -164,8 +164,8 @@ body {
 @media (max-width: 768px) {
     .close {
         position: fixed;
-        bottom: 20px; /* Placer la croix juste au-dessus du bas de la page */
-        right: 10px; /* Alignement à droite */
+        bottom: 20px;
+        right: 10px;
         transform: translateX(0);
         font-size: 30px;
         color: #fff;
@@ -181,7 +181,7 @@ body {
 
     /* Modifier la grille des vignettes pour une seule colonne sur mobile */
     .video-gallery {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr; /* Une seule colonne */
         padding: 15px 5px;
     }
 
