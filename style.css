@@ -23,15 +23,17 @@ body {
     background-color: transparent;
 }
 
+.left-header h1, .left-header h2, .right-header a {
+    font-size: 1em; /* Définir une taille uniforme pour les titres et les liens */
+}
+
 .left-header h1 {
-    font-size: 1em;
     font-weight: bold;
     margin: 0;
     color: #fff;
 }
 
 .left-header h2 {
-    font-size: 0.8em;
     font-weight: normal;
     margin: 0;
     color: #fff;
@@ -41,7 +43,7 @@ body {
     color: #fff;
     text-decoration: none;
     transition: color 0.3s ease;
-    font-size: 0.8em;
+    font-size: 1em; /* Taille uniforme pour tous les éléments */
 }
 
 .right-header a:hover {
@@ -268,7 +270,6 @@ body {
 
     /* Afficher les titres et sous-titres sur les vignettes sur mobile */
     .video-text-container {
-        opacity: 1 !important; /* Forcer l'affichage des titres sur mobile */
-        transition: opacity 0s !important; /* Désactiver la transition pour qu'ils s'affichent instantanément */
+        opacity: 1 !important; /* Assurez-vous que les titres sont toujours visibles sur mobile */
     }
 }
