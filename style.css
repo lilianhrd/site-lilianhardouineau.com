@@ -150,16 +150,28 @@ body {
     box-sizing: content-box;
 }
 
-/* Version bureau : croix positionnée en haut à droite */
-@media (min-width: 1024px) {
-    .close {
-        position: absolute;
-        top: 15px; /* Ajustement précis de la croix par rapport au haut de la vidéo */
-        right: 15px; /* Ajustement précis à droite */
-        transform: none;
-        padding: 10px; /* Taille correcte pour la zone cliquable */
-    }
+/* Version bureau : Positionnement de la croix */
+.close {
+    position: absolute; /* Absolu pour la positionner par rapport au parent */
+    top: 10px; /* Ajuster la position de la croix pour être bien alignée */
+    right: 10px; /* Positionner la croix à droite */
+    font-size: 30px; /* Taille de la croix */
+    color: #fff;
+    cursor: pointer;
+    z-index: 3000;
+    width: 50px; /* Largeur de la zone de clic */
+    height: 50px; /* Hauteur de la zone de clic */
+    display: flex;
+    justify-content: center; /* Centrer la croix horizontalement */
+    align-items: center; /* Centrer la croix verticalement */
+    padding: 0; /* Pas de padding supplémentaire */
+    box-sizing: border-box; /* S'assurer que la taille de la zone est respectée */
 }
+
+.close:hover {
+    color: #aaa; /* Changement de couleur au survol */
+}
+
 
 /* Ajustements pour la version mobile */
 @media (max-width: 768px) {
