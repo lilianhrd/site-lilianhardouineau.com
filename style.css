@@ -225,38 +225,46 @@ body {
     /* Centrer les mentions en haut à droite */
     .top-header {
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start; /* Aligner à gauche */
         padding: 10px 5px; /* Réduire le padding pour éviter trop d'espace */
     }
 
-    /* Agrandir le texte et centrer */
-    .left-header h1 {
-        font-size: 2em; /* Augmenter la taille de 'Lilian Hardouineau' */
-        margin: 10px 0;  /* Ajouter un peu d'espace autour */
+    /* Positionner "Lilian Hardouineau" et "Director / Visual Artist" à gauche */
+    .left-header h1,
+    .left-header h2 {
+        font-size: 2em; /* Agrandir la taille de 'Lilian Hardouineau' */
         color: #fff;
-        text-align: center;
+        margin: 5px 0; /* Petites marges entre les éléments */
+        text-align: left; /* Aligner à gauche */
+        margin-left: 10px; /* Une petite marge avec le bord gauche */
     }
 
     .left-header h2 {
-        font-size: 1.5em; /* Augmenter la taille de 'Director / Visual Artist' */
-        margin-top: 5px;
-        font-weight: normal;
-        color: #fff;
-        text-align: center;
+        font-size: 1.5em; /* Agrandir la taille de 'Director / Visual Artist' */
+    }
+
+    /* Aligner les liens (Contact, Instagram, Vimeo) à droite sous forme de colonne */
+    .right-header {
+        display: flex;
+        flex-direction: column; /* Les liens seront sous forme de colonne */
+        align-items: flex-end; /* Les aligner à droite */
+        margin-right: 10px; /* Ajouter une petite marge à droite */
     }
 
     .right-header a {
-        font-size: 1.2em; /* Agrandir le texte pour le lien */
-        padding: 10px 15px; /* Ajouter un peu de padding pour rendre le lien plus facile à cliquer */
+        font-size: 1.2em; /* Ajuster la taille des liens */
+        color: #fff;
+        margin: 5px 0; /* Espacement entre les liens */
+        text-decoration: none;
+    }
+
+    .right-header a:hover {
+        color: #aaa;
     }
 
     /* Afficher les titres et sous-titres sur les vignettes sur mobile */
     .video-text-container {
         opacity: 1 !important; /* Forcer l'affichage des titres sur mobile */
         transition: opacity 0s !important; /* Désactiver la transition pour qu'ils s'affichent instantanément */
-    }
-
-    .video-thumbnail:hover .video-text-container {
-        opacity: 1 !important; /* S'assurer que l'opacité reste à 1 même en l'absence de hover */
     }
 }
