@@ -18,13 +18,13 @@ body {
     justify-content: space-between;
     padding: 10px 20px;
     z-index: 3000;
-    align-items: center;
+    align-items: flex-start; /* Aligner en haut */
     box-sizing: border-box;
     background-color: transparent;
 }
 
 .left-header h1, .left-header h2, .right-header a {
-    font-size: 1em; /* Définir une taille uniforme pour les titres et les liens */
+    font-size: 1.1em; /* Taille de base pour les titres et les liens */
 }
 
 .left-header h1 {
@@ -43,7 +43,7 @@ body {
     color: #fff;
     text-decoration: none;
     transition: color 0.3s ease;
-    font-size: 1em; /* Taille uniforme pour tous les éléments */
+    font-size: 1.1em; /* Taille uniforme pour les liens */
 }
 
 .right-header a:hover {
@@ -260,16 +260,11 @@ body {
     .right-header a {
         font-size: 1.1em; /* Taille identique à celle des vignettes */
         color: #fff;
-        margin: 5px 0; /* Espacement entre les liens */
+        margin: 5px 0; /* Espacement entre les éléments */
         text-decoration: none;
     }
 
     .right-header a:hover {
         color: #aaa;
-    }
-
-    /* Afficher les titres et sous-titres sur les vignettes sur mobile */
-    .video-text-container {
-        opacity: 1 !important; /* Assurez-vous que les titres sont toujours visibles sur mobile */
     }
 }
