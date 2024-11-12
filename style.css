@@ -230,9 +230,8 @@ body {
     }
 
     /* Positionner "Lilian Hardouineau" et "Director / Visual Artist" à gauche */
-    .left-header h1,
-    .left-header h2 {
-        font-size: 2em; /* Agrandir la taille de 'Lilian Hardouineau' */
+    .left-header h1 {
+        font-size: 2.5em; /* Agrandir la taille de 'Lilian Hardouineau' */
         color: #fff;
         margin: 5px 0; /* Petites marges entre les éléments */
         text-align: left; /* Aligner à gauche */
@@ -240,7 +239,11 @@ body {
     }
 
     .left-header h2 {
-        font-size: 1.5em; /* Agrandir la taille de 'Director / Visual Artist' */
+        font-size: 1.8em; /* Agrandir la taille de 'Director / Visual Artist' */
+        margin-top: 5px;
+        color: #fff;
+        text-align: left; /* Aligner à gauche */
+        margin-left: 10px; /* Une petite marge avec le bord gauche */
     }
 
     /* Aligner les liens (Contact, Instagram, Vimeo) à droite sous forme de colonne */
@@ -252,7 +255,7 @@ body {
     }
 
     .right-header a {
-        font-size: 1.2em; /* Ajuster la taille des liens */
+        font-size: 1.5em; /* Ajuster la taille des liens */
         color: #fff;
         margin: 5px 0; /* Espacement entre les liens */
         text-decoration: none;
