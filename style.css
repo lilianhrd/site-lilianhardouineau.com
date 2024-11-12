@@ -162,8 +162,8 @@ body {
         position: absolute;
         top: auto; /* Supprimer la position 'top' */
         bottom: 10px; /* Placer juste au-dessus du bas de la page */
-        left: 50%; /* Centrer la croix */
-        transform: translateX(-50%);
+        left: 10px; /* Ajuster la position à gauche du lecteur */
+        transform: translateX(0%);
     }
 }
 
