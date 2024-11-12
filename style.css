@@ -150,16 +150,24 @@ body {
     box-sizing: content-box;
 }
 
-/* Version bureau : croix positionnée en haut à droite */
+/* Version bureau : positionnement plus précis de la croix */
 @media (min-width: 1024px) {
     .close {
         position: absolute;
-        top: 15px; /* Ajustement précis de la croix par rapport au haut de la vidéo */
-        right: 15px; /* Ajustement précis à droite */
+        top: 15px; /* Ajuste légèrement la croix vers le bas */
+        right: 15px; /* Positionne à droite */
         transform: none;
-        padding: 10px; /* Taille correcte pour la zone cliquable */
+        width: 50px; /* Largeur et hauteur égales pour que la zone cliquable coïncide avec la croix */
+        height: 50px;
+        padding: 0; /* Retire le padding, cela peut causer un décalage si trop grand */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 3000;
+        cursor: pointer;
     }
 }
+
 
 /* Ajustements pour la version mobile */
 @media (max-width: 768px) {
