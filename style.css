@@ -133,7 +133,7 @@ body {
     padding: 10px;
 }
 
-/* Positionnement et style de la croix de fermeture (version mobile et bureau) */
+/* Positionnement et style de la croix de fermeture */
 .close {
     position: absolute;
     font-size: 30px;
@@ -154,9 +154,10 @@ body {
 @media (min-width: 1024px) {
     .close {
         position: absolute;
-        top: 20px; /* Ajustement précis de la croix par rapport au haut de la vidéo */
-        right: 20px; /* Ajustement précis à droite */
+        top: 15px; /* Ajustement précis de la croix par rapport au haut de la vidéo */
+        right: 15px; /* Ajustement précis à droite */
         transform: none;
+        padding: 10px; /* Taille correcte pour la zone cliquable */
     }
 }
 
