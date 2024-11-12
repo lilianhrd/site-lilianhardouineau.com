@@ -136,6 +136,8 @@ body {
 /* Positionnement et style de la croix de fermeture */
 .close {
     position: absolute;
+    top: 15px;
+    right: 15px;
     font-size: 30px;
     color: #fff;
     cursor: pointer;
@@ -143,21 +145,11 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50px;
-    height: 50px;
-    padding: 0; /* Supprime le padding pour que la zone cliquable corresponde à la taille du bouton */
+    width: 40px; /* Taille de la zone cliquable */
+    height: 40px;
     transition: color 0.3s ease;
-    box-sizing: content-box;
     background: transparent;
-}
-
-/* Version bureau : croix positionnée en haut à droite */
-@media (min-width: 1024px) {
-    .close {
-        position: absolute;
-        top: 15px;
-        right: 15px;
-    }
+    box-sizing: border-box;
 }
 
 /* Ajustements pour la version mobile */
@@ -167,7 +159,7 @@ body {
         bottom: 20px;
         right: 10px;
         font-size: 30px;
-        width: 50px;
+        width: 50px; /* Agrandir pour mobile */
         height: 50px;
     }
 
