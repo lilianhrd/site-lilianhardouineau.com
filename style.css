@@ -24,22 +24,22 @@ body {
 }
 
 .left-header h1 {
-    font-size: 1.1em; /* Réduire la taille de 'Lilian Hardouineau' pour version bureau */
+    font-size: 1.1em;
     font-weight: bold; /* Rester en gras */
     margin: 0;
     color: #fff;
-    text-transform: none; /* En minuscule sur les deux versions */
+    text-transform: none;
 }
 
 .left-header h2 {
-    font-size: 0.8em; /* Réduire la taille de 'Director / Visual Artist' */
+    font-size: 0.8em;
     margin: 0;
     color: #fff;
-    font-weight: normal; /* Pas de gras */
+    font-weight: normal;
 }
 
 .right-header a {
-    font-size: 0.8em; /* Taille uniforme pour les liens */
+    font-size: 0.8em;
     color: #fff;
     text-decoration: none;
     transition: color 0.3s ease;
@@ -133,11 +133,12 @@ body {
     padding: 10px;
 }
 
-/* Positionnement et style de la croix de fermeture (version mobile et bureau) */
+/* Positionnement et style de la croix de fermeture (version mobile) */
 .close {
     position: absolute; /* Absolu pour la positionner en fonction du lecteur vidéo */
-    top: 10px; /* Ajuste la croix juste au-dessus du lecteur */
-    right: 10px; /* Positionner la croix à droite du lecteur */
+    top: auto; /* Pas de 'top' pour mobile */
+    bottom: 20px; /* Placer la croix juste au-dessus du bas de la page */
+    right: 10px; /* Positionner à droite */
     font-size: 30px;
     color: #fff;
     cursor: pointer;
@@ -149,25 +150,14 @@ body {
     height: 50px; /* Hauteur étendue de la zone de clic */
     padding: 5px; /* Ajuste la zone de clic */
     transition: color 0.3s ease;
-    box-sizing: content-box; /* Permet au padding d'agrandir la zone cliquable */
+    box-sizing: content-box;
 }
 
 .close:hover {
     color: #aaa;
 }
 
-/* Ajustements pour positionner la croix proche du lecteur sur mobile */
-@media (max-width: 768px) {
-    .close {
-        position: absolute;
-        top: auto; /* Supprimer la position 'top' */
-        bottom: 10px; /* Placer juste au-dessus du bas de la page */
-        left: 10px; /* Ajuster la position à gauche du lecteur */
-        transform: translateX(0%);
-    }
-}
-
-/* Style moderne des miniatures du carrousel */
+/* Carrousel et boutons de navigation */
 .carousel-thumbnails {
     display: flex;
     justify-content: center;
@@ -183,13 +173,13 @@ body {
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
     border-radius: 4px;
-    box-shadow: 0 0 4px rgba(255, 255, 255, 0.2); /* Légère ombre par défaut */
+    box-shadow: 0 0 4px rgba(255, 255, 255, 0.2);
 }
 
 .carousel-thumbnail.active {
-    transform: scale(1.05); /* Légère mise en avant */
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 15px rgba(255, 255, 255, 0.2); /* Effet lumineux */
-    opacity: 1; /* Contraste plus prononcé */
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 15px rgba(255, 255, 255, 0.2);
+    opacity: 1;
 }
 
 .carousel-thumbnail:hover {
@@ -197,7 +187,6 @@ body {
     opacity: 0.85;
 }
 
-/* Boutons de navigation */
 .carousel-button {
     background: none;
     border: none;
@@ -234,13 +223,7 @@ body {
         padding: 15px 5px;
     }
 
-    /* Centrer les mentions en haut à droite */
-    .top-header {
-        flex-direction: row; 
-        justify-content: space-between;
-        padding: 10px 5px;
-    }
-
+    /* Positionner "Lilian Hardouineau" et "Director / Visual Artist" à gauche */
     .left-header h1 {
         font-size: 1.1em;
         color: #fff;
@@ -259,6 +242,7 @@ body {
         font-weight: normal;
     }
 
+    /* Aligner les liens (Contact, Instagram, Vimeo) en haut à droite sous forme de colonne */
     .right-header {
         display: flex;
         flex-direction: column;
@@ -282,30 +266,7 @@ body {
         opacity: 1 !important;
     }
 
-    /* Positionner la croix au bas de la page */
-    .modal .close {
-        position: fixed; /* Place la croix fixée en bas */
-        bottom: 20px; /* Positionner juste au-dessus du bas de la page */
-        left: 50%; /* Centrer la croix */
-        transform: translateX(-50%);
-        font-size: 30px;
-        color: #fff;
-        cursor: pointer;
-        z-index: 3000;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 50px;
-        height: 50px;
-        padding: 5px;
-    }
-
-    /* Ajout de l’effet de dégradé en haut de la page */
-    .video-gallery {
-        position: relative;
-        overflow: hidden;
-    }
-
+    /* Ajouter le dégradé subtil en haut de la page */
     .video-gallery::before {
         content: "";
         position: absolute;
@@ -313,7 +274,7 @@ body {
         left: 0;
         right: 0;
         height: 50px;
-        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent);
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), transparent);
         z-index: 1;
     }
 }
