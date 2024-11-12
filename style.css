@@ -252,6 +252,11 @@ body {
 
     /* Afficher les titres et sous-titres sur les vignettes sur mobile */
     .video-text-container {
-        opacity: 1 !important; /* Assurez-vous que les titres sont toujours visibles sur mobile */
+        opacity: 1 !important; /* Forcer l'affichage des titres sur mobile */
+        transition: opacity 0s !important; /* Désactiver la transition pour qu'ils s'affichent instantanément */
+    }
+
+    .video-thumbnail:hover .video-text-container {
+        opacity: 1 !important; /* S'assurer que l'opacité reste à 1 même en l'absence de hover */
     }
 }
