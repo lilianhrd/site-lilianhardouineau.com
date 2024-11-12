@@ -23,13 +23,15 @@
         <!-- Les projets seront ajoutés dynamiquement par le script.js -->
     </section>
 
-    <!-- Modale avec la vidéo et la croix de fermeture -->
+    <!-- Modal universelle pour vidéo unique ou carrousel -->
     <div id="videoModal" class="modal">
-        <button class="close" onclick="closeVideo()">&times;</button>
+        <span class="close" onclick="closeVideo()">&times;</span>
         <iframe id="videoFrame" width="100%" height="60%" src="" frameborder="0" allowfullscreen></iframe>
         <div class="carousel-thumbnails" id="carouselThumbnails" style="display: none;">
-            <!-- Les miniatures des vidéos apparaîtront ici pour les projets en carrousel -->
+            <!-- Les miniatures des vidéos apparaîtront ici -->
         </div>
+        <button id="previousButton" class="carousel-button left" style="display: none;">❮</button>
+        <button id="nextButton" class="carousel-button right" style="display: none;">❯</button>
     </div>
 
     <script src="script.js"></script>
