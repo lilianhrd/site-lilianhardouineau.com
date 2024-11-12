@@ -164,7 +164,6 @@ body {
     }
 }
 
-
 /* Style moderne des miniatures du carrousel */
 .carousel-thumbnails {
     display: flex;
@@ -234,43 +233,40 @@ body {
 
     /* Centrer les mentions en haut à droite */
     .top-header {
-        flex-direction: row; /* Les garder sur la même ligne */
-        justify-content: space-between; /* Espacer les éléments */
-        padding: 10px 5px; /* Ajuster l'espacement */
+        flex-direction: row; 
+        justify-content: space-between;
+        padding: 10px 5px;
     }
 
-    /* Positionner "Lilian Hardouineau" et "Director / Visual Artist" à gauche */
     .left-header h1 {
-        font-size: 1.1em; /* Réduire la taille de 'Lilian Hardouineau' pour version bureau */
+        font-size: 1.1em;
         color: #fff;
-        margin: 5px 0; /* Petites marges entre les éléments */
-        text-align: left; /* Aligner à gauche */
-        margin-left: 10px; /* Une petite marge avec le bord gauche */
-        text-transform: none; /* En minuscule sur les deux versions */
+        margin: 5px 0;
+        text-align: left;
+        margin-left: 10px;
+        text-transform: none; /* En minuscule sur mobile */
     }
 
     .left-header h2 {
-        font-size: 0.8em; /* Réduire la taille de 'Director / Visual Artist' */
+        font-size: 0.8em;
         margin-top: 5px;
         color: #fff;
-        text-align: left; /* Aligner à gauche */
-        margin-left: 10px; /* Une petite marge avec le bord gauche */
-        font-weight: normal; /* Réduire la graisse de 'Director / Visual Artist' */
+        text-align: left;
+        margin-left: 10px;
+        font-weight: normal;
     }
 
-    /* Aligner les liens (Contact, Instagram, Vimeo) en haut à droite sous forme de colonne */
     .right-header {
         display: flex;
-        flex-direction: column; /* Les liens sous forme de colonne */
-        align-items: flex-end; /* Les aligner à droite */
-        margin-right: 10px; /* Ajuster la marge de droite */
-        z-index: 1000;
+        flex-direction: column;
+        align-items: flex-end;
+        margin-right: 10px;
     }
 
     .right-header a {
-        font-size: 0.8em; /* Réduire la taille pour correspondre à celle des sous-titres des vignettes */
+        font-size: 0.8em;
         color: #fff;
-        margin: 5px 0; /* Espacement entre les éléments */
+        margin: 5px 0;
         text-decoration: none;
     }
 
@@ -281,5 +277,23 @@ body {
     /* Assurer que les titres et sous-titres des vignettes sont visibles */
     .video-text-container {
         opacity: 1 !important; /* Toujours visibles */
+    }
+
+    /* Positionner la croix au bas de la page */
+    .modal .close {
+        position: fixed; /* Place la croix fixée en bas */
+        bottom: 20px; /* Positionner juste au-dessus du bas de la page */
+        left: 50%; /* Centrer la croix */
+        transform: translateX(-50%);
+        font-size: 30px;
+        color: #fff;
+        cursor: pointer;
+        z-index: 3000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        padding: 5px;
     }
 }
