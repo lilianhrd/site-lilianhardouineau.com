@@ -299,4 +299,21 @@ body {
         height: 50px;
         padding: 5px;
     }
+
+    /* Ajout de l’effet de dégradé en haut de la page */
+    .video-gallery {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .video-gallery::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 50px;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), transparent);
+        z-index: 1;
+    }
 }
