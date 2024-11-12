@@ -226,19 +226,19 @@ body {
     .top-header {
         flex-direction: column;
         align-items: center;
-        padding: 10px;
+        padding: 10px 5px; /* Réduire le padding pour éviter trop d'espace */
     }
 
     /* Agrandir le texte et centrer */
     .left-header h1 {
-        font-size: 1.5em; /* Augmenter la taille de 'Lilian Hardouineau' */
-        margin: 0;
+        font-size: 2em; /* Augmenter la taille de 'Lilian Hardouineau' */
+        margin: 10px 0;  /* Ajouter un peu d'espace autour */
         color: #fff;
         text-align: center;
     }
 
     .left-header h2 {
-        font-size: 1.2em; /* Augmenter la taille de 'Director / Visual Artist' */
+        font-size: 1.5em; /* Augmenter la taille de 'Director / Visual Artist' */
         margin-top: 5px;
         font-weight: normal;
         color: #fff;
@@ -246,7 +246,12 @@ body {
     }
 
     .right-header a {
-        font-size: 1.2em; /* Augmenter la taille du lien */
-        padding: 5px;
+        font-size: 1.2em; /* Agrandir le texte pour le lien */
+        padding: 10px 15px; /* Ajouter un peu de padding pour rendre le lien plus facile à cliquer */
+    }
+
+    /* Afficher les titres et sous-titres sur les vignettes sur mobile */
+    .video-text-container {
+        opacity: 1 !important; /* Assurez-vous que les titres sont toujours visibles sur mobile */
     }
 }
