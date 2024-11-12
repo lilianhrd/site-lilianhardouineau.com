@@ -25,8 +25,10 @@
 
     <!-- Modal universelle pour vidéo unique ou carrousel -->
     <div id="videoModal" class="modal">
-        <span class="close" onclick="closeVideo()">&times;</span>
-        <iframe id="videoFrame" width="100%" height="60%" src="" frameborder="0" allowfullscreen></iframe>
+        <div class="video-wrapper">
+            <button class="close" onclick="closeVideo()">&times;</button>
+            <iframe id="videoFrame" width="100%" height="60%" src="" frameborder="0" allowfullscreen></iframe>
+        </div>
         <div class="carousel-thumbnails" id="carouselThumbnails" style="display: none;">
             <!-- Les miniatures des vidéos apparaîtront ici -->
         </div>
