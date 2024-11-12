@@ -133,10 +133,10 @@ body {
     padding: 10px;
 }
 
-/* Positionnement et style de la croix de fermeture */
+/* Positionnement et style de la croix de fermeture (version mobile) */
 .close {
-    position: absolute;
-    top: 20px; /* Positionner plus bas sur la version mobile */
+    position: absolute; /* Absolu pour la positionner en fonction du lecteur vidéo */
+    top: 10px; /* Positionner la croix juste au-dessus du lecteur */
     right: 25px; /* Garde la position à droite */
     font-size: 30px;
     color: #fff;
@@ -147,7 +147,7 @@ body {
     justify-content: center;
     width: 50px; /* Largeur étendue de la zone de clic */
     height: 50px; /* Hauteur étendue de la zone de clic */
-    padding: 5px; /* Padding pour rendre la zone de clic plus réactive */
+    padding: 5px; /* Ajuste la zone de clic */
     transition: color 0.3s ease;
     box-sizing: content-box; /* Permet au padding d'agrandir la zone cliquable */
 }
