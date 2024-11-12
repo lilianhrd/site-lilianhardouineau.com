@@ -25,10 +25,10 @@ body {
 
 .left-header h1 {
     font-size: 1.1em;
-    font-weight: bold; /* Rester en gras */
+    font-weight: bold;
     margin: 0;
     color: #fff;
-    text-transform: none;
+    text-transform: none; /* Minuscule sur les deux versions */
 }
 
 .left-header h2 {
@@ -143,24 +143,109 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 50px; /* Largeur étendue de la zone de clic */
-    height: 50px; /* Hauteur étendue de la zone de clic */
-    padding: 5px; /* Ajuste la zone de clic */
+    width: 50px;
+    height: 50px;
+    padding: 5px;
     transition: color 0.3s ease;
     box-sizing: content-box;
 }
 
-/* Ajustements pour positionner la croix sur mobile */
-@media (max-width: 768px) {
+/* Version bureau : croix positionnée en haut à droite */
+@media (min-width: 1024px) {
     .close {
-        position: fixed; /* Fixe la croix au bas */
-        bottom: 20px; /* Place la croix juste au-dessus du bas de la page */
-        right: 10px; /* Positionner la croix à droite du lecteur */
-        transform: translateX(0); /* Pas de décalage horizontal */
+        position: absolute;
+        top: 20px; /* Marge avec le haut de la vidéo */
+        right: 20px; /* Marge avec le côté droit */
+        transform: none;
     }
 }
 
-/* Carrousel et boutons de navigation */
+/* Ajustements pour la version mobile */
+@media (max-width: 768px) {
+    .close {
+        position: fixed;
+        bottom: 20px; /* Placer la croix juste au-dessus du bas de la page */
+        right: 10px; /* Alignement à droite */
+        transform: translateX(0);
+        font-size: 30px;
+        color: #fff;
+        cursor: pointer;
+        z-index: 3000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        padding: 5px;
+    }
+
+    /* Modifier la grille des vignettes pour une seule colonne sur mobile */
+    .video-gallery {
+        grid-template-columns: 1fr;
+        padding: 15px 5px;
+    }
+
+    .video-text-container {
+        opacity: 1 !important;
+    }
+
+    /* Ajouter le dégradé subtil en haut de la page */
+    .video-gallery::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 50px;
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), transparent);
+        z-index: 1;
+    }
+
+    /* Positionner les éléments à gauche et à droite */
+    .top-header {
+        flex-direction: row;
+        justify-content: space-between;
+        padding: 10px 5px;
+    }
+
+    .left-header h1 {
+        font-size: 1.1em;
+        color: #fff;
+        margin: 5px 0;
+        text-align: left;
+        margin-left: 10px;
+        text-transform: none;
+    }
+
+    .left-header h2 {
+        font-size: 0.8em;
+        margin-top: 5px;
+        color: #fff;
+        text-align: left;
+        margin-left: 10px;
+        font-weight: normal;
+    }
+
+    .right-header {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        margin-right: 10px;
+    }
+
+    .right-header a {
+        font-size: 0.8em;
+        color: #fff;
+        margin: 5px 0;
+        text-decoration: none;
+    }
+
+    .right-header a:hover {
+        color: #aaa;
+    }
+}
+
+/* Style moderne des miniatures du carrousel */
 .carousel-thumbnails {
     display: flex;
     justify-content: center;
@@ -188,96 +273,4 @@ body {
 .carousel-thumbnail:hover {
     transform: scale(1.05);
     opacity: 0.85;
-}
-
-.carousel-button {
-    background: none;
-    border: none;
-    color: #fff;
-    font-size: 2em;
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 2100;
-}
-
-.carousel-button.left {
-    left: -40px;
-}
-
-.carousel-button.right {
-    right: -40px;
-}
-
-/* Adaptation pour écrans moyens (tablettes) */
-@media (max-width: 1024px) {
-    .video-gallery {
-        grid-template-columns: repeat(2, 1fr); /* 2 colonnes */
-        padding: 15px 5px;
-    }
-}
-
-/* Adaptation pour petits écrans (smartphones) */
-@media (max-width: 768px) {
-    /* Modifier la grille des vignettes pour qu'elle passe en une seule colonne */
-    .video-gallery {
-        grid-template-columns: 1fr; /* Une seule colonne */
-        padding: 15px 5px;
-    }
-
-    /* Positionner "Lilian Hardouineau" et "Director / Visual Artist" à gauche */
-    .left-header h1 {
-        font-size: 1.1em;
-        color: #fff;
-        margin: 5px 0;
-        text-align: left;
-        margin-left: 10px;
-        text-transform: none; /* En minuscule sur mobile */
-    }
-
-    .left-header h2 {
-        font-size: 0.8em;
-        margin-top: 5px;
-        color: #fff;
-        text-align: left;
-        margin-left: 10px;
-        font-weight: normal;
-    }
-
-    /* Aligner les liens (Contact, Instagram, Vimeo) en haut à droite sous forme de colonne */
-    .right-header {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        margin-right: 10px;
-    }
-
-    .right-header a {
-        font-size: 0.8em;
-        color: #fff;
-        margin: 5px 0;
-        text-decoration: none;
-    }
-
-    .right-header a:hover {
-        color: #aaa;
-    }
-
-    /* Assurer que les titres et sous-titres des vignettes sont visibles */
-    .video-text-container {
-        opacity: 1 !important;
-    }
-
-    /* Ajouter le dégradé subtil en haut de la page */
-    .video-gallery::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        height: 50px;
-        background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), transparent);
-        z-index: 1;
-    }
 }
