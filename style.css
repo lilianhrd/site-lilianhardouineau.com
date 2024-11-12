@@ -231,7 +231,7 @@ body {
 
     /* Positionner "Lilian Hardouineau" et "Director / Visual Artist" à gauche */
     .left-header h1 {
-        font-size: 2.5em; /* Agrandir la taille de 'Lilian Hardouineau' */
+        font-size: 1.1em; /* Rendre plus petit pour correspondre à la taille des titres des projets */
         color: #fff;
         margin: 5px 0; /* Petites marges entre les éléments */
         text-align: left; /* Aligner à gauche */
@@ -239,23 +239,26 @@ body {
     }
 
     .left-header h2 {
-        font-size: 1.8em; /* Agrandir la taille de 'Director / Visual Artist' */
+        font-size: 1em; /* Rendre plus petit pour correspondre à la taille des titres des projets */
         margin-top: 5px;
         color: #fff;
         text-align: left; /* Aligner à gauche */
         margin-left: 10px; /* Une petite marge avec le bord gauche */
     }
 
-    /* Aligner les liens (Contact, Instagram, Vimeo) à droite sous forme de colonne */
+    /* Aligner les liens (Contact, Instagram, Vimeo) en haut à droite sous forme de colonne */
     .right-header {
         display: flex;
         flex-direction: column; /* Les liens seront sous forme de colonne */
         align-items: flex-end; /* Les aligner à droite */
-        margin-right: 10px; /* Ajouter une petite marge à droite */
+        position: absolute;
+        top: 20px; /* Placer les liens en haut à droite */
+        right: 10px; /* Une petite marge de droite */
+        z-index: 1000; /* Assurer que ces liens soient visibles par-dessus les autres éléments */
     }
 
     .right-header a {
-        font-size: 1.5em; /* Ajuster la taille des liens */
+        font-size: 1.1em; /* Assurer que les liens soient de la même taille que les titres et sous-titres des projets */
         color: #fff;
         margin: 5px 0; /* Espacement entre les liens */
         text-decoration: none;
