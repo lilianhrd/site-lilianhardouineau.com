@@ -24,17 +24,18 @@ body {
 }
 
 .left-header h1 {
-    font-size: 1.5em; /* Taille de 'Lilian Hardouineau' */
-    font-weight: bold; /* Reste en gras */
+    font-size: 1em; /* Réduire la taille de 'Lilian Hardouineau' pour version bureau */
+    font-weight: bold; /* Rester en gras */
     margin: 0;
     color: #fff;
+    text-transform: uppercase; /* Mettre en majuscule */
 }
 
 .left-header h2 {
-    font-size: 0.8em; /* Réduire la taille de 'Director / Visual Artist' */
+    font-size: 0.8em; /* Taille de 'Director / Visual Artist' */
     margin: 0;
     color: #fff;
-    font-weight: normal; /* Pas de gras pour 'Director / Visual Artist' */
+    font-weight: normal; /* Pas de gras */
 }
 
 .right-header a {
@@ -176,7 +177,7 @@ body {
 
 .carousel-thumbnail.active {
     transform: scale(1.05); /* Légère mise en avant */
-    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 15px rgba(255, 255, 255, 0.2); /* Effet lumineux */
+    box-shadow: 0 0 10px rgba(255, 255, 0.5), 0 0 15px rgba(255, 255, 255, 0.2); /* Effet lumineux */
     opacity: 1; /* Contraste plus prononcé */
 }
 
@@ -231,11 +232,12 @@ body {
 
     /* Positionner "Lilian Hardouineau" et "Director / Visual Artist" à gauche */
     .left-header h1 {
-        font-size: 1.2em; /* Réduire la taille de 'Lilian Hardouineau' */
+        font-size: 1.1em; /* Réduire la taille de 'Lilian Hardouineau' pour version bureau */
         color: #fff;
         margin: 5px 0; /* Petites marges entre les éléments */
         text-align: left; /* Aligner à gauche */
         margin-left: 10px; /* Une petite marge avec le bord gauche */
+        text-transform: uppercase; /* Mettre en majuscule */
     }
 
     .left-header h2 {
@@ -259,7 +261,7 @@ body {
     .right-header a {
         font-size: 0.8em; /* Réduire la taille pour correspondre à celle des sous-titres des vignettes */
         color: #fff;
-        margin: 10px 0; /* Espacement entre les éléments */
+        margin: 5px 0; /* Espacement entre les éléments */
         text-decoration: none;
     }
 
@@ -267,7 +269,7 @@ body {
         color: #aaa;
     }
 
-    /* Assurer que les titres et sous-titres des vignettes sont visibles sur mobile */
+    /* Assurer que les titres et sous-titres des vignettes sont visibles */
     .video-text-container {
         opacity: 1 !important; /* Toujours visibles */
     }
