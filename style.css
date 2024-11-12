@@ -150,21 +150,34 @@ body {
     box-sizing: content-box;
 }
 
-/* Version bureau : positionnement plus précis de la croix */
+//* Version bureau : positionnement des deux croix */
 @media (min-width: 1024px) {
     .close {
         position: absolute;
-        top: 15px; /* Ajuste légèrement la croix vers le bas */
-        right: 15px; /* Positionne à droite */
-        transform: none;
-        width: 50px; /* Largeur et hauteur égales pour que la zone cliquable coïncide avec la croix */
-        height: 50px;
-        padding: 0; /* Retire le padding, cela peut causer un décalage si trop grand */
+        top: 15px; /* Positionner la première croix */
+        right: 15px; /* Positionner la première croix à droite */
+        font-size: 30px;
+        color: #fff;
+        cursor: pointer;
+        z-index: 3000;
         display: flex;
         align-items: center;
         justify-content: center;
-        z-index: 3000;
+        width: 50px; /* Largeur de la zone de la première croix */
+        height: 50px; /* Hauteur de la zone de la première croix */
+        padding: 0; /* Pas de padding */
+    }
+
+    /* Ajouter une deuxième croix juste en dessous */
+    .close::after {
+        content: "×"; /* La croix sous la croix principale */
+        position: absolute;
+        top: 35px; /* Ajuster pour la positionner juste en dessous de la première croix */
+        right: 15px; /* Même alignement à droite */
+        font-size: 30px;
+        color: #fff;
         cursor: pointer;
+        z-index: 2000; /* Mettre la deuxième croix sous la première */
     }
 }
 
