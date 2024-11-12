@@ -216,48 +216,37 @@ body {
 
 /* Adaptation pour petits écrans (smartphones) */
 @media (max-width: 768px) {
+    /* Modifier la grille des vignettes pour qu'elle passe en une seule colonne */
     .video-gallery {
-        grid-template-columns: 1fr; /* 1 colonne */
+        grid-template-columns: 1fr; /* Une seule colonne */
         padding: 15px 5px;
     }
 
+    /* Centrer les mentions en haut à droite */
     .top-header {
         flex-direction: column;
         align-items: center;
         padding: 10px;
     }
 
+    /* Agrandir le texte et centrer */
     .left-header h1 {
-        font-size: 1.2em;
+        font-size: 1.5em; /* Augmenter la taille de 'Lilian Hardouineau' */
+        margin: 0;
+        color: #fff;
+        text-align: center;
     }
 
     .left-header h2 {
-        font-size: 1em;
+        font-size: 1.2em; /* Augmenter la taille de 'Director / Visual Artist' */
+        margin-top: 5px;
+        font-weight: normal;
+        color: #fff;
+        text-align: center;
     }
 
     .right-header a {
-        font-size: 0.9em;
+        font-size: 1.2em; /* Augmenter la taille du lien */
         padding: 5px;
-    }
-
-    .modal {
-        padding: 5px;
-    }
-
-    .carousel-button {
-        font-size: 1.5em;
-    }
-
-    .carousel-thumbnails {
-        gap: 5px;
-    }
-
-    .carousel-thumbnail {
-        width: 60px;
-        height: 45px;
-    }
-
-    .close {
-        font-size: 25px;
     }
 }
