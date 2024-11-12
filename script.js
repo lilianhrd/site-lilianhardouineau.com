@@ -178,6 +178,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     loadProjects();
 });
+
 // Fonction pour fermer la vidéo lorsque l'utilisateur clique sur la page sombre
 document.getElementById('videoModal').addEventListener('click', function(event) {
     // Vérifie si l'événement a eu lieu en dehors de la zone du lecteur vidéo
@@ -185,4 +186,3 @@ document.getElementById('videoModal').addEventListener('click', function(event) 
         closeVideo(); // Ferme la vidéo
     }
 });
-
