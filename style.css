@@ -24,7 +24,7 @@ body {
 }
 
 .left-header h1 {
-    font-size: 1em; /* Réduire la taille de 'Lilian Hardouineau' pour version bureau */
+    font-size: 1.1em; /* Réduire la taille de 'Lilian Hardouineau' pour version bureau */
     font-weight: bold; /* Rester en gras */
     margin: 0;
     color: #fff;
@@ -32,7 +32,7 @@ body {
 }
 
 .left-header h2 {
-    font-size: 0.8em; /* Taille de 'Director / Visual Artist' */
+    font-size: 0.8em; /* Réduire la taille de 'Director / Visual Artist' */
     margin: 0;
     color: #fff;
     font-weight: normal; /* Pas de gras */
@@ -135,8 +135,8 @@ body {
 
 /* Positionnement et style de la croix de fermeture */
 .close {
-    position: fixed;
-    top: 35px; /* Ajustement pour placer la croix légèrement plus bas */
+    position: absolute;
+    top: 20px; /* Positionner plus haut sur la version mobile */
     right: 25px; /* Garde la position à droite */
     font-size: 30px;
     color: #fff;
@@ -177,7 +177,7 @@ body {
 
 .carousel-thumbnail.active {
     transform: scale(1.05); /* Légère mise en avant */
-    box-shadow: 0 0 10px rgba(255, 255, 0.5), 0 0 15px rgba(255, 255, 255, 0.2); /* Effet lumineux */
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 15px rgba(255, 255, 255, 0.2); /* Effet lumineux */
     opacity: 1; /* Contraste plus prononcé */
 }
 
