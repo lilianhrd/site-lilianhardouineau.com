@@ -24,20 +24,20 @@ body {
 }
 
 .left-header h1 {
-    font-size: 1.5em; /* Taille idéale pour "Lilian Hardouineau" */
+    font-size: 1.5em; /* Taille de 'Lilian Hardouineau' */
     font-weight: bold;
     margin: 0;
     color: #fff;
 }
 
 .left-header h2 {
-    font-size: 0.8em; /* Réduire la taille de "Director / Visual Artist" */
+    font-size: 0.8em; /* Taille de 'Director / Visual Artist' */
     margin: 0;
     color: #fff;
 }
 
 .right-header a {
-    font-size: 0.8em; /* Taille identique à celle des sous-titres des vignettes */
+    font-size: 0.8em; /* Taille uniforme pour les liens */
     color: #fff;
     text-decoration: none;
     transition: color 0.3s ease;
@@ -238,7 +238,7 @@ body {
     }
 
     .left-header h2 {
-        font-size: 1.2em; /* Taille de 'Director / Visual Artist' */
+        font-size: 0.8em; /* Réduire la taille de 'Director / Visual Artist' */
         margin-top: 5px;
         color: #fff;
         text-align: left; /* Aligner à gauche */
@@ -255,7 +255,7 @@ body {
     }
 
     .right-header a {
-        font-size: 1em; /* Réduire la taille pour correspondre à celle des sous-titres des vignettes */
+        font-size: 0.8em; /* Réduire la taille pour correspondre à celle des sous-titres des vignettes */
         color: #fff;
         margin: 5px 0; /* Espacement entre les éléments */
         text-decoration: none;
@@ -263,5 +263,10 @@ body {
 
     .right-header a:hover {
         color: #aaa;
+    }
+
+    /* Assurer que les titres et sous-titres des vignettes sont visibles sur mobile */
+    .video-text-container {
+        opacity: 1 !important; /* Toujours visibles */
     }
 }
