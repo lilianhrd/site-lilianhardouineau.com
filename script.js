@@ -35,13 +35,19 @@ document.addEventListener('DOMContentLoaded', async function () {
                 subtitle,
                 thumbnail,
                 links,
-                type: links.length > 1 ? 'carousel' : 'single' // Définit le type en fonction du nombre de liens
+                type: links.length > 1 ? 'carousel' : 'single'
             };
         });
     }
 
-    function formatVimeoUrl(url) {
-        return `https://player.vimeo.com/video/${url.split('/').pop()}`;
+    function formatVideoUrl(url) {
+        if (url.includes('vimeo')) {
+            return `https://player.vimeo.com/video/${url.split('/').pop()}`;
+        } else if (url.includes('youtube') || url.includes('youtu.be')) {
+            const videoId = url.includes('youtu.be') ? url.split('/').pop() : new URL(url).searchParams.get('v');
+            return `https://www.youtube.com/embed/${videoId}`;
+        }
+        return url;
     }
 
     function createSingleProjectElement(project) {
@@ -56,7 +62,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
         const textContainer = document.createElement('div');
         textContainer.classList.add('video-text-container');
-        textContainer.innerHTML = `<span class="video-title">${project.title}</span><span class="video-subtitle">${project.subtitle}</span>`;
+        textContainer.innerHTML = `<span class=\"video-title\">${project.title}</span><span class=\"video-subtitle\">${project.subtitle}</span>`;
 
         div.appendChild(textContainer);
         return div;
@@ -74,7 +80,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
         const textContainer = document.createElement('div');
         textContainer.classList.add('video-text-container');
-        textContainer.innerHTML = `<span class="video-title">${project.title}</span><span class="video-subtitle">${project.subtitle}</span>`;
+        textContainer.innerHTML = `<span class=\"video-title\">${project.title}</span><span class=\"video-subtitle\">${project.subtitle}</span>`;
 
         div.appendChild(textContainer);
         return div;
@@ -83,14 +89,12 @@ document.addEventListener('DOMContentLoaded', async function () {
     window.openVideo = function (videoUrl) {
         const modal = document.getElementById('videoModal');
         const videoFrame = document.getElementById('videoFrame');
-        
-        // Masquer le carrousel et les boutons pour une vidéo unique
+
         document.getElementById('carouselThumbnails').style.display = "none";
         document.getElementById('previousButton').style.display = "none";
         document.getElementById('nextButton').style.display = "none";
 
-        // Charger la vidéo unique
-        videoFrame.src = `${formatVimeoUrl(videoUrl)}?autoplay=1`;
+        videoFrame.src = `${formatVideoUrl(videoUrl)}?autoplay=1`;
         modal.style.display = "flex";
     };
 
@@ -101,34 +105,23 @@ document.addEventListener('DOMContentLoaded', async function () {
         modal.style.display = "none";
     };
 
-    // Fonction pour ouvrir un carrousel avec les miniatures
     window.openCarousel = function (project) {
         const modal = document.getElementById('videoModal');
         const carouselThumbnails = document.getElementById('carouselThumbnails');
         const videoFrame = document.getElementById('videoFrame');
         let currentVideoIndex = 0;
 
-        // Charge la première vidéo du carrousel dans le lecteur principal
         playVideoAtIndex(currentVideoIndex);
 
-        if (project.links.length > 1) { // Affiche les miniatures uniquement si le projet a plusieurs vidéos
+        if (project.links.length > 1) {
             carouselThumbnails.innerHTML = '';
             carouselThumbnails.style.display = 'flex';
 
             project.links.forEach((link, index) => {
-                const videoId = link.split('/').pop();
                 const thumbnail = document.createElement('img');
-                
-                // Utilise l'URL de l'image de couverture Vimeo
-                thumbnail.src = `https://vumbnail.com/${videoId}.jpg`;
+                thumbnail.src = link.includes('vimeo') ? `https://vumbnail.com/${link.split('/').pop()}.jpg` : 'images/youtube-placeholder.jpg';
                 thumbnail.classList.add('carousel-thumbnail');
 
-                thumbnail.onerror = () => {
-                    thumbnail.src = 'images/placeholder.jpg'; // Image par défaut si le chargement échoue
-                };
-
-                if (index === currentVideoIndex) thumbnail.classList.add('active');
-                
                 thumbnail.onclick = () => {
                     currentVideoIndex = index;
                     playVideoAtIndex(currentVideoIndex);
@@ -137,7 +130,6 @@ document.addEventListener('DOMContentLoaded', async function () {
                 carouselThumbnails.appendChild(thumbnail);
             });
 
-            // Affiche les boutons de navigation uniquement si le projet contient plusieurs vidéos
             document.getElementById('previousButton').style.display = 'block';
             document.getElementById('nextButton').style.display = 'block';
 
@@ -155,7 +147,6 @@ document.addEventListener('DOMContentLoaded', async function () {
 
             updateActiveThumbnail();
         } else {
-            // Si le projet n'est pas en carrousel (une seule vidéo), masque les miniatures et les boutons
             carouselThumbnails.style.display = 'none';
             document.getElementById('previousButton').style.display = 'none';
             document.getElementById('nextButton').style.display = 'none';
@@ -163,12 +154,10 @@ document.addEventListener('DOMContentLoaded', async function () {
 
         modal.style.display = "flex";
 
-        // Fonction pour jouer la vidéo à un index spécifique
         function playVideoAtIndex(index) {
-            videoFrame.src = `${formatVimeoUrl(project.links[index])}?autoplay=1`;
+            videoFrame.src = `${formatVideoUrl(project.links[index])}?autoplay=1`;
         }
 
-        // Fonction pour mettre à jour l'apparence des miniatures
         function updateActiveThumbnail() {
             carouselThumbnails.querySelectorAll('.carousel-thumbnail').forEach((thumb, idx) => {
                 thumb.classList.toggle('active', idx === currentVideoIndex);
@@ -177,12 +166,8 @@ document.addEventListener('DOMContentLoaded', async function () {
     };
 
     loadProjects();
-});
 
-// Fonction pour fermer la vidéo lorsque l'utilisateur clique sur la page sombre
-document.getElementById('videoModal').addEventListener('click', function(event) {
-    // Vérifie si l'événement a eu lieu en dehors de la zone du lecteur vidéo
-    if (event.target === document.getElementById('videoModal')) {
-        closeVideo(); // Ferme la vidéo
-    }
+    document.getElementById('videoModal').addEventListener('click', function(event) {
+        if (event.target === document.getElementById('videoModal')) closeVideo();
+    });
 });
