@@ -41,16 +41,19 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
 
     function formatVideoUrl(url) {
-    if (url.includes('vimeo')) {
-        const videoId = url.split('/').pop();
-        return `https://player.vimeo.com/video/${videoId}`;
-    } else if (url.includes('youtu.be')) {
-        const videoId = url.split('/').pop().split('?')[0];
-        return `https://www.youtube.com/embed/${videoId}`;
-    } else if (url.includes('youtube.com')) {
-        const urlObj = new URL(url);
-        const videoId = urlObj.searchParams.get('v');
-        return `https://www.youtube.com/embed/${videoId}`;
+    try {
+        if (url.includes('vimeo')) {
+            return `https://player.vimeo.com/video/${url.split('/').pop()}`;
+        } else if (url.includes('youtu.be')) {
+            const videoId = url.split('/').pop().split('?')[0];
+            return `https://www.youtube.com/embed/${videoId}`;
+        } else if (url.includes('youtube.com')) {
+            const videoId = new URL(url).searchParams.get('v');
+            return `https://www.youtube.com/embed/${videoId}`;
+        }
+    } catch (error) {
+        console.error('URL invalide :', url, error);
+        return '';
     }
     return url;
 }
