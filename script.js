@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', async function () {
     const videoGallery = document.querySelector('.video-gallery');
-    const confirmedCarousels = ["LOUIS VUITTON/SS23", "AGAR AGAR/Teaser", "CYDFLM", "COURRÈGES/Loop Bag FW22", "LOUIS VUITTON/show.s", "SIMILI GUM/Dedipix + T pas si triste"];
+    const confirmedCarousels = ["LOUIS VUITTON/SS23", "AGAR AGAR/Teaser", "CYDFLM/ /", "COURRÈGES/Loop Bag FW22", "LOUIS VUITTON/show.s", "SIMILI GUM/Dedipix + T pas si triste"];
 
     async function loadProjects() {
         try {
