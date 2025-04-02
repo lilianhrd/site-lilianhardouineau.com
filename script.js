@@ -41,23 +41,17 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
 
     function formatVideoUrl(url) {
-    try {
         if (url.includes('vimeo')) {
             return `https://player.vimeo.com/video/${url.split('/').pop()}`;
         } else if (url.includes('youtu.be')) {
             const videoId = url.split('/').pop().split('?')[0];
             return `https://www.youtube.com/embed/${videoId}`;
         } else if (url.includes('youtube.com')) {
-            const videoId = new URL(url).searchParams.get('v');
+            const urlObj = new URL(url);
+            const videoId = urlObj.searchParams.get('v');
             return `https://www.youtube.com/embed/${videoId}`;
         }
-    } catch (error) {
-        console.error('URL invalide :', url, error);
-        return '';
-    }
-    return url;
-}
-
+        return url;
     }
 
     function createSingleProjectElement(project) {
@@ -72,7 +66,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
         const textContainer = document.createElement('div');
         textContainer.classList.add('video-text-container');
-        textContainer.innerHTML = `<span class=\"video-title\">${project.title}</span><span class=\"video-subtitle\">${project.subtitle}</span>`;
+        textContainer.innerHTML = `<span class="video-title">${project.title}</span><span class="video-subtitle">${project.subtitle}</span>`;
 
         div.appendChild(textContainer);
         return div;
@@ -90,7 +84,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
         const textContainer = document.createElement('div');
         textContainer.classList.add('video-text-container');
-        textContainer.innerHTML = `<span class=\"video-title\">${project.title}</span><span class=\"video-subtitle\">${project.subtitle}</span>`;
+        textContainer.innerHTML = `<span class="video-title">${project.title}</span><span class="video-subtitle">${project.subtitle}</span>`;
 
         div.appendChild(textContainer);
         return div;
