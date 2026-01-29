@@ -30,7 +30,7 @@ const confirmedCarousels = [
 
     function parseProjects(data) {
     const lines = data
-        .split(/\r?\n/)               // ✅ gère \n et \r\n
+        .split(/\r?\n/)              
         .map(l => l.trim())
         .filter(Boolean);
 
