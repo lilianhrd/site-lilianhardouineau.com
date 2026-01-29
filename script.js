@@ -29,23 +29,34 @@ const confirmedCarousels = [
     }
 
     function parseProjects(data) {
-        const lines = data.split('\n').filter(line => line.trim() !== '');
-        return lines.map(line => {
-            const parts = line.split('/');
-            const title = parts[0].trim();
-            const subtitle = parts[1].trim();
-            const thumbnail = parts[2].trim();
-            const links = parts.slice(3).join('/').replace('carrousel:', '').split(',');
+    const lines = data
+        .split(/\r?\n/)               // ✅ gère \n et \r\n
+        .map(l => l.trim())
+        .filter(Boolean);
 
-            return {
-                title,
-                subtitle,
-                thumbnail,
-                links,
-                type: links.length > 1 ? 'carousel' : 'single'
-            };
-        });
-    }
+    return lines.map(line => {
+        const parts = line.split('/');
+        const title = (parts[0] || '').trim();
+        const subtitle = (parts[1] || '').trim();
+        const thumbnail = (parts[2] || '').trim();
+
+        const linksRaw = parts.slice(3).join('/').trim();
+        const links = linksRaw
+            .replace('carrousel:', '')
+            .split(',')
+            .map(l => l.trim())
+            .filter(Boolean);
+
+        return {
+            title,
+            subtitle,
+            thumbnail,
+            links,
+            type: links.length > 1 ? 'carousel' : 'single'
+        };
+    });
+}
+
 
     function formatVideoUrl(url) {
         if (url.includes('vimeo')) {
