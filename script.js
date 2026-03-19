@@ -7,6 +7,7 @@ const confirmedCarousels = [
     "COURRÈGES/Loop Bag FW22", 
     "LOUIS VUITTON/show.s", 
     "SIMILI GUM/Dedipix + T pas si triste"
+    "GIVENCHY/Rose Perfecto"
 ];
 
     async function loadProjects() {
