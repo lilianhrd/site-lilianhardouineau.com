@@ -10,6 +10,8 @@ EARTHEATER X NUMERO MAGAZINE/ /miniature15.jpg/https://www.youtube.com/watch?v=D
 CYDFLM//miniature8.jpg/carrousel:https://vimeo.com/1013202319,https://vimeo.com/609993985 
 LOUIS VUITTON/SS23/miniature18.jpg/carrousel:https://vimeo.com/799925845,https://vimeo.com/799942223,https://vimeo.com/799941278,https://vimeo.com/799943815,https://vimeo.com/799943259,https://vimeo.com/799944273
 KARL F RIVAS ft KUKII/Ever So Lonely/miniature32.jpg/https://vimeo.com/1159655224
+LOUIS VUITTON/show.s/miniature11.jpg/carrousel:https://vimeo.com/809893454,https://vimeo.com/809895572,https://vimeo.com/809896229
+MAKE UP FOREVER/HD Skin Hypra Glow/miniature14.jpg/https://vimeo.com/908703295
 MILLE ET UNE NUITS/Teaser/miniature2.jpg/https://vimeo.com/983055965
 MONCLER X HIGHSNOBIETY//miniature10.jpg/https://vimeo.com/746998776
 AGAR AGAR/Teaser/miniature17.jpg/carrousel:https://vimeo.com/769545577,https://vimeo.com/791189107
@@ -20,7 +22,6 @@ PABLO ALTAR/Tales Of/miniature29.jpg/https://vimeo.com/820680025
 COURRÈGES/Loop Bag FW22/miniature9.jpg/carrousel:https://vimeo.com/655075708,https://vimeo.com/669445263
 LANDS OF MY DREAM/Ange Halliwell Short Film/miniature16.jpg/https://vimeo.com/728768506
 MALIBU/Atlantic Diva/miniature4.jpg/https://vimeo.com/762769649
-LOUIS VUITTON/show.s/miniature11.jpg/carrousel:https://vimeo.com/809893454,https://vimeo.com/809895572,https://vimeo.com/809896229
 HAPPY HOUR//miniature26.jpg/https://vimeo.com/469829947
 INES CHERIFI/Fountains/miniature12.jpg/https://vimeo.com/880303009
 ANGELS DO NOT WHISTLE/Super 8 film/miniature6.jpg/https://vimeo.com/606687094
@@ -29,5 +30,4 @@ SALOME/Devoted to someone else + The Pattern/miniature19.jpg/https://vimeo.com/5
 FIND THE TARGET TO SURVIVE/Short Film/miniature27.jpg/https://vimeo.com/281770222
 LE VASCO/Les Indiens/miniature28.jpg/https://vimeo.com/135055025
 19.02.17/Super 8 film/miniature24.jpg/https://vimeo.com/236308393
-MAKE UP FOREVER/HD Skin Hypra Glow/miniature14.jpg/https://vimeo.com/908703295
 
