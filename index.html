@@ -10,12 +10,12 @@
 
   <header class="top-header" id="topHeader">
     <div class="left-header">
-      <h1>LILIAN HARDOUINEAU</h1>
+      <h1>Lilian Hardouineau</h1>
       <h2>Director / Visual Artist</h2>
     </div>
 
-    <nav class="desktop-nav" aria-label="Navigation principale">
-      <a href="mailto:lilian.hardouineau@gmail.com">Contact</a>
+    <nav class="desktop-nav">
+      <a href="#" id="aboutButton">About</a>
       <a href="https://www.instagram.com/lilian.hrdn/" target="_blank" rel="noopener noreferrer">Instagram</a>
       <a href="https://vimeo.com/lilianhardouineau" target="_blank" rel="noopener noreferrer">Vimeo</a>
     </nav>
@@ -24,9 +24,8 @@
       id="menuToggle"
       class="menu-toggle"
       type="button"
-      aria-label="Ouvrir le menu"
+      aria-label="Open About"
       aria-expanded="false"
-      aria-controls="mobileMenu"
     >
       <span></span>
       <span></span>
@@ -34,16 +33,10 @@
     </button>
   </header>
 
-  <div id="mobileMenu" class="mobile-menu" aria-hidden="true">
-    <nav class="mobile-menu-nav" aria-label="Navigation mobile">
-      <a href="mailto:lilian.hardouineau@gmail.com">Contact</a>
-      <a href="https://www.instagram.com/lilian.hrdn/" target="_blank" rel="noopener noreferrer">Instagram</a>
-      <a href="https://vimeo.com/lilianhardouineau" target="_blank" rel="noopener noreferrer">Vimeo</a>
-    </nav>
-  </div>
-
   <main class="site-main">
-    <section class="video-gallery"></section>
+    <section class="video-gallery">
+      <!-- injecté par script.js -->
+    </section>
   </main>
 
   <footer class="site-footer">
@@ -74,6 +67,54 @@
         <button id="nextButton" class="carousel-button" style="display: none;" aria-label="Vidéo suivante">
           <span class="arrow arrow-right"></span>
         </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="aboutModal" class="about-modal" aria-hidden="true">
+    <button id="aboutClose" class="about-close" aria-label="Fermer la page About">×</button>
+
+    <div class="about-inner">
+      <div class="about-content">
+
+        <div class="about-contact">
+          <p>
+            <strong>Contact</strong>
+            <a href="mailto:lilian.hardouineau@gmail.com" class="about-link">
+              <strong>lilian.hardouineau@gmail.com</strong>
+            </a>
+          </p>
+
+          <p>
+            <strong>Instagram</strong>
+            <a href="https://www.instagram.com/lilian.hrdn/" target="_blank" rel="noopener noreferrer" class="about-link">
+              <strong>@lilian.hrdn</strong>
+            </a>
+          </p>
+        </div>
+
+        <div class="about-bio">
+          <p>
+            Lilian Hardouineau is a director based in Paris, member of Été Meurtrier and collaborator of High Heal.
+            Often linked to music, his work revolves around various visual experiments, whether through optical equipment
+            or in the creation of virtual forms. His approach is formalist, sensory and meditative.
+          </p>
+
+          <br />
+
+          <p class="about-list-block">
+            <strong>Clients / Brands</strong><br />
+            Louis Vuitton, Dior, Mugler, Courrèges, Moncler, Kenzo, Make Up For Ever, Louboutin, Andrea Crews, Causeyoudontfeellikeme, Numero Magazine
+          </p>
+
+          <br />
+
+          <p class="about-list-block">
+            <strong>Music</strong><br />
+            Danny L Harle, Eartheater, Malibu, Agar Agar, Simili Gum, Detente, Babysolo, Salome, Ange Halliwell, Pablo Altar
+          </p>
+        </div>
+
       </div>
     </div>
   </div>
