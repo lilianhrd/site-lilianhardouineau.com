@@ -31,7 +31,7 @@ body {
   padding: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: 'Inter', sans-serif;
+  font-family: "Inter", sans-serif;
   font-feature-settings: "cv11", "ss01";
   line-height: 1.4;
   -webkit-font-smoothing: antialiased;
@@ -234,6 +234,12 @@ a {
   }
 }
 
+@media (max-width: 980px) {
+  .video-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 .video-thumbnail {
   position: relative;
   aspect-ratio: 1.56 / 1;
@@ -254,7 +260,7 @@ a {
   transition:
     transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
     filter 0.28s ease;
-  filter: brightness(1.0) contrast(0.98) saturate(0.98);
+  filter: brightness(1) contrast(0.98) saturate(0.98);
   will-change: filter, transform;
 }
 
@@ -296,7 +302,6 @@ a {
   transform: scale(1.014);
   filter: grayscale(1) invert(1) brightness(1.52) contrast(0.479);
 }
-
 
 .video-thumbnail:hover::before {
   opacity: 0.18;
@@ -569,29 +574,59 @@ a {
     aspect-ratio: 1.36 / 1;
   }
 
+  /* Texte mobile : blanc, centré, vers le bas, toujours visible */
   .video-text-container {
-    left: 12px;
-    right: 12px;
-    bottom: 12px;
-    inset: auto 12px 12px 12px;
-    align-items: flex-start;
+    position: absolute;
+    left: 50%;
+    right: auto;
+    bottom: 14px;
+    inset: auto auto 14px 50%;
+    width: calc(100% - 24px);
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: flex-end;
-    gap: 5px;
+    gap: 6px;
     opacity: 1;
-    transform: none;
-    text-align: left;
+    text-align: center;
     padding: 0;
   }
 
   .video-title {
-    font-size: 0.71rem;
+    font-size: 0.74rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.012em;
     line-height: 1;
-    letter-spacing: 0.013em;
+    color: #fff;
   }
 
   .video-subtitle {
-    font-size: 0.735rem;
-    line-height: 1.16;
+    font-size: 0.78rem;
+    font-weight: 400;
+    line-height: 1.2;
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  /* Pas d'effet négatif / hover sur mobile */
+  .video-thumbnail:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .video-thumbnail:hover img {
+    transform: none;
+    filter: brightness(1) contrast(0.98) saturate(0.98);
+  }
+
+  .video-thumbnail:hover::before {
+    opacity: 0;
+  }
+
+  .video-thumbnail:hover .video-text-container {
+    opacity: 1;
+    transform: translateX(-50%);
   }
 
   .site-footer {
