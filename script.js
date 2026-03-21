@@ -7,8 +7,11 @@ document.addEventListener('DOMContentLoaded', function () {
   const nextButton = document.getElementById('nextButton');
   const closeButton = document.getElementById('closeButton');
 
+  const aboutModal = document.getElementById('aboutModal');
+  const aboutButton = document.getElementById('aboutButton');
+  const aboutClose = document.getElementById('aboutClose');
+
   const menuToggle = document.getElementById('menuToggle');
-  const mobileMenu = document.getElementById('mobileMenu');
   const topHeader = document.getElementById('topHeader');
 
   const confirmedCarousels = [
@@ -178,6 +181,32 @@ document.addEventListener('DOMContentLoaded', function () {
     document.body.classList.remove('modal-open');
   }
 
+  function openAboutModal() {
+    if (!aboutModal) return;
+
+    aboutModal.classList.add('open');
+    aboutModal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+
+    if (menuToggle) {
+      menuToggle.classList.add('open');
+      menuToggle.setAttribute('aria-expanded', 'true');
+    }
+  }
+
+  function closeAboutModal() {
+    if (!aboutModal) return;
+
+    aboutModal.classList.remove('open');
+    aboutModal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+
+    if (menuToggle) {
+      menuToggle.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    }
+  }
+
   function playCurrentVideo() {
     if (!modalState.currentProject) return;
 
@@ -229,7 +258,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function openVideo(videoUrl) {
     resetModalUI();
-    closeMobileMenu();
+    closeAboutModal();
 
     modalState.currentProject = {
       links: [videoUrl]
@@ -241,7 +270,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function openCarousel(project) {
     resetModalUI();
-    closeMobileMenu();
+    closeAboutModal();
 
     modalState.currentProject = project;
     modalState.currentVideoIndex = 0;
@@ -271,31 +300,9 @@ document.addEventListener('DOMContentLoaded', function () {
     playCurrentVideo();
   }
 
-  function openMobileMenu() {
-    mobileMenu.classList.add('open');
-    menuToggle.classList.add('open');
-    menuToggle.setAttribute('aria-expanded', 'true');
-    mobileMenu.setAttribute('aria-hidden', 'false');
-  }
-
-  function closeMobileMenu() {
-    mobileMenu.classList.remove('open');
-    menuToggle.classList.remove('open');
-    menuToggle.setAttribute('aria-expanded', 'false');
-    mobileMenu.setAttribute('aria-hidden', 'true');
-  }
-
-  function toggleMobileMenu(event) {
-    event.stopPropagation();
-
-    if (mobileMenu.classList.contains('open')) {
-      closeMobileMenu();
-    } else {
-      openMobileMenu();
-    }
-  }
-
   function updateHeaderState() {
+    if (!topHeader) return;
+
     if (window.scrollY > 24) {
       topHeader.classList.add('is-scrolled');
     } else {
@@ -303,20 +310,29 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  menuToggle.addEventListener('click', toggleMobileMenu);
+  if (aboutButton) {
+    aboutButton.addEventListener('click', function (event) {
+      event.preventDefault();
+      openAboutModal();
+    });
+  }
 
-  mobileMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', closeMobileMenu);
-  });
+  if (menuToggle) {
+    menuToggle.addEventListener('click', function (event) {
+      event.preventDefault();
+      openAboutModal();
+    });
+  }
 
-  document.addEventListener('click', event => {
-    const clickInsideMenu = mobileMenu.contains(event.target);
-    const clickOnToggle = menuToggle.contains(event.target);
+  if (aboutClose) {
+    aboutClose.addEventListener('click', function () {
+      closeAboutModal();
+    });
+  }
 
-    if (!clickInsideMenu && !clickOnToggle) {
-      closeMobileMenu();
-    }
-  });
+  if (closeButton) {
+    closeButton.addEventListener('click', closeModal);
+  }
 
   previousButton.addEventListener('click', event => {
     event.stopPropagation();
@@ -328,18 +344,24 @@ document.addEventListener('DOMContentLoaded', function () {
     goToNextVideo();
   });
 
-  closeButton.addEventListener('click', closeModal);
-
   modal.addEventListener('click', event => {
     if (event.target === modal) {
       closeModal();
     }
   });
 
+  if (aboutModal) {
+    aboutModal.addEventListener('click', event => {
+      if (event.target === aboutModal) {
+        closeAboutModal();
+      }
+    });
+  }
+
   document.addEventListener('keydown', event => {
     if (event.key === 'Escape') {
       closeModal();
-      closeMobileMenu();
+      closeAboutModal();
     }
 
     if (!modalState.currentProject || modal.style.display !== 'flex') return;
