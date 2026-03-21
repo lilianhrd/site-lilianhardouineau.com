@@ -1,196 +1,366 @@
-document.addEventListener('DOMContentLoaded', async function () {
-    const videoGallery = document.querySelector('.video-gallery');
-const confirmedCarousels = [
-    "LOUIS VUITTON/SS23", 
-    "AGAR AGAR/Teaser", 
-    "CYDFLM/",  
-    "COURRÈGES/Loop Bag FW22", 
-    "LOUIS VUITTON/show.s", 
+document.addEventListener('DOMContentLoaded', function () {
+  const videoGallery = document.querySelector('.video-gallery');
+  const modal = document.getElementById('videoModal');
+  const videoFrame = document.getElementById('videoFrame');
+  const carouselThumbnails = document.getElementById('carouselThumbnails');
+  const previousButton = document.getElementById('previousButton');
+  const nextButton = document.getElementById('nextButton');
+  const closeButton = document.getElementById('closeButton');
+
+  const menuToggle = document.getElementById('menuToggle');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const topHeader = document.getElementById('topHeader');
+
+  const confirmedCarousels = [
+    "LOUIS VUITTON/SS23",
+    "AGAR AGAR/Teaser",
+    "CYDFLM/",
+    "COURRÈGES/Loop Bag FW22",
+    "LOUIS VUITTON/show.s",
     "SIMILI GUM/Dedipix + T pas si triste",
     "GIVENCHY/Rose Perfecto"
-];
+  ];
 
-    async function loadProjects() {
-        try {
-            const response = await fetch('projects.txt');
-            if (!response.ok) throw new Error('Erreur lors du chargement de projects.txt');
-            const data = await response.text();
+  const modalState = {
+    currentProject: null,
+    currentVideoIndex: 0
+  };
 
-            const projects = parseProjects(data);
-            projects.forEach(project => {
-                if (project.type === 'single') {
-                    videoGallery.appendChild(createSingleProjectElement(project));
-                } else if (project.type === 'carousel' && confirmedCarousels.includes(`${project.title}/${project.subtitle}`)) {
-                    videoGallery.appendChild(createCarouselProjectElement(project));
-                }
-            });
-        } catch (error) {
-            console.error('Erreur de chargement:', error);
+  async function loadProjects() {
+    try {
+      const response = await fetch('projects.txt');
+      if (!response.ok) {
+        throw new Error('Erreur lors du chargement de projects.txt');
+      }
+
+      const data = await response.text();
+      const projects = parseProjects(data);
+
+      projects.forEach(project => {
+        const projectKey = `${project.title}/${project.subtitle}`;
+
+        if (project.type === 'single') {
+          videoGallery.appendChild(createSingleProjectElement(project));
+        } else if (project.type === 'carousel' && confirmedCarousels.includes(projectKey)) {
+          videoGallery.appendChild(createCarouselProjectElement(project));
+        } else if (project.type === 'carousel') {
+          videoGallery.appendChild(
+            createSingleProjectElement({
+              ...project,
+              links: [project.links[0]],
+              type: 'single'
+            })
+          );
         }
+      });
+    } catch (error) {
+      console.error('Erreur de chargement :', error);
     }
+  }
 
-    function parseProjects(data) {
+  function parseProjects(data) {
     const lines = data
-        .split(/\r?\n/)              
-        .map(l => l.trim())
-        .filter(Boolean);
+      .split(/\r?\n/)
+      .map(line => line.trim())
+      .filter(Boolean);
 
     return lines.map(line => {
-        const parts = line.split('/');
-        const title = (parts[0] || '').trim();
-        const subtitle = (parts[1] || '').trim();
-        const thumbnail = (parts[2] || '').trim();
+      const parts = line.split('/');
+      const title = (parts[0] || '').trim();
+      const subtitle = (parts[1] || '').trim();
+      const thumbnail = (parts[2] || '').trim();
 
-        const linksRaw = parts.slice(3).join('/').trim();
-        const links = linksRaw
-            .replace('carrousel:', '')
-            .split(',')
-            .map(l => l.trim())
-            .filter(Boolean);
+      const linksRaw = parts.slice(3).join('/').trim();
+      const links = linksRaw
+        .replace('carrousel:', '')
+        .split(',')
+        .map(link => link.trim())
+        .filter(Boolean);
 
-        return {
-            title,
-            subtitle,
-            thumbnail,
-            links,
-            type: links.length > 1 ? 'carousel' : 'single'
-        };
+      return {
+        title,
+        subtitle,
+        thumbnail,
+        links,
+        type: links.length > 1 ? 'carousel' : 'single'
+      };
     });
-}
+  }
 
-
-    function formatVideoUrl(url) {
-        if (url.includes('vimeo')) {
-            return `https://player.vimeo.com/video/${url.split('/').pop()}`;
-        } else if (url.includes('youtu.be')) {
-            const videoId = url.split('/').pop().split('?')[0];
-            return `https://www.youtube.com/embed/${videoId}`;
-        } else if (url.includes('youtube.com')) {
-            const urlObj = new URL(url);
-            const videoId = urlObj.searchParams.get('v');
-            return `https://www.youtube.com/embed/${videoId}`;
-        }
-        return url;
+  function formatVideoUrl(url) {
+    if (url.includes('vimeo')) {
+      const videoId = url.split('/').pop().split('?')[0];
+      return `https://player.vimeo.com/video/${videoId}`;
     }
 
-    function createSingleProjectElement(project) {
-        const div = document.createElement('div');
-        div.classList.add('video-thumbnail');
-        div.onclick = () => openVideo(project.links[0]);
-
-        const img = document.createElement('img');
-        img.src = `images/${project.thumbnail}`;
-        img.alt = `Miniature ${project.title}`;
-        div.appendChild(img);
-
-        const textContainer = document.createElement('div');
-        textContainer.classList.add('video-text-container');
-        textContainer.innerHTML = `<span class="video-title">${project.title}</span><span class="video-subtitle">${project.subtitle}</span>`;
-
-        div.appendChild(textContainer);
-        return div;
+    if (url.includes('youtu.be')) {
+      const videoId = url.split('/').pop().split('?')[0];
+      return `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
     }
 
-    function createCarouselProjectElement(project) {
-        const div = document.createElement('div');
-        div.classList.add('video-thumbnail');
-        div.onclick = () => openCarousel(project);
-
-        const img = document.createElement('img');
-        img.src = `images/${project.thumbnail}`;
-        img.alt = `Miniature ${project.title}`;
-        div.appendChild(img);
-
-        const textContainer = document.createElement('div');
-        textContainer.classList.add('video-text-container');
-        textContainer.innerHTML = `<span class="video-title">${project.title}</span><span class="video-subtitle">${project.subtitle}</span>`;
-
-        div.appendChild(textContainer);
-        return div;
+    if (url.includes('youtube.com')) {
+      const urlObj = new URL(url);
+      const videoId = urlObj.searchParams.get('v');
+      return `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
     }
 
-    window.openVideo = function (videoUrl) {
-        const modal = document.getElementById('videoModal');
-        const videoFrame = document.getElementById('videoFrame');
+    return url;
+  }
 
-        document.getElementById('carouselThumbnails').style.display = "none";
-        document.getElementById('previousButton').style.display = "none";
-        document.getElementById('nextButton').style.display = "none";
+  function createProjectImage(project) {
+    const img = document.createElement('img');
+    img.src = `images/${project.thumbnail}`;
+    img.alt = `${project.title} ${project.subtitle}`.trim();
+    img.loading = 'lazy';
+    return img;
+  }
 
-        videoFrame.src = `${formatVideoUrl(videoUrl)}?autoplay=1`;
-        modal.style.display = "flex";
-    };
+  function createProjectText(title, subtitle) {
+    const textContainer = document.createElement('div');
+    textContainer.classList.add('video-text-container');
 
-    window.closeVideo = function () {
-        const modal = document.getElementById('videoModal');
-        const videoFrame = document.getElementById('videoFrame');
-        videoFrame.src = "";
-        modal.style.display = "none";
-    };
+    const titleEl = document.createElement('span');
+    titleEl.classList.add('video-title');
+    titleEl.textContent = title;
 
-    window.openCarousel = function (project) {
-        const modal = document.getElementById('videoModal');
-        const carouselThumbnails = document.getElementById('carouselThumbnails');
-        const videoFrame = document.getElementById('videoFrame');
-        let currentVideoIndex = 0;
+    const subtitleEl = document.createElement('span');
+    subtitleEl.classList.add('video-subtitle');
+    subtitleEl.textContent = subtitle;
 
-        playVideoAtIndex(currentVideoIndex);
+    textContainer.appendChild(titleEl);
+    textContainer.appendChild(subtitleEl);
 
-        if (project.links.length > 1) {
-            carouselThumbnails.innerHTML = '';
-            carouselThumbnails.style.display = 'flex';
+    return textContainer;
+  }
 
-            project.links.forEach((link, index) => {
-                const thumbnail = document.createElement('img');
-                thumbnail.src = link.includes('vimeo') ? `https://vumbnail.com/${link.split('/').pop()}.jpg` : 'images/youtube-placeholder.jpg';
-                thumbnail.classList.add('carousel-thumbnail');
+  function createSingleProjectElement(project) {
+    const article = document.createElement('article');
+    article.classList.add('video-thumbnail');
+    article.addEventListener('click', () => openVideo(project.links[0]));
 
-                thumbnail.onclick = () => {
-                    currentVideoIndex = index;
-                    playVideoAtIndex(currentVideoIndex);
-                    updateActiveThumbnail();
-                };
-                carouselThumbnails.appendChild(thumbnail);
-            });
+    article.appendChild(createProjectImage(project));
+    article.appendChild(createProjectText(project.title, project.subtitle));
 
-            document.getElementById('previousButton').style.display = 'block';
-            document.getElementById('nextButton').style.display = 'block';
+    return article;
+  }
 
-            document.getElementById('previousButton').onclick = () => {
-                currentVideoIndex = (currentVideoIndex - 1 + project.links.length) % project.links.length;
-                playVideoAtIndex(currentVideoIndex);
-                updateActiveThumbnail();
-            };
+  function createCarouselProjectElement(project) {
+    const article = document.createElement('article');
+    article.classList.add('video-thumbnail', 'has-carousel');
+    article.addEventListener('click', () => openCarousel(project));
 
-            document.getElementById('nextButton').onclick = () => {
-                currentVideoIndex = (currentVideoIndex + 1) % project.links.length;
-                playVideoAtIndex(currentVideoIndex);
-                updateActiveThumbnail();
-            };
+    article.appendChild(createProjectImage(project));
+    article.appendChild(createProjectText(project.title, project.subtitle));
 
-            updateActiveThumbnail();
-        } else {
-            carouselThumbnails.style.display = 'none';
-            document.getElementById('previousButton').style.display = 'none';
-            document.getElementById('nextButton').style.display = 'none';
-        }
+    return article;
+  }
 
-        modal.style.display = "flex";
+  function resetModalUI() {
+    carouselThumbnails.innerHTML = '';
+    carouselThumbnails.style.display = 'none';
+    previousButton.style.display = 'none';
+    nextButton.style.display = 'none';
+    videoFrame.src = '';
+    modalState.currentProject = null;
+    modalState.currentVideoIndex = 0;
+  }
 
-        function playVideoAtIndex(index) {
-            videoFrame.src = `${formatVideoUrl(project.links[index])}?autoplay=1`;
-        }
+  function openModal() {
+    modal.style.display = 'flex';
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('modal-open');
+  }
 
-        function updateActiveThumbnail() {
-            carouselThumbnails.querySelectorAll('.carousel-thumbnail').forEach((thumb, idx) => {
-                thumb.classList.toggle('active', idx === currentVideoIndex);
-            });
-        }
-    };
+  function closeModal() {
+    resetModalUI();
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('modal-open');
+  }
 
-    loadProjects();
+  function playCurrentVideo() {
+    if (!modalState.currentProject) return;
 
-    document.getElementById('videoModal').addEventListener('click', function(event) {
-        if (event.target === document.getElementById('videoModal')) closeVideo();
+    const url = modalState.currentProject.links[modalState.currentVideoIndex];
+    const baseUrl = formatVideoUrl(url);
+
+    if (baseUrl.includes('youtube.com/embed/')) {
+      videoFrame.src = baseUrl;
+    } else {
+      videoFrame.src = `${baseUrl}?autoplay=1`;
+    }
+
+    updateActiveThumbnail();
+  }
+
+  function updateActiveThumbnail() {
+    const thumbs = carouselThumbnails.querySelectorAll('.carousel-thumbnail');
+    thumbs.forEach((thumb, index) => {
+      thumb.classList.toggle('active', index === modalState.currentVideoIndex);
     });
+  }
+
+  function renderCarouselThumbnails(project) {
+    carouselThumbnails.innerHTML = '';
+    carouselThumbnails.style.display = 'flex';
+
+    project.links.forEach((link, index) => {
+      const thumb = document.createElement('img');
+
+      if (link.includes('vimeo')) {
+        const vimeoId = link.split('/').pop().split('?')[0];
+        thumb.src = `https://vumbnail.com/${vimeoId}.jpg`;
+      } else {
+        thumb.src = 'images/youtube-placeholder.jpg';
+      }
+
+      thumb.classList.add('carousel-thumbnail');
+      thumb.alt = `Miniature vidéo ${index + 1}`;
+
+      thumb.addEventListener('click', event => {
+        event.stopPropagation();
+        modalState.currentVideoIndex = index;
+        playCurrentVideo();
+      });
+
+      carouselThumbnails.appendChild(thumb);
+    });
+  }
+
+  function openVideo(videoUrl) {
+    resetModalUI();
+    closeMobileMenu();
+
+    modalState.currentProject = {
+      links: [videoUrl]
+    };
+
+    playCurrentVideo();
+    openModal();
+  }
+
+  function openCarousel(project) {
+    resetModalUI();
+    closeMobileMenu();
+
+    modalState.currentProject = project;
+    modalState.currentVideoIndex = 0;
+
+    renderCarouselThumbnails(project);
+
+    if (project.links.length > 1) {
+      previousButton.style.display = 'flex';
+      nextButton.style.display = 'flex';
+    }
+
+    playCurrentVideo();
+    openModal();
+  }
+
+  function goToPreviousVideo() {
+    if (!modalState.currentProject) return;
+    const total = modalState.currentProject.links.length;
+    modalState.currentVideoIndex = (modalState.currentVideoIndex - 1 + total) % total;
+    playCurrentVideo();
+  }
+
+  function goToNextVideo() {
+    if (!modalState.currentProject) return;
+    const total = modalState.currentProject.links.length;
+    modalState.currentVideoIndex = (modalState.currentVideoIndex + 1) % total;
+    playCurrentVideo();
+  }
+
+  function openMobileMenu() {
+    mobileMenu.classList.add('open');
+    menuToggle.classList.add('open');
+    menuToggle.setAttribute('aria-expanded', 'true');
+    mobileMenu.setAttribute('aria-hidden', 'false');
+  }
+
+  function closeMobileMenu() {
+    mobileMenu.classList.remove('open');
+    menuToggle.classList.remove('open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+  }
+
+  function toggleMobileMenu(event) {
+    event.stopPropagation();
+
+    if (mobileMenu.classList.contains('open')) {
+      closeMobileMenu();
+    } else {
+      openMobileMenu();
+    }
+  }
+
+  function updateHeaderState() {
+    if (window.scrollY > 24) {
+      topHeader.classList.add('is-scrolled');
+    } else {
+      topHeader.classList.remove('is-scrolled');
+    }
+  }
+
+  menuToggle.addEventListener('click', toggleMobileMenu);
+
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeMobileMenu);
+  });
+
+  document.addEventListener('click', event => {
+    const clickInsideMenu = mobileMenu.contains(event.target);
+    const clickOnToggle = menuToggle.contains(event.target);
+
+    if (!clickInsideMenu && !clickOnToggle) {
+      closeMobileMenu();
+    }
+  });
+
+  previousButton.addEventListener('click', event => {
+    event.stopPropagation();
+    goToPreviousVideo();
+  });
+
+  nextButton.addEventListener('click', event => {
+    event.stopPropagation();
+    goToNextVideo();
+  });
+
+  closeButton.addEventListener('click', closeModal);
+
+  modal.addEventListener('click', event => {
+    if (event.target === modal) {
+      closeModal();
+    }
+  });
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') {
+      closeModal();
+      closeMobileMenu();
+    }
+
+    if (!modalState.currentProject || modal.style.display !== 'flex') return;
+
+    if (modalState.currentProject.links.length > 1) {
+      if (event.key === 'ArrowLeft') {
+        goToPreviousVideo();
+      }
+
+      if (event.key === 'ArrowRight') {
+        goToNextVideo();
+      }
+    }
+  });
+
+  window.addEventListener('scroll', updateHeaderState, { passive: true });
+
+  window.openVideo = openVideo;
+  window.openCarousel = openCarousel;
+  window.closeVideo = closeModal;
+
+  updateHeaderState();
+  loadProjects();
 });
