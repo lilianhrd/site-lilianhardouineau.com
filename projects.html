@@ -1,39 +1,83 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Galerie de Vidéos</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lilian Hardouineau — Director / Visual Artist</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-    <header class="top-header">
-        <div class="left-header">
-            <h1>Lilian Hardouineau</h1>
-            <h2>Director / Visual Artist</h2>
-        </div>
-        <div class="right-header">
-            <a href="mailto:lilian.hardouineau@gmail.com">Contact</a>
-            <a href="https://www.instagram.com/lilian.hrdn/" target="_blank">Instagram</a>
-            <a href="https://vimeo.com/lilianhardouineau" target="_blank">Vimeo</a>
-        </div>
-    </header>
-
-    <section class="video-gallery">
-        <!-- Les projets seront ajoutés dynamiquement par le script.js -->
-    </section>
-
-    <!-- Modal universelle pour vidéo unique ou carrousel -->
-    <div id="videoModal" class="modal">
-        <span class="close" onclick="closeVideo()">&times;</span>
-        <iframe id="videoFrame" width="100%" height="60%" src="" frameborder="0" allowfullscreen></iframe>
-        <div class="carousel-thumbnails" id="carouselThumbnails" style="display: none;">
-            <!-- Les miniatures des vidéos apparaîtront ici -->
-        </div>
-        <button id="previousButton" class="carousel-button left" style="display: none;">❮</button>
-        <button id="nextButton" class="carousel-button right" style="display: none;">❯</button>
+  <header class="top-header" id="topHeader">
+    <div class="left-header">
+      <h1>LILIAN HARDOUINEAU</h1>
+      <h2>Director / Visual Artist</h2>
     </div>
 
-    <script src="script.js"></script>
+    <nav class="desktop-nav" aria-label="Navigation principale">
+      <a href="mailto:lilian.hardouineau@gmail.com">Contact</a>
+      <a href="https://www.instagram.com/lilian.hrdn/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://vimeo.com/lilianhardouineau" target="_blank" rel="noopener noreferrer">Vimeo</a>
+    </nav>
+
+    <button
+      id="menuToggle"
+      class="menu-toggle"
+      type="button"
+      aria-label="Ouvrir le menu"
+      aria-expanded="false"
+      aria-controls="mobileMenu"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </header>
+
+  <div id="mobileMenu" class="mobile-menu" aria-hidden="true">
+    <nav class="mobile-menu-nav" aria-label="Navigation mobile">
+      <a href="mailto:lilian.hardouineau@gmail.com">Contact</a>
+      <a href="https://www.instagram.com/lilian.hrdn/" target="_blank" rel="noopener noreferrer">Instagram</a>
+      <a href="https://vimeo.com/lilianhardouineau" target="_blank" rel="noopener noreferrer">Vimeo</a>
+    </nav>
+  </div>
+
+  <main class="site-main">
+    <section class="video-gallery"></section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© Lilian Hardouineau</p>
+  </footer>
+
+  <div id="videoModal" class="modal" aria-hidden="true">
+    <button id="closeButton" class="close" aria-label="Fermer la vidéo">×</button>
+
+    <div class="modal-inner">
+      <div class="video-frame-wrapper">
+        <iframe
+          id="videoFrame"
+          src=""
+          frameborder="0"
+          allow="autoplay; fullscreen; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <div class="modal-controls">
+        <button id="previousButton" class="carousel-button" style="display: none;" aria-label="Vidéo précédente">
+          <span class="arrow arrow-left"></span>
+        </button>
+
+        <div id="carouselThumbnails" class="carousel-thumbnails" style="display: none;"></div>
+
+        <button id="nextButton" class="carousel-button" style="display: none;" aria-label="Vidéo suivante">
+          <span class="arrow arrow-right"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>
