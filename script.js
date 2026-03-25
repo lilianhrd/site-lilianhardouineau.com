@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const previousButton = document.getElementById('previousButton');
   const nextButton = document.getElementById('nextButton');
   const closeButton = document.getElementById('closeButton');
+  const videoFrameWrapper = document.querySelector('.video-frame-wrapper');
 
   const aboutModal = document.getElementById('aboutModal');
   const aboutButton = document.getElementById('aboutButton');
@@ -29,6 +30,9 @@ document.addEventListener('DOMContentLoaded', function () {
     currentProject: null,
     currentVideoIndex: 0
   };
+
+  const aspectRatioCache = new Map();
+  const DEFAULT_RATIO = 16 / 9;
 
   async function loadProjects() {
     try {
@@ -91,24 +95,93 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  function getVimeoId(url) {
+    const match = url.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+    return match ? match[1] : null;
+  }
+
+  function getYouTubeId(url) {
+    try {
+      if (url.includes('youtu.be/')) {
+        return url.split('youtu.be/')[1].split(/[?&]/)[0];
+      }
+
+      if (url.includes('youtube.com/watch')) {
+        const urlObj = new URL(url);
+        return urlObj.searchParams.get('v');
+      }
+
+      if (url.includes('youtube.com/embed/')) {
+        return url.split('embed/')[1].split(/[?&]/)[0];
+      }
+
+      return null;
+    } catch (error) {
+      return null;
+    }
+  }
+
   function formatVideoUrl(url) {
     if (url.includes('vimeo')) {
-      const videoId = url.split('/').pop().split('?')[0];
+      const videoId = getVimeoId(url);
       return `https://player.vimeo.com/video/${videoId}`;
     }
 
     if (url.includes('youtu.be')) {
-      const videoId = url.split('/').pop().split('?')[0];
+      const videoId = getYouTubeId(url);
       return `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
     }
 
     if (url.includes('youtube.com')) {
-      const urlObj = new URL(url);
-      const videoId = urlObj.searchParams.get('v');
+      const videoId = getYouTubeId(url);
       return `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
     }
 
     return url;
+  }
+
+  async function getVideoAspectRatio(url) {
+    if (aspectRatioCache.has(url)) {
+      return aspectRatioCache.get(url);
+    }
+
+    let ratio = DEFAULT_RATIO;
+
+    try {
+      if (url.includes('vimeo.com')) {
+        const response = await fetch(
+          `https://vimeo.com/api/oembed.json?url=${encodeURIComponent(url)}`
+        );
+
+        if (response.ok) {
+          const data = await response.json();
+          if (data.width && data.height) {
+            ratio = data.width / data.height;
+          }
+        }
+      } else if (url.includes('youtube.com') || url.includes('youtu.be')) {
+        const response = await fetch(
+          `https://www.youtube.com/oembed?url=${encodeURIComponent(url)}&format=json`
+        );
+
+        if (response.ok) {
+          const data = await response.json();
+          if (data.width && data.height) {
+            ratio = data.width / data.height;
+          }
+        }
+      }
+    } catch (error) {
+      console.warn('Impossible de récupérer le ratio vidéo, fallback 16:9.', error);
+    }
+
+    aspectRatioCache.set(url, ratio);
+    return ratio;
+  }
+
+  function applyVideoRatio(ratio) {
+    if (!videoFrameWrapper) return;
+    videoFrameWrapper.style.setProperty('--video-ratio', ratio);
   }
 
   function createProjectImage(project) {
@@ -167,6 +240,7 @@ document.addEventListener('DOMContentLoaded', function () {
     videoFrame.src = '';
     modalState.currentProject = null;
     modalState.currentVideoIndex = 0;
+    applyVideoRatio(DEFAULT_RATIO);
   }
 
   function openModal() {
@@ -208,11 +282,14 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  function playCurrentVideo() {
+  async function playCurrentVideo() {
     if (!modalState.currentProject) return;
 
     const url = modalState.currentProject.links[modalState.currentVideoIndex];
     const baseUrl = formatVideoUrl(url);
+
+    const ratio = await getVideoAspectRatio(url);
+    applyVideoRatio(ratio);
 
     if (baseUrl.includes('youtube.com/embed/')) {
       videoFrame.src = baseUrl;
@@ -238,7 +315,7 @@ document.addEventListener('DOMContentLoaded', function () {
       const thumb = document.createElement('img');
 
       if (link.includes('vimeo')) {
-        const vimeoId = link.split('/').pop().split('?')[0];
+        const vimeoId = getVimeoId(link);
         thumb.src = `https://vumbnail.com/${vimeoId}.jpg`;
       } else {
         thumb.src = 'images/youtube-placeholder.jpg';
@@ -265,8 +342,8 @@ document.addEventListener('DOMContentLoaded', function () {
       links: [videoUrl]
     };
 
-    playCurrentVideo();
     openModal();
+    playCurrentVideo();
   }
 
   function openCarousel(project) {
@@ -283,8 +360,8 @@ document.addEventListener('DOMContentLoaded', function () {
       nextButton.style.display = 'flex';
     }
 
-    playCurrentVideo();
     openModal();
+    playCurrentVideo();
   }
 
   function goToPreviousVideo() {
