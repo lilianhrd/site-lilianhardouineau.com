@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', function () {
     "AGAR AGAR/Teaser",
     "CYDFLM/",
     "COURRÈGES/Loop Bag FW22",
-    "LOUIS VUITTON/show.s",
+    "LOUIS VUITTON/show23",
     "SIMILI GUM/Dedipix + T pas si triste",
     "GIVENCHY/Rose Perfecto",
     "LOUIS VUITTON/Cruise 24 — Guests"
