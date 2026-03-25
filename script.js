@@ -15,15 +15,18 @@ document.addEventListener('DOMContentLoaded', function () {
   const menuToggle = document.getElementById('menuToggle');
   const topHeader = document.getElementById('topHeader');
 
+  const langButtons = document.querySelectorAll('.lang-button');
+  const bioTexts = document.querySelectorAll('.bio-text');
+
   const confirmedCarousels = [
-    "LOUIS VUITTON/SS23",
-    "AGAR AGAR/Teaser",
-    "CYDFLM/",
-    "COURRÈGES/Loop Bag FW22",
-    "LOUIS VUITTON/show23",
-    "SIMILI GUM/Dedipix + T pas si triste",
-    "GIVENCHY/Rose Perfecto",
-    "LOUIS VUITTON/Cruise 24 — Guests"
+    'LOUIS VUITTON/SS23',
+    'AGAR AGAR/Teaser',
+    'CYDFLM/',
+    'COURRÈGES/Loop Bag FW22',
+    'LOUIS VUITTON/show23',
+    'SIMILI GUM/Dedipix + T pas si triste',
+    'GIVENCHY/Rose Perfecto',
+    'LOUIS VUITTON/Cruise 24 — Guests'
   ];
 
   const modalState = {
@@ -37,6 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
   async function loadProjects() {
     try {
       const response = await fetch('projects.txt');
+
       if (!response.ok) {
         throw new Error('Erreur lors du chargement de projects.txt');
       }
@@ -49,7 +53,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (project.type === 'single') {
           videoGallery.appendChild(createSingleProjectElement(project));
-        } else if (project.type === 'carousel' && confirmedCarousels.includes(projectKey)) {
+        } else if (
+          project.type === 'carousel' &&
+          confirmedCarousels.includes(projectKey)
+        ) {
           videoGallery.appendChild(createCarouselProjectElement(project));
         } else if (project.type === 'carousel') {
           videoGallery.appendChild(
@@ -155,6 +162,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (response.ok) {
           const data = await response.json();
+
           if (data.width && data.height) {
             ratio = data.width / data.height;
           }
@@ -166,13 +174,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
         if (response.ok) {
           const data = await response.json();
+
           if (data.width && data.height) {
             ratio = data.width / data.height;
           }
         }
       }
     } catch (error) {
-      console.warn('Impossible de récupérer le ratio vidéo, fallback 16:9.', error);
+      console.warn(
+        'Impossible de récupérer le ratio vidéo, fallback 16:9.',
+        error
+      );
     }
 
     aspectRatioCache.set(url, ratio);
@@ -302,6 +314,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function updateActiveThumbnail() {
     const thumbs = carouselThumbnails.querySelectorAll('.carousel-thumbnail');
+
     thumbs.forEach((thumb, index) => {
       thumb.classList.toggle('active', index === modalState.currentVideoIndex);
     });
@@ -366,15 +379,21 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function goToPreviousVideo() {
     if (!modalState.currentProject) return;
+
     const total = modalState.currentProject.links.length;
-    modalState.currentVideoIndex = (modalState.currentVideoIndex - 1 + total) % total;
+    modalState.currentVideoIndex =
+      (modalState.currentVideoIndex - 1 + total) % total;
+
     playCurrentVideo();
   }
 
   function goToNextVideo() {
     if (!modalState.currentProject) return;
+
     const total = modalState.currentProject.links.length;
-    modalState.currentVideoIndex = (modalState.currentVideoIndex + 1) % total;
+    modalState.currentVideoIndex =
+      (modalState.currentVideoIndex + 1) % total;
+
     playCurrentVideo();
   }
 
@@ -391,14 +410,24 @@ document.addEventListener('DOMContentLoaded', function () {
   if (aboutButton) {
     aboutButton.addEventListener('click', function (event) {
       event.preventDefault();
-      openAboutModal();
+
+      if (aboutModal.classList.contains('open')) {
+        closeAboutModal();
+      } else {
+        openAboutModal();
+      }
     });
   }
 
   if (menuToggle) {
     menuToggle.addEventListener('click', function (event) {
       event.preventDefault();
-      openAboutModal();
+
+      if (aboutModal.classList.contains('open')) {
+        closeAboutModal();
+      } else {
+        openAboutModal();
+      }
     });
   }
 
@@ -412,21 +441,27 @@ document.addEventListener('DOMContentLoaded', function () {
     closeButton.addEventListener('click', closeModal);
   }
 
-  previousButton.addEventListener('click', event => {
-    event.stopPropagation();
-    goToPreviousVideo();
-  });
+  if (previousButton) {
+    previousButton.addEventListener('click', event => {
+      event.stopPropagation();
+      goToPreviousVideo();
+    });
+  }
 
-  nextButton.addEventListener('click', event => {
-    event.stopPropagation();
-    goToNextVideo();
-  });
+  if (nextButton) {
+    nextButton.addEventListener('click', event => {
+      event.stopPropagation();
+      goToNextVideo();
+    });
+  }
 
-  modal.addEventListener('click', event => {
-    if (event.target === modal) {
-      closeModal();
-    }
-  });
+  if (modal) {
+    modal.addEventListener('click', event => {
+      if (event.target === modal) {
+        closeModal();
+      }
+    });
+  }
 
   if (aboutModal) {
     aboutModal.addEventListener('click', event => {
@@ -453,6 +488,23 @@ document.addEventListener('DOMContentLoaded', function () {
         goToNextVideo();
       }
     }
+  });
+
+  langButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const selectedLang = button.dataset.lang;
+
+      langButtons.forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.lang === selectedLang);
+      });
+
+      bioTexts.forEach(text => {
+        text.classList.toggle(
+          'active',
+          text.dataset.langContent === selectedLang
+        );
+      });
+    });
   });
 
   window.addEventListener('scroll', updateHeaderState, { passive: true });
