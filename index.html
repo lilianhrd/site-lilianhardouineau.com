@@ -42,8 +42,9 @@
     <p>© Lilian Hardouineau</p>
   </footer>
 
+  <!-- MODAL VIDEO -->
   <div id="videoModal" class="modal" aria-hidden="true">
-    <button id="closeButton" class="close" type="button" aria-label="Fermer la vidéo">×</button>
+    <button id="closeButton" class="close" type="button">×</button>
 
     <div class="modal-inner">
       <div class="video-frame-wrapper">
@@ -57,44 +58,22 @@
       </div>
 
       <div class="modal-controls">
-        <button
-          id="previousButton"
-          class="carousel-button"
-          type="button"
-          style="display: none;"
-          aria-label="Vidéo précédente"
-        >
+        <button id="previousButton" class="carousel-button" type="button" style="display:none;">
           <span class="arrow arrow-left"></span>
         </button>
 
-        <div
-          id="carouselThumbnails"
-          class="carousel-thumbnails"
-          style="display: none;"
-        ></div>
+        <div id="carouselThumbnails" class="carousel-thumbnails" style="display:none;"></div>
 
-        <button
-          id="nextButton"
-          class="carousel-button"
-          type="button"
-          style="display: none;"
-          aria-label="Vidéo suivante"
-        >
+        <button id="nextButton" class="carousel-button" type="button" style="display:none;">
           <span class="arrow arrow-right"></span>
         </button>
       </div>
     </div>
   </div>
 
-  <div class="about-modal" id="aboutModal" aria-hidden="true">
-    <button
-      class="about-close"
-      id="aboutClose"
-      type="button"
-      aria-label="Close About"
-    >
-      ×
-    </button>
+  <!-- ABOUT -->
+  <div class="about-modal" id="aboutModal">
+    <button class="about-close" id="aboutClose">×</button>
 
     <div class="about-inner">
       <div class="about-content">
@@ -106,64 +85,57 @@
           </p>
           <p>
             <strong>Instagram</strong>
-            <a href="https://www.instagram.com/lilian.hrdn/" target="_blank" rel="noopener noreferrer">@lilian.hrdn</a>
+            <a href="https://www.instagram.com/lilian.hrdn/" target="_blank">@lilian.hrdn</a>
           </p>
         </div>
 
-        <div class="about-language-switch" aria-label="Language switch">
-          <button class="lang-button active" data-lang="en" type="button">Eng</button>
+        <!-- SWITCH LANG -->
+        <div class="about-language-switch">
+          <button class="lang-button active" data-lang="en">Eng</button>
           <span class="lang-separator">/</span>
-          <button class="lang-button" data-lang="fr" type="button">Fr</button>
+          <button class="lang-button" data-lang="fr">Fr</button>
         </div>
 
+        <!-- BIO -->
         <div class="about-bio">
+
+          <!-- EN -->
           <div class="bio-text active" data-lang-content="en">
             <p>
-              Lilian Hardouineau is a Paris-based director.
-              His work moves between artistic, musical, fashion/beauty and commercials.
-            </p>
-
-            <p>
-              After practicing painting in his teenage years, he went on to study cinema. Project after project, he built his visual language, nourrished as much by avant-garde cinema as by pop culture. His work is also rooted in a close, meditative observation of nature.
-            </p>
-
-            <p>
-              Known for his visual research, he develops his own optical setups and crafts a distinctive, sensory language driven by a strong sense of framing and movement. Editing plays a central role in his practice, with an organic approach that structures his films. This strong technical command allows him to fully deploy his vision and turn his films into true emotional experiences.
-            </p>
-
-            <p>
+              Lilian Hardouineau is a Paris-based director. His work moves between artistic, musical, fashion/beauty, and commercials.<br>
+              After practicing painting in his teenage years, he went on to study cinema. Project after project, he built his visual language, nourrished as much by avant-garde cinema as by pop culture. His work is also rooted in a close, meditative observation of nature.<br>
+              Known for his visual research, he develops his own optical setups and crafts a distinctive, sensory language driven by a strong sense of framing and movement. Editing plays a central role in his practice, with an organic approach that structures his films.<br>
+              This strong technical command allows him to fully deploy his vision and turn his films into true emotional experiences.<br>
               His versatility and sensitivity have led him to collaborate with a wide range of artists and prestigious brands, working across both free-form projects and large-scale productions.
             </p>
           </div>
 
+          <!-- FR -->
           <div class="bio-text" data-lang-content="fr">
             <p>
-              Lilian Hardouineau est un réalisateur basé à Paris.
-              Son travail navigue entre projets artistiques, musicaux, fashion/beauty et films commerciaux.
-            </p>
-
-            <p>
-              Après une pratique de la peinture durant son adolescence, il se tourne vers des études de cinéma. Projet après projet, il pose les bases de son univers esthétique, nourri autant par les œuvres d’avant-garde que par la culture pop. Il puise aussi son inspiration dans une observation fine et méditative de la nature.
-            </p>
-
-            <p>
-              Reconnu pour ses recherches visuelles, il conçoit ses propres dispositifs optiques et façonne un langage sensoriel singulier grâce à son sens du cadre et du mouvement. Il a également développé une pratique de montage organique qui est centrale à son oeuvre. Cette grande maitrise technique lui permet de déployer sa vision et de faire de ses films de véritables expériences émotionnelles.
-            </p>
-
-            <p>
+              Lilian Hardouineau est un réalisateur basé à Paris. Son travail navigue entre projets artistiques, musicaux, fashion/beauty et films commerciaux.<br>
+              Après une pratique de la peinture durant son adolescence, il se tourne vers des études de cinéma. Projet après projet, il pose les bases de son univers esthétique, nourri autant par les œuvres d’avant-garde que par la culture pop. Il puise aussi son inspiration dans une observation fine et méditative de la nature.<br>
+              Reconnu pour ses recherches visuelles, il conçoit ses propres dispositifs optiques et façonne un langage sensoriel singulier grâce à son sens du cadre et du mouvement. Il a également développé une pratique de montage organique qui est centrale à son oeuvre. Cette grande maitrise technique lui permet de déployer sa vision et de faire de ses films de véritables expériences émotionnelles.<br>
               Sa polyvalence et sa sensibilité lui ont permis de collaborer avec de nombreux artistes, des marques prestigieuses, et de s’affirmer aussi bien à travers des formes libres qu’à l’échelle de productions ambitieuses.
             </p>
           </div>
+
         </div>
 
+        <!-- CLIENTS -->
         <div class="about-section">
           <h3>Clients / Brands</h3>
-          <p>Louis Vuitton, Dior, Mugler, Courrèges, Moncler, Kenzo, Make Up For Ever, Louboutin, Andrea Crews, Causeyoudontfeellikeme, Numero Magazine</p>
+          <p>
+            Louis Vuitton, Dior, Mugler, Courrèges, Moncler, Kenzo, Make Up For Ever, Louboutin, Andrea Crews, Causeyoudontfeellikeme, Numero Magazine
+          </p>
         </div>
 
+        <!-- MUSIC -->
         <div class="about-section">
           <h3>Music</h3>
-          <p>Danny L Harle, Eartheater, Malibu, Agar Agar, Simili Gum, Detente, Babysolo, Salome, Ange Halliwell, Pablo Altar</p>
+          <p>
+            Danny L Harle, Eartheater, Malibu, Agar Agar, Simili Gum, Detente, Babysolo, Salome, Ange Halliwell, Pablo Altar
+          </p>
         </div>
 
       </div>
