@@ -608,6 +608,7 @@ a {
   .top-header {
     padding: 16px 12px 12px;
     background: transparent;
+    align-items: center;
   }
 
   .top-header.is-scrolled {
@@ -624,6 +625,7 @@ a {
 
   .left-header {
     gap: 4px;
+    transform: translateY(-1px);
   }
 
   .left-header h1 {
@@ -680,7 +682,7 @@ a {
     opacity: 1;
     transform: none;
     text-align: left;
-    padding: 10px 2px 2px;
+    padding: 10px 2px 6px;
     background: #ffffff;
     pointer-events: none;
     transition: opacity 0.08s linear;
@@ -688,7 +690,7 @@ a {
   }
 
   .video-title {
-    font-size: 1.86rem;
+    font-size: 1.72rem;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: -0.018em;
@@ -697,11 +699,12 @@ a {
   }
 
   .video-subtitle {
-    font-size: 0.69rem;
+    font-size: 0.66rem;
     font-weight: 400;
-    line-height: 1.08;
+    line-height: 1.12;
     color: rgba(0, 0, 0, 0.68);
     letter-spacing: 0;
+    margin-bottom: 2px;
   }
 
   .video-thumbnail::before {
