@@ -21,7 +21,8 @@ document.addEventListener('DOMContentLoaded', function () {
     "COURRÈGES/Loop Bag FW22",
     "LOUIS VUITTON/show.s",
     "SIMILI GUM/Dedipix + T pas si triste",
-    "GIVENCHY/Rose Perfecto"
+    "GIVENCHY/Rose Perfecto",
+    "LOUIS VUITTON/Cruise 24 — Guests"
   ];
 
   const modalState = {
