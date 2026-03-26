@@ -460,7 +460,7 @@ a {
   width: 34px;
   height: 34px;
   border: none;
-  background: #ffffff;
+  background: transparent;
   color: var(--text);
   font-size: 24px;
   font-weight: 300;
@@ -470,17 +470,17 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition:
-    transform var(--transition),
-    opacity var(--transition),
-    background var(--transition);
-  border-radius: 999px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
+  padding: 0;
+  transition: transform var(--transition), opacity var(--transition);
+  border-radius: 0;
+  box-shadow: none;
+  appearance: none;
+  -webkit-appearance: none;
 }
 
 .close:hover {
   transform: scale(1.04);
-  background: #ffffff;
+  background: transparent;
 }
 
 /* INFOS / CREDITS */
