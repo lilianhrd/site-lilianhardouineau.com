@@ -624,9 +624,12 @@ a {
 
 .modal-inner.is-horizontal-layout .video-credits-content.is-long {
   column-count: 2;
-  column-gap: 28px;
+  column-gap: 18px;
   column-fill: balance;
   display: block;
+  width: min(100%, 680px);
+  max-width: 680px;
+  margin: 0;
 }
 
 .modal-inner.is-horizontal-layout .video-credits-content.is-long > * {
@@ -662,7 +665,7 @@ a {
   font-size: 0.775rem;
   line-height: 1.42;
   color: rgba(0, 0, 0, 0.80);
-  max-width: 72ch;
+  max-width: none;
   white-space: pre-line;
 }
 
