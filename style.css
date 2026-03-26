@@ -1137,12 +1137,12 @@ a {
   }
 
   .modal-shell {
-    padding:
-      var(--modal-safe-top)
-      var(--modal-safe-right)
-      var(--modal-safe-bottom)
-      var(--modal-safe-left);
-  }
+  padding:
+    0
+    var(--modal-safe-right)
+    var(--modal-safe-bottom)
+    var(--modal-safe-left);
+}
 
   .modal-inner,
   .modal-inner.is-vertical-layout,
@@ -1155,15 +1155,30 @@ a {
     flex-direction: column;
   }
 
-  .video-stage,
-  .modal-inner.is-horizontal-layout .video-stage {
-    width: 100%;
-    align-items: stretch;
-    position: sticky;
-    top: 0;
-    margin-bottom: calc(-1 * var(--video-stage-height) + var(--meta-block-height) + 8px);
-    background: transparent;
-  }
+.video-stage,
+.modal-inner.is-horizontal-layout .video-stage {
+  width: 100%;
+  align-items: stretch;
+  position: sticky;
+  top: 0;
+  padding-top: var(--modal-safe-top);
+  margin-bottom: calc(-1 * var(--video-stage-height) + var(--meta-block-height) + 8px);
+  background: #ffffff;
+  z-index: 12;
+  overflow: hidden;
+}
+
+.video-frame-wrapper,
+.modal-controls {
+  position: relative;
+  z-index: 13;
+}
+
+.video-info-panel,
+.modal-inner.is-horizontal-layout .video-info-panel {
+  position: relative;
+  z-index: 2;
+}
 
   .video-frame-wrapper,
   .modal-inner.is-vertical-layout .video-frame-wrapper {
@@ -1191,7 +1206,7 @@ a {
     margin-right: auto;
     min-height: 44px;
     position: relative;
-    z-index: 10;
+    z-index: 13;
   }
 
   .carousel-thumbnails {
@@ -1236,7 +1251,6 @@ a {
   }
 
   .video-info-panel,
-  .modal-inner.is-vertical-layout .video-info-panel,
   .modal-inner.is-horizontal-layout .video-info-panel {
     width: min(
       var(--video-frame-width),
@@ -1253,29 +1267,40 @@ a {
   }
 
   .modal-inner.is-horizontal-layout .video-info-panel {
-    padding-top: calc(var(--video-frame-height) + var(--meta-under-thumbs-mobile));
-  }
+  padding-top: calc(
+    var(--modal-safe-top) +
+    var(--video-frame-height) +
+    var(--meta-under-thumbs-mobile)
+  );
+}
 
   .modal.has-carousel .modal-inner.is-horizontal-layout .video-info-panel,
-  .modal.no-carousel .modal-inner.is-horizontal-layout .video-info-panel {
-    padding-top: calc(var(--video-frame-height) + var(--meta-under-thumbs-mobile));
-  }
+.modal.no-carousel .modal-inner.is-horizontal-layout .video-info-panel {
+  padding-top: calc(
+    var(--modal-safe-top) +
+    var(--video-frame-height) +
+    var(--meta-under-thumbs-mobile)
+  );
+}
 
-  .modal-inner.is-horizontal-layout .video-meta-head {
-    position: sticky;
-    top: calc(var(--video-frame-height) + var(--meta-under-thumbs-mobile));
-    z-index: 8;
-    background: #ffffff;
-    padding-top: 6px;
-    padding-bottom: 4px;
-    min-height: var(--meta-block-height);
-    margin-top: calc(-1 * var(--meta-block-height));
-  }
+ .modal-inner.is-horizontal-layout .video-meta-head {
+  position: relative;
+  top: auto;
+  z-index: 8;
+  background: #ffffff;
+  padding-top: 0;
+  padding-bottom: 6px;
+  min-height: auto;
+  margin-top: 10px;
+}
 
-  .modal.has-carousel .modal-inner.is-horizontal-layout .video-meta-head,
-  .modal.no-carousel .modal-inner.is-horizontal-layout .video-meta-head {
-    top: calc(var(--video-frame-height) + var(--meta-under-thumbs-mobile));
-  }
+.modal.has-carousel .modal-inner.is-horizontal-layout .video-meta-head,
+.modal.no-carousel .modal-inner.is-horizontal-layout .video-meta-head {
+  top: auto;
+}
+.modal-inner.is-horizontal-layout .video-meta-head::after {
+  display: none;
+}
 
   .modal-inner.is-horizontal-layout .video-credits-block {
     background: #ffffff;
