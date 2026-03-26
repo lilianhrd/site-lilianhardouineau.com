@@ -293,103 +293,28 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function parseCredits(description) {
-    if (!description || !description.trim()) {
-      return '<p class="credits-empty">Credits unavailable.</p>';
-    }
-
-    const normalized = description
-      .replace(/\r\n/g, '\n')
-      .replace(/\r/g, '\n');
-
-    const lines = normalized.split('\n');
-
-    const blocks = [];
-    let paragraphBuffer = [];
-
-    function flushParagraph() {
-      if (!paragraphBuffer.length) return;
-
-      const text = paragraphBuffer.join('\n').trim();
-      if (text) {
-        blocks.push({
-          type: 'paragraph',
-          text
-        });
-      }
-      paragraphBuffer = [];
-    }
-
-    lines.forEach(line => {
-      const rawLine = line;
-      const trimmed = rawLine.trim();
-
-      if (!trimmed) {
-        flushParagraph();
-        blocks.push({ type: 'spacer' });
-        return;
-      }
-
-      const isCreditLine = /^[A-Za-zÀ-ÿ0-9&'().,+\-\s]{2,42}\s*:\s*.+$/.test(trimmed);
-
-      if (isCreditLine) {
-        flushParagraph();
-
-        const parts = trimmed.split(':');
-        const role = parts.shift().trim();
-        const value = parts.join(':').trim();
-
-        blocks.push({
-          type: 'credit',
-          role,
-          value
-        });
-      } else {
-        paragraphBuffer.push(rawLine);
-      }
-    });
-
-    flushParagraph();
-
-    const cleanedBlocks = [];
-    let previousWasSpacer = true;
-
-    blocks.forEach(block => {
-      if (block.type === 'spacer') {
-        if (!previousWasSpacer) {
-          cleanedBlocks.push(block);
-        }
-        previousWasSpacer = true;
-      } else {
-        cleanedBlocks.push(block);
-        previousWasSpacer = false;
-      }
-    });
-
-    while (cleanedBlocks.length && cleanedBlocks[cleanedBlocks.length - 1].type === 'spacer') {
-      cleanedBlocks.pop();
-    }
-
-    if (!cleanedBlocks.length) {
-      return '<p class="credits-empty">Credits unavailable.</p>';
-    }
-
-    return cleanedBlocks.map(block => {
-      if (block.type === 'credit') {
-        return `
-          <div class="credit-line">
-            <span class="credit-role">${escapeHtml(block.role)}</span>
-            <span class="credit-name">${escapeHtml(block.value)}</span>
-          </div>
-        `;
-      }
-
-      if (block.type === 'spacer') {
-        return `<div class="credit-spacer" aria-hidden="true"></div>`;
-      }
-
-      return `<p class="credit-paragraph">${escapeHtml(block.text)}</p>`;
-    }).join('');
+  if (!description || !description.trim()) {
+    return '<p class="credits-empty">Credits unavailable.</p>';
   }
+
+  const normalized = description
+    .replace(/\r\n/g, '\n')
+    .replace(/\r/g, '\n')
+    .trim();
+
+  const paragraphs = normalized
+    .split(/\n\s*\n/)
+    .map(paragraph => paragraph.trim())
+    .filter(Boolean);
+
+  if (!paragraphs.length) {
+    return '<p class="credits-empty">Credits unavailable.</p>';
+  }
+
+  return paragraphs.map(paragraph => {
+    return `<p class="credit-paragraph">${escapeHtml(paragraph).replace(/\n/g, '<br>')}</p>`;
+  }).join('');
+}
 
   function updateCreditsColumnMode() {
     if (!videoCredits || !modalInner) return;
