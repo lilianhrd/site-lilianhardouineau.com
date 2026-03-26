@@ -44,36 +44,52 @@
 
   <!-- MODAL VIDEO -->
   <div id="videoModal" class="modal" aria-hidden="true">
-    <button id="closeButton" class="close" type="button">×</button>
+    <button id="closeButton" class="close" type="button" aria-label="Close video">×</button>
 
-    <div class="modal-inner">
-      <div class="video-frame-wrapper">
-        <iframe
-          id="videoFrame"
-          src=""
-          frameborder="0"
-          allow="autoplay; fullscreen; picture-in-picture"
-          allowfullscreen
-        ></iframe>
-      </div>
+    <div class="modal-shell">
+      <div class="modal-inner" id="modalInner">
+        <div class="video-stage">
+          <div class="video-frame-wrapper">
+            <iframe
+              id="videoFrame"
+              src=""
+              frameborder="0"
+              allow="autoplay; fullscreen; picture-in-picture"
+              allowfullscreen
+            ></iframe>
+          </div>
 
-      <div class="modal-controls">
-        <button id="previousButton" class="carousel-button" type="button" style="display:none;">
-          <span class="arrow arrow-left"></span>
-        </button>
+          <div class="modal-controls">
+            <button id="previousButton" class="carousel-button" type="button" style="display:none;" aria-label="Previous video">
+              <span class="arrow arrow-left"></span>
+            </button>
 
-        <div id="carouselThumbnails" class="carousel-thumbnails" style="display:none;"></div>
+            <div id="carouselThumbnails" class="carousel-thumbnails" style="display:none;"></div>
 
-        <button id="nextButton" class="carousel-button" type="button" style="display:none;">
-          <span class="arrow arrow-right"></span>
-        </button>
+            <button id="nextButton" class="carousel-button" type="button" style="display:none;" aria-label="Next video">
+              <span class="arrow arrow-right"></span>
+            </button>
+          </div>
+        </div>
+
+        <aside class="video-info-panel" id="videoInfoPanel" aria-live="polite">
+          <div class="video-meta-head">
+            <h2 id="videoInfoTitle" class="video-info-title"></h2>
+            <p id="videoInfoSubtitle" class="video-info-subtitle"></p>
+          </div>
+
+          <div class="video-credits-block">
+            <p class="video-credits-label">Credits</p>
+            <div id="videoCredits" class="video-credits-content"></div>
+          </div>
+        </aside>
       </div>
     </div>
   </div>
 
   <!-- ABOUT -->
-  <div class="about-modal" id="aboutModal">
-    <button class="about-close" id="aboutClose">×</button>
+  <div class="about-modal" id="aboutModal" aria-hidden="true">
+    <button class="about-close" id="aboutClose" aria-label="Close About">×</button>
 
     <div class="about-inner">
       <div class="about-content">
@@ -89,17 +105,13 @@
           </p>
         </div>
 
-        <!-- SWITCH LANG -->
         <div class="about-language-switch">
           <button class="lang-button active" data-lang="en">Eng</button>
           <span class="lang-separator">/</span>
           <button class="lang-button" data-lang="fr">Fr</button>
         </div>
 
-        <!-- BIO -->
         <div class="about-bio">
-
-          <!-- EN -->
           <div class="bio-text active" data-lang-content="en">
             <p>
               Lilian Hardouineau is a Paris-based director. His work moves between artistic, musical, fashion/beauty, and commercials.<br>
@@ -110,7 +122,6 @@
             </p>
           </div>
 
-          <!-- FR -->
           <div class="bio-text" data-lang-content="fr">
             <p>
               Lilian Hardouineau est un réalisateur basé à Paris. Son travail navigue entre projets artistiques, musicaux, fashion/beauty et films commerciaux.<br>
@@ -119,10 +130,8 @@
               Sa polyvalence et sa sensibilité lui ont permis de collaborer avec de nombreux artistes, des marques prestigieuses, et de s’affirmer aussi bien à travers des formes libres qu’à l’échelle de productions ambitieuses.
             </p>
           </div>
-
         </div>
 
-        <!-- CLIENTS -->
         <div class="about-section">
           <h3>Clients / Brands</h3>
           <p>
@@ -130,7 +139,6 @@
           </p>
         </div>
 
-        <!-- MUSIC -->
         <div class="about-section">
           <h3>Music</h3>
           <p>
