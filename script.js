@@ -578,6 +578,7 @@ document.addEventListener('DOMContentLoaded', function () {
     modalInner.style.removeProperty('--video-frame-width');
     modalInner.style.removeProperty('--video-frame-height');
     modalInner.style.removeProperty('--video-stage-height');
+    modal.classList.remove('has-carousel', 'no-carousel', 'is-mobile-carousel-layout');
     if (modalShell) modalShell.scrollTop = 0;
   }
 
@@ -634,6 +635,9 @@ document.addEventListener('DOMContentLoaded', function () {
       firstLink: project.firstLink || project.links[0]
     };
 
+    modal.classList.add('no-carousel');
+    modal.classList.remove('has-carousel', 'is-mobile-carousel-layout');
+
     openModal();
     playCurrentVideo();
   }
@@ -648,6 +652,15 @@ document.addEventListener('DOMContentLoaded', function () {
       firstLink: project.firstLink || project.links[0]
     };
     modalState.currentVideoIndex = 0;
+
+    modal.classList.add('has-carousel');
+    modal.classList.remove('no-carousel');
+
+    if (window.innerWidth <= 768) {
+      modal.classList.add('is-mobile-carousel-layout');
+    } else {
+      modal.classList.remove('is-mobile-carousel-layout');
+    }
 
     renderCarouselThumbnails(project);
 
@@ -788,6 +801,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
   window.addEventListener('resize', () => {
     if (!modalState.currentProject) return;
+
+    if (modalState.currentProject.links.length > 1 && window.innerWidth <= 768) {
+      modal.classList.add('is-mobile-carousel-layout');
+    } else {
+      modal.classList.remove('is-mobile-carousel-layout');
+    }
+
     const url = modalState.currentProject.links[modalState.currentVideoIndex];
     getVideoAspectRatio(url).then(ratio => {
       applyVideoRatio(ratio);
