@@ -1494,5 +1494,5 @@ button:hover,
 .video-thumbnail:hover .video-subtitle {
   text-shadow:
     0 0 0 currentColor,
-    0.013em 0 0 currentColor;
+    0.016em 0 0 currentColor;
 }
