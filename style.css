@@ -1487,3 +1487,10 @@ a {
     position: relative;
     z-index: 2;
   }
+a:hover,
+button:hover,
+.lang-button:hover,
+.video-thumbnail:hover .video-title,
+.video-thumbnail:hover .video-subtitle {
+  font-weight: 600;
+}
