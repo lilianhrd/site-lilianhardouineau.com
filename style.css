@@ -1492,5 +1492,7 @@ button:hover,
 .lang-button:hover,
 .video-thumbnail:hover .video-title,
 .video-thumbnail:hover .video-subtitle {
-  font-weight: 600;
+  text-shadow:
+    0 0 0 currentColor,
+    0.013em 0 0 currentColor;
 }
