@@ -1463,4 +1463,27 @@ a {
   .carousel-button {
     display: none !important;
   }
-}
+}  .video-stage,
+  .modal-inner.is-horizontal-layout .video-stage {
+    z-index: 6;
+  }
+
+  .video-stage::before,
+  .modal-inner.is-horizontal-layout .video-stage::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 100%;
+    width: 100vw;
+    height: calc(var(--modal-safe-top) + 18px);
+    background: #ffffff;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .video-frame-wrapper,
+  .modal-controls {
+    position: relative;
+    z-index: 2;
+  }
