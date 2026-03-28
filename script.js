@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function () {
   const bioTexts = document.querySelectorAll('.bio-text');
 
   const confirmedCarousels = [
-    'LOUIS VUITTON/SS23',
+    'LOUIS VUITTON/Perpetual motion',
     'AGAR AGAR/Teaser',
     'CYDFLM/',
     'COURRÈGES/Loop Bag FW22',
