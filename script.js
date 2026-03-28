@@ -33,7 +33,8 @@ document.addEventListener('DOMContentLoaded', function () {
     'LOUIS VUITTON/show23',
     'SIMILI GUM/Dedipix + T pas si triste',
     'GIVENCHY/Rose Perfecto',
-    'LOUIS VUITTON/Cruise 24 — Guests'
+    'LOUIS VUITTON/Cruise 24 — Guests',
+    'KENZO/Lunar Year'
   ];
 
   const modalState = {
