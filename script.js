@@ -294,28 +294,28 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function parseCredits(description) {
-  if (!description || !description.trim()) {
-    return '<p class="credits-empty">Credits unavailable.</p>';
+    if (!description || !description.trim()) {
+      return '<p class="credits-empty">Credits unavailable.</p>';
+    }
+
+    const normalized = description
+      .replace(/\r\n/g, '\n')
+      .replace(/\r/g, '\n')
+      .trim();
+
+    const paragraphs = normalized
+      .split(/\n\s*\n/)
+      .map(paragraph => paragraph.trim())
+      .filter(Boolean);
+
+    if (!paragraphs.length) {
+      return '<p class="credits-empty">Credits unavailable.</p>';
+    }
+
+    return paragraphs.map(paragraph => {
+      return `<p class="credit-paragraph">${escapeHtml(paragraph).replace(/\n/g, '<br>')}</p>`;
+    }).join('');
   }
-
-  const normalized = description
-    .replace(/\r\n/g, '\n')
-    .replace(/\r/g, '\n')
-    .trim();
-
-  const paragraphs = normalized
-    .split(/\n\s*\n/)
-    .map(paragraph => paragraph.trim())
-    .filter(Boolean);
-
-  if (!paragraphs.length) {
-    return '<p class="credits-empty">Credits unavailable.</p>';
-  }
-
-  return paragraphs.map(paragraph => {
-    return `<p class="credit-paragraph">${escapeHtml(paragraph).replace(/\n/g, '<br>')}</p>`;
-  }).join('');
-}
 
   function updateCreditsColumnMode() {
     if (!videoCredits || !modalInner) return;
