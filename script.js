@@ -28,8 +28,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const confirmedCarousels = [
     'LOUIS VUITTON/Perpetual motion',
     'AGAR AGAR/Teaser',
-    'CYDFLM/',
-    'COURRÈGES/Loop Bag FW22',
     'LOUIS VUITTON/show23',
     'SIMILI GUM/Dedipix + T pas si triste',
     'GIVENCHY/Rose Perfecto',
