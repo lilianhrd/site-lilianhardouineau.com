@@ -10,7 +10,8 @@ DIOR/Anya Taylor-Joy/miniature1.jpg/https://vimeo.com/921113482
 REINAS//miniature48.jpg/https://vimeo.com/1182715058
 PABLO ALTAR/Everyday/miniature37.jpg/https://vimeo.com/1169922209
 MAKE UP FOREVER/HD Skin Hypra Glow/miniature14.jpg/https://vimeo.com/908703295
-CYDFLM//miniature8.jpg/carrousel:https://vimeo.com/1013202319,https://vimeo.com/609993985
+CYDFLM/First Show/miniature8.jpg/https://vimeo.com/1013202319
+CYDFLM//miniature50.jpg/https://vimeo.com/609993985
 SIMILI GUM/NRJ/miniature42.jpg/https://vimeo.com/884821279
 ANGE HALLIWELL/They are coming/miniature44.jpg/https://vimeo.com/1129843037
 LOUBOUTIN/The Minny Pump/miniature40.jpg/https://vimeo.com/962149822
