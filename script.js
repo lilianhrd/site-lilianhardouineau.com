@@ -83,8 +83,14 @@ document.addEventListener('DOMContentLoaded', function () {
         const subtitle = (parts[1] || '').trim();
         const thumbnail = (parts[2] || '').trim();
         const categoryCandidate = (parts[parts.length - 1] || '').trim().toLowerCase();
-        const hasCategory = validCategories.includes(categoryCandidate);
-        const category = hasCategory ? categoryCandidate : 'personal';
+        const categoryList = categoryCandidate
+          .split('+')
+          .map(category => category.trim())
+          .filter(Boolean);
+        const hasCategory =
+          categoryList.length > 0 &&
+          categoryList.every(category => validCategories.includes(category));
+        const category = hasCategory ? categoryList.join('+') : 'personal';
         const linksRaw = (hasCategory ? parts.slice(3, -1) : parts.slice(3))
           .join('/')
           .trim();
@@ -311,7 +317,10 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     document.querySelectorAll('.video-thumbnail').forEach(project => {
-      const visible = category === 'all' || project.dataset.category === category;
+      const projectCategories = project.dataset.category
+        .split('+')
+        .map(item => item.trim());
+      const visible = category === 'all' || projectCategories.includes(category);
       project.classList.toggle('is-filtered-out', !visible);
     });
   }
