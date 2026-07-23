@@ -3,153 +3,356 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lilian Hardouineau — Director / Visual Artist</title>
+
+  <title>Lilian Hardouineau | Director / Visual Artist</title>
+
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
 
+  <!-- HEADER -->
   <header class="top-header" id="topHeader">
-    <div class="left-header">
-      <h1>Lilian Hardouineau</h1>
+
+    <div class="header-main-row">
+
+      <div class="left-header">
+        <h1>Lilian Hardouineau</h1>
+      </div>
+
+      <nav class="desktop-nav" aria-label="Main navigation">
+        <a href="#" id="aboutButton">About</a>
+
+        <a
+          href="https://www.instagram.com/lilian.hrdn/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Instagram
+        </a>
+
+        <a
+          href="https://vimeo.com/lilianhardouineau"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Vimeo
+        </a>
+      </nav>
+
+      <button
+        id="menuToggle"
+        class="menu-toggle"
+        type="button"
+        aria-label="Open About"
+        aria-expanded="false"
+        aria-controls="aboutModal"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
     </div>
 
-    <nav class="desktop-nav">
-      <a href="#" id="aboutButton">About</a>
-      <a href="https://www.instagram.com/lilian.hrdn/" target="_blank" rel="noopener noreferrer">Instagram</a>
-      <a href="https://vimeo.com/lilianhardouineau" target="_blank" rel="noopener noreferrer">Vimeo</a>
+    <!-- PROJECT FILTERS -->
+    <nav class="project-filters" aria-label="Project categories">
+
+      <button
+        class="filter-button active"
+        type="button"
+        data-filter="all"
+        aria-pressed="true"
+      >
+        All
+      </button>
+
+      <button
+        class="filter-button"
+        type="button"
+        data-filter="commercial"
+        aria-pressed="false"
+      >
+        Commercial
+      </button>
+
+      <button
+        class="filter-button"
+        type="button"
+        data-filter="music-video"
+        aria-pressed="false"
+      >
+        Music Videos
+      </button>
+
+      <button
+        class="filter-button"
+        type="button"
+        data-filter="personal"
+        aria-pressed="false"
+      >
+        Personal
+      </button>
+
     </nav>
 
-    <button
-      id="menuToggle"
-      class="menu-toggle"
-      type="button"
-      aria-label="Open About"
-      aria-expanded="false"
-    >
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
   </header>
 
+  <!-- MAIN CONTENT -->
   <main class="site-main">
-    <section class="video-gallery">
-      <!-- injecté par script.js -->
+
+    <section
+      class="video-gallery"
+      aria-label="Projects"
+    >
+      <!-- Les projets sont injectés par script.js -->
     </section>
+
   </main>
 
+  <!-- FOOTER -->
   <footer class="site-footer">
     <p>© Lilian Hardouineau</p>
   </footer>
 
-  <!-- MODAL VIDEO -->
-  <div id="videoModal" class="modal" aria-hidden="true">
-    <button id="closeButton" class="close" type="button" aria-label="Close video">×</button>
+  <!-- VIDEO MODAL -->
+  <div
+    id="videoModal"
+    class="modal"
+    aria-hidden="true"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Project video"
+  >
+
+    <button
+      id="closeButton"
+      class="close"
+      type="button"
+      aria-label="Close video"
+    >
+      ×
+    </button>
 
     <div class="modal-shell">
+
       <div class="modal-inner" id="modalInner">
+
         <div class="video-stage">
+
           <div class="video-frame-wrapper">
+
             <iframe
               id="videoFrame"
               src=""
+              title="Project video"
               frameborder="0"
               allow="autoplay; fullscreen; picture-in-picture"
               allowfullscreen
             ></iframe>
+
           </div>
 
           <div class="modal-controls">
-            <button id="previousButton" class="carousel-button" type="button" style="display:none;" aria-label="Previous video">
+
+            <button
+              id="previousButton"
+              class="carousel-button"
+              type="button"
+              style="display: none;"
+              aria-label="Previous video"
+            >
               <span class="arrow arrow-left"></span>
             </button>
 
-            <div id="carouselThumbnails" class="carousel-thumbnails" style="display:none;"></div>
+            <div
+              id="carouselThumbnails"
+              class="carousel-thumbnails"
+              style="display: none;"
+            ></div>
 
-            <button id="nextButton" class="carousel-button" type="button" style="display:none;" aria-label="Next video">
+            <button
+              id="nextButton"
+              class="carousel-button"
+              type="button"
+              style="display: none;"
+              aria-label="Next video"
+            >
               <span class="arrow arrow-right"></span>
             </button>
+
           </div>
+
         </div>
 
-        <aside class="video-info-panel" id="videoInfoPanel" aria-live="polite">
+        <aside
+          class="video-info-panel"
+          id="videoInfoPanel"
+          aria-live="polite"
+        >
+
           <div class="video-meta-head">
-            <h2 id="videoInfoTitle" class="video-info-title"></h2>
-            <p id="videoInfoSubtitle" class="video-info-subtitle"></p>
+
+            <h2
+              id="videoInfoTitle"
+              class="video-info-title"
+            ></h2>
+
+            <p
+              id="videoInfoSubtitle"
+              class="video-info-subtitle"
+            ></p>
+
           </div>
 
           <div class="video-credits-block">
-            <p class="video-credits-label">Credits</p>
-            <div id="videoCredits" class="video-credits-content"></div>
+
+            <p class="video-credits-label">
+              Credits
+            </p>
+
+            <div
+              id="videoCredits"
+              class="video-credits-content"
+            ></div>
+
           </div>
+
         </aside>
+
       </div>
+
     </div>
+
   </div>
 
-  <!-- ABOUT -->
-  <div class="about-modal" id="aboutModal" aria-hidden="true">
-    <button class="about-close" id="aboutClose" aria-label="Close About">×</button>
+  <!-- ABOUT MODAL -->
+  <div
+    class="about-modal"
+    id="aboutModal"
+    aria-hidden="true"
+    role="dialog"
+    aria-modal="true"
+    aria-label="About Lilian Hardouineau"
+  >
+
+    <button
+      class="about-close"
+      id="aboutClose"
+      type="button"
+      aria-label="Close About"
+    >
+      ×
+    </button>
 
     <div class="about-inner">
+
       <div class="about-content">
 
         <div class="about-contact">
+
           <p>
             <strong>Contact</strong>
-            <a href="mailto:lilian.hardouineau@gmail.com">lilian.hardouineau@gmail.com</a>
+
+            <a href="mailto:lilian.hardouineau@gmail.com">
+              lilian.hardouineau@gmail.com
+            </a>
           </p>
+
           <p>
             <strong>Instagram</strong>
-            <a href="https://www.instagram.com/lilian.hrdn/" target="_blank">@lilian.hrdn</a>
+
+            <a
+              href="https://www.instagram.com/lilian.hrdn/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              @lilian.hrdn
+            </a>
           </p>
+
         </div>
 
         <div class="about-language-switch">
-          <button class="lang-button active" data-lang="en">Eng</button>
+
+          <button
+            class="lang-button active"
+            type="button"
+            data-lang="en"
+          >
+            Eng
+          </button>
+
           <span class="lang-separator">/</span>
-          <button class="lang-button" data-lang="fr">Fr</button>
+
+          <button
+            class="lang-button"
+            type="button"
+            data-lang="fr"
+          >
+            Fr
+          </button>
+
         </div>
 
         <div class="about-bio">
-          <div class="bio-text active" data-lang-content="en">
+
+          <!-- ENGLISH BIO -->
+          <div
+            class="bio-text active"
+            data-lang-content="en"
+          >
             <p>
-              Lilian Hardouineau is a Paris-based director. His work moves between artistic, musical, fashion/beauty, and commercials.<br>
-              After practicing painting in his teenage years, he went on to study cinema. Project after project, he built his visual language, nourrished as much by avant-garde cinema as by pop culture. His work is also rooted in a close, meditative observation of nature.<br>
+              Lilian Hardouineau is a Paris-based director. His work moves between artistic, musical, fashion/beauty, and commercial projects.<br>
+              After practicing painting in his teenage years, he went on to study cinema. Project after project, he built his visual language, nourished as much by avant-garde cinema as by pop culture. His work is also rooted in a close, meditative observation of nature.<br>
               Known for his visual research, he develops his own optical setups and crafts a distinctive, sensory language driven by a strong sense of framing and movement. Editing plays a central role in his practice, with an organic approach that structures his films.<br>
               This strong technical command allows him to fully deploy his vision and turn his films into true emotional experiences.<br>
               His versatility and sensitivity have led him to collaborate with a wide range of artists and prestigious brands, working across both free-form projects and large-scale productions.
             </p>
           </div>
 
-          <div class="bio-text" data-lang-content="fr">
+          <!-- FRENCH BIO -->
+          <div
+            class="bio-text"
+            data-lang-content="fr"
+          >
             <p>
               Lilian Hardouineau est un réalisateur basé à Paris. Son travail navigue entre projets artistiques, musicaux, fashion/beauty et films commerciaux.<br>
               Après une pratique de la peinture durant son adolescence, il se tourne vers des études de cinéma. Projet après projet, il pose les bases de son univers esthétique, nourri autant par les œuvres d’avant-garde que par la culture pop. Il puise aussi son inspiration dans une observation fine et méditative de la nature.<br>
-              Reconnu pour ses recherches visuelles, il conçoit ses propres dispositifs optiques et façonne un langage sensoriel singulier grâce à son sens du cadre et du mouvement. Il a également développé une pratique de montage organique qui est centrale à son oeuvre. Cette grande maitrise technique lui permet de déployer sa vision et de faire de ses films de véritables expériences émotionnelles.<br>
-              Sa polyvalence et sa sensibilité lui ont permis de collaborer avec de nombreux artistes, des marques prestigieuses, et de s’affirmer aussi bien à travers des formes libres qu’à l’échelle de productions ambitieuses.
+              Reconnu pour ses recherches visuelles, il conçoit ses propres dispositifs optiques et façonne un langage sensoriel singulier grâce à son sens du cadre et du mouvement. Il a également développé une pratique du montage organique qui est centrale dans son œuvre. Cette grande maîtrise technique lui permet de déployer sa vision et de faire de ses films de véritables expériences émotionnelles.<br>
+              Sa polyvalence et sa sensibilité lui ont permis de collaborer avec de nombreux artistes et des marques prestigieuses, et de s’affirmer aussi bien à travers des formes libres qu’à l’échelle de productions ambitieuses.
             </p>
           </div>
+
         </div>
 
         <div class="about-section">
+
           <h3>Clients / Brands</h3>
+
           <p>
-            Louis Vuitton, Dior, Jean-Paul Gaultier, Mugler, Courrèges, Moncler, Kenzo, Givenchy, Diesel, Louboutin, Make Up For Ever, Andrea Crews, Causeyoudontfeellikeme, Numero Magazine
+            Louis Vuitton, Dior, Jean Paul Gaultier, Mugler, Courrèges, Moncler, Kenzo, Givenchy, Diesel, Louboutin, Make Up For Ever, Andrea Crews, Causeyoudontfeellikeme, Numéro Magazine
           </p>
+
         </div>
 
         <div class="about-section">
+
           <h3>Music</h3>
+
           <p>
-            Danny L Harle, Eartheater, Malibu, Agar Agar, Simili Gum, Detente, Babysolo, Salome, Ange Halliwell, Pablo Altar
+            Danny L Harle, Eartheater, Malibu, Agar Agar, Simili Gum, Détente, Babysolo, Salome, Ange Halliwell, Pablo Altar
           </p>
+
         </div>
 
       </div>
+
     </div>
+
   </div>
 
   <script src="script.js"></script>
+
 </body>
 </html>
