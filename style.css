@@ -1513,3 +1513,388 @@ button:hover,
     0 0 0 currentColor,
     0.016em 0 0 currentColor;
 }
+
+/* PROJECT FILTERS */
+
+.project-filters {
+  position: absolute;
+  top: 43px;
+  left: 18px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  white-space: nowrap;
+}
+
+.filter-button {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 0;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  color: var(--text-soft);
+  font: inherit;
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.1;
+  cursor: pointer;
+  transition:
+    color var(--transition),
+    opacity var(--transition),
+    font-weight var(--transition);
+}
+
+.filter-button:hover,
+.filter-button.active {
+  color: var(--text);
+  font-weight: 700;
+}
+
+.filter-button:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 4px;
+}
+
+.video-thumbnail.is-filtered-out {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --header-height: 88px;
+  }
+
+  .top-header {
+    height: var(--header-height);
+    padding: 14px 12px 8px;
+    align-items: flex-start;
+  }
+
+  .left-header {
+    gap: 0;
+    transform: none;
+  }
+
+  .left-header h1 {
+    line-height: 1.1;
+  }
+
+  .menu-toggle {
+    position: fixed;
+    top: 5px;
+    right: 11px;
+    width: 34px;
+    height: 34px;
+  }
+
+  .close {
+    top: 5px;
+    right: 11px;
+    width: 34px;
+    height: 34px;
+  }
+
+  .project-filters {
+    top: 43px;
+    left: 12px;
+    right: 12px;
+    gap: 0;
+    justify-content: space-between;
+  }
+
+  .filter-button {
+    font-size: 0.68rem;
+  }
+
+  .video-gallery {
+    padding-top: calc(var(--header-height) + 4px);
+  }
+}
+
+@media (max-width: 370px) {
+  .filter-button {
+    font-size: 0.625rem;
+  }
+}
+/* ==================================================
+   NOUVELLE DISPOSITION ÉLÉGANTE DU HEADER
+   À placer tout en bas de style.css
+================================================== */
+
+/* ORDINATEUR */
+
+.top-header {
+  height: 76px;
+  padding: 18px var(--outer-padding) 14px;
+
+  display: grid;
+  grid-template-columns: minmax(190px, 1fr) auto minmax(190px, 1fr);
+  grid-template-rows: auto;
+  align-items: start;
+
+  background: transparent;
+}
+
+/*
+  Permet aux éléments contenus dans header-main-row
+  de prendre directement place dans la grille du header.
+*/
+.header-main-row {
+  display: contents;
+}
+
+.left-header {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: start;
+
+  display: block;
+  transform: none;
+}
+
+.left-header h1 {
+  margin: 0;
+  font-size: 0.76rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.012em;
+  text-transform: uppercase;
+}
+
+/* Catégories centrées */
+
+.project-filters {
+  position: static;
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: center;
+
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 22px;
+
+  margin: 0;
+  padding: 0;
+  transform: none;
+  white-space: nowrap;
+}
+
+/* Liens alignés à droite */
+
+.desktop-nav {
+  grid-column: 3;
+  grid-row: 1;
+  justify-self: end;
+
+  display: flex;
+  align-items: baseline;
+  gap: 18px;
+
+  margin: 0;
+  padding: 0;
+}
+
+.desktop-nav a,
+.filter-button {
+  font-family: inherit;
+  font-size: 0.75rem;
+  line-height: 1.1;
+  letter-spacing: 0;
+}
+
+/* Catégories */
+
+.filter-button {
+  appearance: none;
+  -webkit-appearance: none;
+
+  border: 0;
+  margin: 0;
+  padding: 0;
+
+  background: transparent;
+  color: rgba(0, 0, 0, 0.48);
+
+  font-weight: 400;
+  cursor: pointer;
+
+  transition:
+    color 0.22s ease,
+    opacity 0.22s ease;
+}
+
+/* Catégorie sélectionnée */
+
+.filter-button.active {
+  color: #030303;
+  font-weight: 700;
+}
+
+/* Survol sans déplacement du texte */
+
+.filter-button:hover {
+  color: #030303;
+  font-weight: 400;
+}
+
+.filter-button.active:hover {
+  font-weight: 700;
+}
+
+.filter-button:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 4px;
+}
+
+/* Ajustement de la grille sous le nouveau header */
+
+.video-gallery {
+  padding-top: 98px;
+}
+
+
+/* ==================================================
+   FORMAT INTERMÉDIAIRE
+================================================== */
+
+@media (max-width: 1000px) and (min-width: 769px) {
+  .top-header {
+    padding-right: 24px;
+    padding-left: 24px;
+
+    grid-template-columns: minmax(160px, 1fr) auto minmax(160px, 1fr);
+  }
+
+  .project-filters {
+    gap: 15px;
+  }
+
+  .desktop-nav {
+    gap: 13px;
+  }
+
+  .desktop-nav a,
+  .filter-button {
+    font-size: 0.7rem;
+  }
+}
+
+
+/* ==================================================
+   MOBILE
+================================================== */
+
+@media (max-width: 768px) {
+  :root {
+    --header-height: 88px;
+  }
+
+  .top-header {
+    height: var(--header-height);
+    padding: 12px 12px 8px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+  }
+
+  .header-main-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 26px;
+  }
+
+  .left-header {
+    display: block;
+    transform: none;
+  }
+
+  .left-header h1 {
+    margin: 0;
+    font-size: 0.71rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 0.011em;
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+
+  /* Menu parfaitement aligné avec le nom */
+
+  .menu-toggle {
+    position: fixed;
+    top: 1px;
+    right: 7px;
+
+    display: inline-flex;
+    width: 42px;
+    height: 42px;
+
+    margin: 0;
+    padding: 0;
+
+    align-items: center;
+    justify-content: center;
+  }
+
+  /*
+    Les catégories occupent une deuxième ligne,
+    avec des colonnes régulières.
+  */
+
+  .project-filters {
+    position: static;
+
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    margin-top: 10px;
+    padding: 0;
+
+    transform: none;
+  }
+
+  .filter-button {
+    font-size: 0.68rem;
+    line-height: 1;
+    white-space: nowrap;
+  }
+
+  .video-gallery {
+    padding-top: calc(var(--header-height) + 10px);
+  }
+
+  /* Même emplacement pour le X de la vidéo */
+
+  .close {
+    top: 5px;
+    right: 11px;
+
+    width: 34px;
+    height: 34px;
+  }
+}
+
+
+/* TRÈS PETITS ÉCRANS */
+
+@media (max-width: 370px) {
+  .filter-button {
+    font-size: 0.625rem;
+  }
+
+  .project-filters {
+    margin-top: 11px;
+  }
+}
