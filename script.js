@@ -479,7 +479,15 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   filterButtons.forEach(button => {
-    button.addEventListener('click', () => setActiveFilter(button.dataset.filter));
+    button.addEventListener('click', () => {
+      setActiveFilter(button.dataset.filter);
+
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+      });
+    });
   });
 
   aboutButton.addEventListener('click', toggleAbout);
