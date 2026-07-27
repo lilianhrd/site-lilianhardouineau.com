@@ -1793,7 +1793,7 @@ button:hover,
 
   .top-header {
     height: var(--header-height);
-    padding: 12px 12px 8px;
+    padding: 12px var(--outer-padding) 8px;
 
     display: flex;
     flex-direction: column;
@@ -1832,7 +1832,7 @@ button:hover,
   .menu-toggle {
     position: fixed;
     top: 1px;
-    right: 7px;
+    right: 9px;
 
     display: inline-flex;
     width: 42px;
@@ -1846,17 +1846,19 @@ button:hover,
   }
 
   /*
-    Les catégories occupent une deuxième ligne,
-    avec des colonnes régulières.
+    Les catégories restent sur une seule ligne.
+    Elles sont ferrées à gauche sur le bord des vignettes
+    et séparées par un espacement fixe.
   */
 
   .project-filters {
     position: static;
 
-    display: grid;
-    grid-template-columns: repeat(4, auto);
+    display: flex;
+    flex-wrap: nowrap;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: clamp(10px, 3.3vw, 16px);
 
     width: 100%;
     margin-top: 10px;
@@ -1869,6 +1871,7 @@ button:hover,
     font-size: 0.68rem;
     line-height: 1;
     white-space: nowrap;
+    flex: 0 0 auto;
   }
 
   .video-gallery {
