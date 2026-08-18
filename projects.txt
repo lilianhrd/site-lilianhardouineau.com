@@ -29,6 +29,7 @@ SIMILI GUM/Dedipix + T pas si triste/miniature5.jpg/carrousel:https://vimeo.com/
 SIMILI GUM/Hier/miniature30.jpg/https://vimeo.com/502571041/music-video
 COURRÈGES/Loop Bag/miniature51.jpg/https://vimeo.com/655075708/commercial
 PABLO ALTAR/Tales Of/miniature29.jpg/https://vimeo.com/820680025/music-video
+DIOR/Rouge tiktok lipsticK/miniature58.jpg/https://vimeo.com/1176984483/commercial
 COURRÈGES/FW22/miniature9.jpg/https://vimeo.com/669445263/commercial
 LANDS OF MY DREAM/Ange Halliwell Short Film/miniature16.jpg/https://vimeo.com/728768506/music-video+personal
 MALIBU/Atlantic Diva/miniature4.jpg/https://vimeo.com/762769649/music-video
@@ -43,7 +44,6 @@ DISORDER/Super 8 film/miniature53.jpg/https://vimeo.com/72976790/personal
 COEURFLEUR//miniature55.jpg/https://vimeo.com/963010955/commercial
 DETENTE/Song of Songs/miniature57.jpg/https://vimeo.com/491767775/music-video
 SAINT-LOUIS/Super 8 film/miniature56.jpg/https://vimeo.com/105976493/personal
-DIOR/Rouge tiktok lipsticK/miniature58.jpg/https://vimeo.com/1176984483/commercial
 
 
 
