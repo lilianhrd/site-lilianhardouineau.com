@@ -1,54 +1,49 @@
-JUDELINE/Besito/miniature47.jpg/https://vimeo.com/1206092991/music-video
-MALIBU/So far out of love/miniature3.jpg/https://vimeo.com/914546944/music-video
-LOUIS VUITTON/Perpetual motion/miniature18.jpg/carrousel:https://vimeo.com/799925845,https://vimeo.com/799942223,https://vimeo.com/799941278,https://vimeo.com/799943815,https://vimeo.com/799943259,https://vimeo.com/799944273/commercial
-DANNY L HARLE/Cerulean/miniature38.jpg/https://vimeo.com/1164505707/music-video
-BURBERRY/Winter 2026/miniature60.jpg/https://vimeo.com/1225991880/commercial
-JEAN-PAUL GAULTIER/Les Ateliers/miniature45.jpg/https://vimeo.com/1197717272/commercial
-EARTHEATER X NUMERO MAGAZINE/ /miniature15.jpg/https://vimeo.com/1171900568/commercial+music-video
-SPRING BREAK/Experimental short film/miniature43.jpg/https://vimeo.com/1178941705/personal
-MUGLER/Holiday Fever/miniature21.jpg/https://vimeo.com/1026828291/commercial
-DIOR/Anya Taylor-Joy/miniature1.jpg/https://vimeo.com/921113482/commercial
-REINAS//miniature48.jpg/https://vimeo.com/1182715058/personal+commercial
-PABLO ALTAR/Everyday/miniature37.jpg/https://vimeo.com/1169922209/personal+music-video
-MAKE UP FOREVER/HD Skin Hypra Glow/miniature14.jpg/https://vimeo.com/908703295/commercial
-CYDFLM/First Show/miniature8.jpg/https://vimeo.com/1013202319/commercial
-CYDFLM//miniature49.jpg/https://vimeo.com/609993985/personal+commercial
-SIMILI GUM/NRJ/miniature42.jpg/https://vimeo.com/884821279/music-video
-LOUBOUTIN/The Minny Pump/miniature52.jpg/https://vimeo.com/962149822/commercial
-GIVENCHY/Rose Perfecto/miniature35.jpg/https://vimeo.com/1175310383,https://vimeo.com/1175311462,https://vimeo.com/1175310864/commercial
-KARL F RIVAS ft KUKII/Ever So Lonely/miniature32.jpg/https://vimeo.com/1159655224/music-video
-LOUIS VUITTON/show23/miniature11.jpg/carrousel:https://vimeo.com/809893454,https://vimeo.com/1176959777,https://vimeo.com/1175795105/commercial
-LOUIS VUITTON/Cruise 24 — Guests/miniature39.jpg/https://vimeo.com/1176964249,https://vimeo.com/831167610/commercial
-MUGLER/Holiday Wonder/miniature34.jpg/https://vimeo.com/1174723137/commercial
-TDJ Ft DANNY L HARLE/Shoreline/miniature36.jpg/https://vimeo.com/1096305789/music-video
-KENZO/Lunar Year/miniature41.jpg/https://vimeo.com/902926258,https://vimeo.com/901863149/commercial
-1 JOUR/Short film (teaser)/miniature59.jpg/https://vimeo.com/1178034701/personal
-SALOME/Devoted to someone else + The Pattern/miniature19.jpg/https://vimeo.com/540190631/music-video
-MILLE ET UNE NUITS/Teaser/miniature2.jpg/https://vimeo.com/983055965/personal
-MONCLER X HIGHSNOBIETY//miniature10.jpg/https://vimeo.com/746998776/commercial
-AGAR AGAR/Teaser/miniature17.jpg/carrousel:https://vimeo.com/769545577,https://vimeo.com/791189107/music-video
-SIMILI GUM/Dedipix + T pas si triste/miniature5.jpg/carrousel:https://vimeo.com/555264018,https://vimeo.com/598757175/music-video
-SIMILI GUM/Hier/miniature30.jpg/https://vimeo.com/502571041/music-video
-COURRÈGES/Loop Bag/miniature51.jpg/https://vimeo.com/655075708/commercial
-PABLO ALTAR/Tales Of/miniature29.jpg/https://vimeo.com/820680025/music-video
-DIOR/Rouge Lipstick/miniature58.jpg/https://vimeo.com/1176984483/commercial
-COURRÈGES/FW22/miniature9.jpg/https://vimeo.com/669445263/commercial
-LANDS OF MY DREAM/Ange Halliwell Short Film/miniature16.jpg/https://vimeo.com/728768506/music-video+personal
-MALIBU/Atlantic Diva/miniature4.jpg/https://vimeo.com/762769649/music-video
-ANGE HALLIWELL/They are coming/miniature44.jpg/https://vimeo.com/1129843037/music-video
-HAPPY HOUR//miniature26.jpg/https://vimeo.com/469829947/personal
-INES CHERIFI/Fountains/miniature12.jpg/https://vimeo.com/880303009/music-video
-ANGELS DO NOT WHISTLE/Super 8 film/miniature6.jpg/https://vimeo.com/606687094/personal
-BLOODSPORT/Short Film 3D/miniature23.jpg/https://vimeo.com/782073035/personal
-LE VASCO/Les Indiens/miniature28.jpg/https://vimeo.com/135055025/music-video
-19.02.17/Super 8 film/miniature24.jpg/https://vimeo.com/236308393/personal
-DISORDER/Super 8 film/miniature53.jpg/https://vimeo.com/72976790/personal
-COEURFLEUR//miniature55.jpg/https://vimeo.com/963010955/commercial
-DETENTE/Song of Songs/miniature57.jpg/https://vimeo.com/491767775/music-video
-SAINT-LOUIS/Super 8 film/miniature56.jpg/https://vimeo.com/105976493/personal
 
-
-
-
-
-
+JUDELINE/Besito/miniature47.jpg/judelinepreview.mp4/https://vimeo.com/1206092991/music-video
+MALIBU/So far out of love/miniature3.jpg/malibupreview.mp4/https://vimeo.com/914546944/music-video
+LOUIS VUITTON/Perpetual motion/miniature18.jpg/LVperpetualpreview.mp4/carrousel:https://vimeo.com/799925845,https://vimeo.com/799942223,https://vimeo.com/799941278,https://vimeo.com/799943815,https://vimeo.com/799943259,https://vimeo.com/799944273/commercial
+DANNY L HARLE/Cerulean/miniature38.jpg/dannypreview.mp4/https://vimeo.com/1164505707/music-video
+BURBERRY/Winter 2026/miniature60.jpg/burberrypreview.mp4/https://vimeo.com/1225991880/commercial
+JEAN-PAUL GAULTIER/Les Ateliers/miniature45.jpg/jpgpreview.mp4/https://vimeo.com/1197717272/commercial
+EARTHEATER X NUMERO MAGAZINE/ /miniature15.jpg/eartheaterpreview.mp4/https://vimeo.com/1171900568/commercial+music-video
+SPRING BREAK/Experimental short film/miniature43.jpg/springbreakpreview.mp4/https://vimeo.com/1178941705/personal
+MUGLER/Holiday Fever/miniature21.jpg/mugler1preview.mp4/https://vimeo.com/1026828291/commercial
+DIOR/Anya Taylor-Joy/miniature1.jpg/dior1preview.mp4/https://vimeo.com/921113482/commercial
+REINAS//miniature48.jpg/reinaspreview.mp4/https://vimeo.com/1182715058/personal+commercial
+PABLO ALTAR/Everyday/miniature37.jpg/everydaypreview.mp4/https://vimeo.com/1169922209/personal+music-video
+MAKE UP FOREVER/HD Skin Hypra Glow/miniature14.jpg/mufepreview.mp4/https://vimeo.com/908703295/commercial
+CYDFLM/First Show/miniature8.jpg/cydflmshowpreview.mp4/https://vimeo.com/1013202319/commercial
+CYDFLM//miniature49.jpg/cydflmpreview.mp4/https://vimeo.com/609993985/personal+commercial
+SIMILI GUM/NRJ/miniature42.jpg/nrjpreview.mp4/https://vimeo.com/884821279/music-video
+LOUBOUTIN/The Minny Pump/miniature52.jpg/louboutinpreview.mp4/https://vimeo.com/962149822/commercial
+GIVENCHY/Rose Perfecto/miniature35.jpg/givenchypreview.mp4/https://vimeo.com/1175310383,https://vimeo.com/1175311462,https://vimeo.com/1175310864/commercial
+KARL F RIVAS ft KUKII/Ever So Lonely/miniature32.jpg/eversolonelypreview.mp4/https://vimeo.com/1159655224/music-video
+LOUIS VUITTON/show23/miniature11.jpg/LVshow23preview.mp4/carrousel:https://vimeo.com/809893454,https://vimeo.com/1176959777,https://vimeo.com/1175795105/commercial
+LOUIS VUITTON/Cruise 24 — Guests/miniature39.jpg/LVcruisepreview.mp4/https://vimeo.com/1176964249,https://vimeo.com/831167610/commercial
+MUGLER/Holiday Wonder/miniature34.jpg/mugler2preview.mp4/https://vimeo.com/1174723137/commercial
+TDJ Ft DANNY L HARLE/Shoreline/miniature36.jpg/shorelinepreview.mp4/https://vimeo.com/1096305789/music-video
+KENZO/Lunar Year/miniature41.jpg/kenzopreview.mp4/https://vimeo.com/902926258,https://vimeo.com/901863149/commercial
+1 JOUR/Short film (teaser)/miniature59.jpg/1jourpreview.mp4/https://vimeo.com/1178034701/personal
+SALOME/Devoted to someone else + The Pattern/miniature19.jpg/salomepreview.mp4/https://vimeo.com/540190631/music-video
+MILLE ET UNE NUITS/Teaser/miniature2.jpg/1001preview.mp4/https://vimeo.com/983055965/personal
+MONCLER X HIGHSNOBIETY//miniature10.jpg/monclerpreview.mp4/https://vimeo.com/746998776/commercial
+AGAR AGAR/Teaser/miniature17.jpg/agarpreview.mp4/carrousel:https://vimeo.com/769545577,https://vimeo.com/791189107/music-video
+SIMILI GUM/Dedipix + T pas si triste/miniature5.jpg/dedipixpreview.mp4/carrousel:https://vimeo.com/555264018,https://vimeo.com/598757175/music-video
+SIMILI GUM/Hier/miniature30.jpg/hierpreview.mp4/https://vimeo.com/502571041/music-video
+COURRÈGES/Loop Bag/miniature51.jpg/loopbagpreview.mp4/https://vimeo.com/655075708/commercial
+PABLO ALTAR/Tales Of/miniature29.jpg/talesofpreview.mp4/https://vimeo.com/820680025/music-video
+DIOR/Rouge Lipstick/miniature58.jpg/dior2preview.mp4/https://vimeo.com/1176984483/commercial
+COURRÈGES/FW22/miniature9.jpg/courregespreview.mp4/https://vimeo.com/669445263/commercial
+LANDS OF MY DREAM/Ange Halliwell Short Film/miniature16.jpg/landspreview.mp4/https://vimeo.com/728768506/music-video+personal
+MALIBU/Atlantic Diva/miniature4.jpg/atlanticdiva.mp4/https://vimeo.com/762769649/music-video
+ANGE HALLIWELL/They are coming/miniature44.jpg/theyarecomingpreview.mp4/https://vimeo.com/1129843037/music-video
+HAPPY HOUR//miniature26.jpg/happypreview.mp4/https://vimeo.com/469829947/personal
+INES CHERIFI/Fountains/miniature12.jpg/inesteaserpreview.mp4/https://vimeo.com/880303009/music-video
+ANGELS DO NOT WHISTLE/Super 8 film/miniature6.jpg/angelspreview.mp4/https://vimeo.com/606687094/personal
+BLOODSPORT/Short Film 3D/miniature23.jpg/bloodsportpreview.mp4/https://vimeo.com/782073035/personal
+LE VASCO/Les Indiens/miniature28.jpg/levascopreview.mp4/https://vimeo.com/135055025/music-video
+19.02.17/Super 8 film/miniature24.jpg/190217preview.mp4/https://vimeo.com/236308393/personal
+DISORDER/Super 8 film/miniature53.jpg/disorderpreview.mp4/https://vimeo.com/72976790/personal
+COEURFLEUR//miniature55.jpg/coeurfleurpreview.mp4/https://vimeo.com/963010955/commercial
+DETENTE/Song of Songs/miniature57.jpg/detentepreview.mp4/https://vimeo.com/491767775/music-video
+SAINT-LOUIS/Super 8 film/miniature56.jpg/saintlouispreview.mp4/https://vimeo.com/105976493/personal
