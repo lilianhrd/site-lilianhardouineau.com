@@ -82,6 +82,14 @@ document.addEventListener('DOMContentLoaded', function () {
         const title = (parts[0] || '').trim();
         const subtitle = (parts[1] || '').trim();
         const thumbnail = (parts[2] || '').trim();
+
+        // Optional local preview video: the 4th field is treated as a preview
+        // whenever it contains an .mp4 filename. Example:
+        // TITLE/SUBTITLE/miniature47.jpg/judelinepreview.mp4/VIMEO_URL/category
+        const previewCandidate = (parts[3] || '').trim();
+        const preview = /\.mp4$/i.test(previewCandidate) ? previewCandidate : '';
+        const linksStartIndex = preview ? 4 : 3;
+
         const categoryCandidate = (parts[parts.length - 1] || '').trim().toLowerCase();
         const categoryList = categoryCandidate
           .split('+')
@@ -91,7 +99,7 @@ document.addEventListener('DOMContentLoaded', function () {
           categoryList.length > 0 &&
           categoryList.every(category => validCategories.includes(category));
         const category = hasCategory ? categoryList.join('+') : 'personal';
-        const linksRaw = (hasCategory ? parts.slice(3, -1) : parts.slice(3))
+        const linksRaw = (hasCategory ? parts.slice(linksStartIndex, -1) : parts.slice(linksStartIndex))
           .join('/')
           .trim();
         const links = linksRaw
@@ -104,6 +112,7 @@ document.addEventListener('DOMContentLoaded', function () {
           title,
           subtitle,
           thumbnail,
+          preview,
           links,
           firstLink: links[0] || '',
           type: links.length > 1 ? 'carousel' : 'single',
@@ -271,6 +280,7 @@ document.addEventListener('DOMContentLoaded', function () {
     updateStickyMetrics();
   }
 
+
   function createProjectElement(project, isCarousel) {
     const article = document.createElement('article');
     article.classList.add('video-thumbnail');
@@ -297,8 +307,58 @@ document.addEventListener('DOMContentLoaded', function () {
     textContainer.append(title, subtitle);
     article.append(image, textContainer);
 
-    const open = () => isCarousel ? openCarousel(project, article) : openVideo(project, article);
+    // The only hover preview system: local MP4 files from projects.txt.
+    if (project.preview) {
+      const previewVideo = document.createElement('video');
+      previewVideo.className = 'local-preview-video';
+      previewVideo.src = `preview/${project.preview}`;
+      previewVideo.muted = true;
+      previewVideo.loop = true;
+      previewVideo.playsInline = true;
+      previewVideo.preload = 'auto';
+      previewVideo.setAttribute('aria-hidden', 'true');
+
+      previewVideo.addEventListener('error', () => {
+        article.classList.remove('is-local-preview-playing');
+      });
+
+      // Begin loading as soon as the project is created.
+      previewVideo.load();
+      article.insertBefore(previewVideo, textContainer);
+
+      const startPreview = () => {
+        if (window.innerWidth <= 768) return;
+
+        article.classList.add('is-local-preview-playing');
+
+        const playPromise = previewVideo.play();
+        if (playPromise && typeof playPromise.catch === 'function') {
+          playPromise.catch(() => {});
+        }
+      };
+
+      const stopPreview = () => {
+        previewVideo.pause();
+
+        try {
+          previewVideo.currentTime = 0;
+        } catch (error) {}
+
+        article.classList.remove('is-local-preview-playing');
+      };
+
+      article.addEventListener('pointerenter', startPreview);
+      article.addEventListener('pointerleave', stopPreview);
+      article.addEventListener('focusin', startPreview);
+      article.addEventListener('focusout', stopPreview);
+    }
+
+    const open = () => {
+      isCarousel ? openCarousel(project, article) : openVideo(project, article);
+    };
+
     article.addEventListener('click', open);
+
     article.addEventListener('keydown', event => {
       if (event.key === 'Enter' || event.key === ' ') {
         event.preventDefault();
