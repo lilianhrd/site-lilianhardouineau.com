@@ -60,8 +60,9 @@ document.addEventListener('DOMContentLoaded', function () {
         );
       }
 
-      const projects =
-        parseProjects(await response.text());
+      const projects = parseProjects(
+        await response.text()
+      );
 
       projects.forEach(project => {
         const projectKey =
@@ -79,12 +80,15 @@ document.addEventListener('DOMContentLoaded', function () {
           );
         } else {
           videoGallery.appendChild(
-            createProjectElement({
-              ...project,
-              links: [project.links[0]],
-              firstLink: project.links[0],
-              type: 'single'
-            }, false)
+            createProjectElement(
+              {
+                ...project,
+                links: [project.links[0]],
+                firstLink: project.links[0],
+                type: 'single'
+              },
+              false
+            )
           );
         }
       });
@@ -919,7 +923,6 @@ document.addEventListener('DOMContentLoaded', function () {
   function setVideoFrameWithoutHistory(
     url
   ) {
-
     const oldFrame =
       videoFrame;
 
@@ -931,20 +934,11 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
 
-    /*
-     * On crée un nouvel iframe.
-     */
-
     const newFrame =
       document.createElement(
         'iframe'
       );
 
-
-    /*
-     * On conserve les attributs
-     * de l'iframe original.
-     */
 
     Array.from(
       oldFrame.attributes
@@ -963,30 +957,15 @@ document.addEventListener('DOMContentLoaded', function () {
     );
 
 
-    /*
-     * IMPORTANT :
-     *
-     * Le src est défini AVANT
-     * l'insertion dans le DOM.
-     */
-
     newFrame.src =
       url;
 
-
-    /*
-     * On remplace l'ancien iframe.
-     */
 
     parent.replaceChild(
       newFrame,
       oldFrame
     );
 
-
-    /*
-     * Nouvelle référence.
-     */
 
     videoFrame =
       newFrame;
@@ -998,7 +977,6 @@ document.addEventListener('DOMContentLoaded', function () {
      ========================================================= */
 
   function stopVideoPlayback() {
-
     if (
       !videoFrame ||
       !videoFrame.parentNode
@@ -1014,24 +992,11 @@ document.addEventListener('DOMContentLoaded', function () {
       oldFrame.parentNode;
 
 
-    /*
-     * On crée un iframe vide.
-     *
-     * Il ne contient plus Vimeo.
-     * Le navigateur charge about:blank.
-     */
-
     const blankFrame =
       document.createElement(
         'iframe'
       );
 
-
-    /*
-     * On conserve les attributs
-     * visuels et fonctionnels,
-     * mais PAS le src Vimeo.
-     */
 
     Array.from(
       oldFrame.attributes
@@ -1050,20 +1015,11 @@ document.addEventListener('DOMContentLoaded', function () {
     );
 
 
-    /*
-     * On remplace Vimeo immédiatement.
-     */
-
     parent.replaceChild(
       blankFrame,
       oldFrame
     );
 
-
-    /*
-     * La référence pointe maintenant
-     * vers l'iframe vide.
-     */
 
     videoFrame =
       blankFrame;
@@ -1118,6 +1074,13 @@ document.addEventListener('DOMContentLoaded', function () {
       );
 
 
+    /*
+     * IMPORTANT :
+     *
+     * muted=0 demande explicitement
+     * à Vimeo de conserver le son.
+     */
+
     const videoUrl =
       appendQueryParams(
         baseUrl,
@@ -1125,20 +1088,16 @@ document.addEventListener('DOMContentLoaded', function () {
           ? {
               autoplay: '1',
               rel: '0',
-              playsinline: '1'
+              playsinline: '1',
+              muted: '0'
             }
           : {
               autoplay: '1',
-              playsinline: '1'
+              playsinline: '1',
+              muted: '0'
             }
       );
 
-
-    /*
-     * Le système qui permet au bouton
-     * ← du navigateur de revenir à
-     * la mosaïque sans perturber Vimeo.
-     */
 
     setVideoFrameWithoutHistory(
       videoUrl
@@ -1169,7 +1128,6 @@ document.addEventListener('DOMContentLoaded', function () {
     carouselThumbnails.style.display =
       'none';
 
-
     previousButton.style.display =
       'none';
 
@@ -1178,10 +1136,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     /*
-     * NOUVEAU :
-     *
-     * On arrête réellement Vimeo
-     * avant de fermer le modal.
+     * Coupe réellement Vimeo.
      */
 
     stopVideoPlayback();
@@ -1249,11 +1204,6 @@ document.addEventListener('DOMContentLoaded', function () {
     );
 
 
-    /*
-     * UNE SEULE entrée dans l'historique
-     * pour représenter le popup.
-     */
-
     if (
       !modalState.historyEntryAdded
     ) {
@@ -1285,11 +1235,6 @@ document.addEventListener('DOMContentLoaded', function () {
       modalState.historyEntryAdded;
 
 
-    /*
-     * resetModalUI() arrête maintenant
-     * également Vimeo.
-     */
-
     resetModalUI();
 
 
@@ -1314,12 +1259,6 @@ document.addEventListener('DOMContentLoaded', function () {
       lastTrigger.focus();
     }
 
-
-    /*
-     * Si X est utilisé :
-     *
-     * vidéo → mosaïque
-     */
 
     if (shouldGoBack) {
       history.back();
@@ -1774,14 +1713,6 @@ document.addEventListener('DOMContentLoaded', function () {
   window.addEventListener(
     'popstate',
     () => {
-
-      /*
-       * Le navigateur revient de l'état
-       * "videoModal".
-       *
-       * On fait exactement la même chose
-       * que le bouton X.
-       */
 
       if (
         modalState.currentProject
