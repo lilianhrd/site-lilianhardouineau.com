@@ -13,7 +13,7 @@
     Helvetica, Arial, sans-serif;
 
   --margin: clamp(16px, 2.4vw, 40px);
-  --header: 76px;
+  --header: 52px;
   --max-width: 1760px;
 
   font-family: var(--sans);
@@ -933,7 +933,7 @@ button:disabled {
 
 @media (max-width: 600px) {
   :root {
-    --header: 68px;
+    --header: 48px;
   }
 
   /* En-tête :
@@ -1205,4 +1205,113 @@ button:disabled {
 }/* Afficher uniquement le lien vers l’autre rubrique */
 .main-nav .nav-link.active {
   display: none;
+}
+
+/* =========================================================
+   NAVIGATION ÉDITORIALE — VERSION FINALE
+   La première ligne garde sa typographie d'origine.
+   Le rapprochement est structurel : header plus court,
+   et barre des filtres moins haute, sans marges négatives.
+   ========================================================= */
+
+/* La ligne supérieure conserve les tailles et les polices existantes. */
+.site-header {
+  min-height: 0;
+  margin-bottom: 0;
+}
+
+.work-toolbar {
+  min-height: 30px;
+  height: 30px;
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.project-filters {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: nowrap;
+  gap: 16px;
+}
+
+.project-filters .filter-button,
+.project-filters .filter-button.active {
+  display: inline-flex;
+  visibility: visible;
+  opacity: 1;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px; /* surface tactile sans augmenter la hauteur du rang */
+  padding: 0 1px;
+  margin: 0;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+  font-family: var(--sans);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0.025em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: #777;
+}
+
+.project-filters .filter-button.active {
+  color: #111;
+  font-weight: 500;
+}
+
+.project-filters .filter-button:hover { color: #111; }
+.film-gallery { margin-top: 6px; }
+
+/* Typographie des pages projets */
+.video-details h2 {
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 1.15;
+}
+.video-details p {
+  margin-top: 6px;
+  font-size: 14px;
+  line-height: 1.4;
+  color: #6e6e73;
+}
+.video-details { margin-bottom: 32px; }
+#videoCredits {
+  font-size: 11px;
+  line-height: 1.65;
+  color: #77777b;
+}
+
+@media (max-width: 600px) {
+  .work-toolbar {
+    min-height: 30px;
+    height: 30px;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0;
+  }
+  .project-filters {
+    justify-content: flex-end;
+    align-items: center;
+    gap: clamp(5px, 1.7vw, 10px);
+  }
+  .project-filters .filter-button,
+  .project-filters .filter-button.active {
+    align-items: center;
+    min-height: 44px;
+    padding: 0 1px;
+    font-size: clamp(7px, 2.05vw, 9px);
+    letter-spacing: 0;
+    line-height: 1.2;
+  }
+  .film-gallery { margin-top: 6px; }
+  .video-details { margin-bottom: 30px; }
 }
