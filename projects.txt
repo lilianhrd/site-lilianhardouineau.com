@@ -1,4 +1,4 @@
-
+# FILMS — format existant conservé
 JUDELINE/Besito/miniature47.jpg/judelinepreview.mp4/https://vimeo.com/1206092991/music-video
 LOUIS VUITTON/Perpetual motion/miniature18.jpg/LVperpetualpreview.mp4/carrousel:https://vimeo.com/799925845,https://vimeo.com/799942223,https://vimeo.com/799941278,https://vimeo.com/799943815,https://vimeo.com/799943259,https://vimeo.com/799944273/commercial
 MALIBU/So far out of love/miniature3.jpg/malibupreview.mp4/https://vimeo.com/914546944/music-video
@@ -47,3 +47,9 @@ DISORDER/Super 8 film/miniature53.jpg/disorderpreview.mp4/https://vimeo.com/7297
 COEURFLEUR//miniature55.jpg/coeurfleurpreview.mp4/https://vimeo.com/963010955/commercial
 DETENTE/Song of Songs/miniature57.jpg/detentepreview.mp4/https://vimeo.com/491767775/music-video
 SAINT-LOUIS/Super 8 film/miniature56.jpg/saintlouispreview.mp4/https://vimeo.com/105976493/personal
+
+[PHOTOS]
+# Titre affiché | Dossier dans photos | Préfixe des fichiers | Nombre ou auto | Numéro de couverture | Extension
+Tareet | Tareet | Tareet | auto | 1 | JPG
+Babysolo | Babysolo | Babysolo | 3 | 1 | JPG
+Lucie | Lucie | Lucie | auto | 1 | JPG
