@@ -52,4 +52,4 @@ SAINT-LOUIS/Super 8 film/miniature56.jpg/saintlouispreview.mp4/https://vimeo.com
 # Titre affiché | Dossier dans photos | Préfixe des fichiers | Nombre ou auto | Numéro de couverture | Extension
 Tareet | Tareet | Tareet | auto | 1 | JPG
 Babysolo | Babysolo | Babysolo | 3 | 1 | JPG
-Lucie | Lucie | Lucie | auto | 1 | JPG
+Lucie | Lucie | lucie | 3 | 1 | jpg
