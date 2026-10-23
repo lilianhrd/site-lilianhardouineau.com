@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
       const projects = parseProjects(
-        await response.text()
+        (await response.text()).split('[PHOTOS]')[0]
       );
 
       projects.forEach(project => {
@@ -93,6 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       });
 
+      setActiveFilter(document.querySelector('.filter-button.active')?.dataset.filter || 'all');
     } catch (error) {
       console.error(
         'Erreur de chargement :',
@@ -112,7 +113,7 @@ document.addEventListener('DOMContentLoaded', function () {
     return data
       .split(/\r?\n/)
       .map(line => line.trim())
-      .filter(Boolean)
+      .filter(line => line && !line.startsWith('#') && !line.startsWith('['))
       .map(line => {
 
         const parts = line.split('/');
@@ -773,6 +774,8 @@ document.addEventListener('DOMContentLoaded', function () {
      ========================================================= */
 
   function setActiveFilter(category) {
+    videoGallery.hidden = category === 'photography';
+    document.dispatchEvent(new CustomEvent('portfoliofilter', {detail: category}));
     filterButtons.forEach(
       button => {
         const active =
@@ -1544,7 +1547,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   closeButton.addEventListener(
     'click',
-    closeModal
+    () => closeModal()
   );
 
 
@@ -1855,4 +1858,206 @@ document.addEventListener('DOMContentLoaded', function () {
   updateHeaderState();
 
   loadProjects();
+});
+
+/* PHOTOGRAPHY */
+document.addEventListener('DOMContentLoaded', () => {
+  'use strict';
+  const gallery = document.getElementById('photoGallery');
+  const viewer = document.getElementById('photoLightbox');
+  if (!gallery || !viewer) return;
+
+  // Replaces the old single-image viewer with a horizontal gallery.
+  viewer.innerHTML = `
+    <div class="photo-viewer-top">
+      <button id="photoReturn" type="button" aria-label="Retour aux photos" title="Retour aux photos">←</button>
+      <p id="photoCounter" aria-live="polite"></p>
+      <button id="photoLightboxClose" type="button" aria-label="Fermer">×</button>
+    </div>
+    <div id="photoTrack" class="photo-track" tabindex="0" aria-label="Photographies de la série"></div>
+    <div class="photo-viewer-bottom">
+      <button id="photoPrev" type="button" aria-label="Photo précédente">←</button>
+      <p id="photoSeriesName"></p>
+      <button id="photoNext" type="button" aria-label="Photo suivante">→</button>
+    </div>`;
+
+  const track = document.getElementById('photoTrack');
+  const counter = document.getElementById('photoCounter');
+  const previous = document.getElementById('photoPrev');
+  const next = document.getElementById('photoNext');
+  let current = null, index = 0, trigger = null, frame = 0;
+  let seriesList = [];
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const photoPath = (s, n, ext = s.extension) =>
+    ['photos', s.folder, `${s.prefix}-${n}.${ext}`].map(encodeURIComponent).join('/');
+
+  function probe(src) {
+    return new Promise(resolve => {
+      const img = new Image();
+      img.onload = () => resolve({src, width: img.naturalWidth, height: img.naturalHeight});
+      img.onerror = () => resolve(null);
+      img.src = src;
+    });
+  }
+
+  async function loadSeries(s) {
+    let first = null;
+    for (const ext of [...new Set([s.extension, 'JPG', 'jpg', 'jpeg', 'JPEG', 'png', 'PNG', 'webp'])]) {
+      first = await probe(photoPath(s, 1, ext));
+      if (first) { s.extension = ext; break; }
+    }
+    if (!first) throw new Error(`Images introuvables : photos/${s.folder}`);
+    const items = [first];
+    if (s.count) {
+      const rest = await Promise.all(Array.from({length:s.count - 1}, (_, i) => probe(photoPath(s, i + 2))));
+      if (rest.some(item => !item)) throw new Error(`Photo manquante dans photos/${s.folder} : vérifie la numérotation et le nombre.`);
+      items.push(...rest);
+    } else {
+      for (let n = 2; n <= 200; n++) {
+        const item = await probe(photoPath(s, n));
+        if (!item) break;
+        items.push(item);
+      }
+    }
+    s.items = items;
+  }
+
+  function updateControls() {
+    if (!current) return;
+    counter.textContent = `${index + 1} / ${current.items.length}`;
+    previous.disabled = index === 0;
+    next.disabled = index === current.items.length - 1;
+    track.querySelectorAll('.photo-slide').forEach((slide, i) => {
+      if (i === index) slide.setAttribute('aria-current', 'true');
+      else slide.removeAttribute('aria-current');
+    });
+  }
+
+  function goTo(i, smooth = true) {
+    if (!current) return;
+    index = Math.max(0, Math.min(i, current.items.length - 1));
+    const slide = track.children[index];
+    const left = slide.offsetLeft - (track.clientWidth - slide.clientWidth) / 2;
+    track.scrollTo({left, behavior:smooth && !reduced.matches ? 'smooth' : 'instant'});
+    updateControls();
+  }
+
+  function openSeries(s, i, button, push = true) {
+    current = s; index = i; trigger = button || trigger;
+    track.replaceChildren();
+    document.getElementById('photoSeriesName').textContent = s.title;
+    s.items.forEach((item, n) => {
+      const slide = document.createElement('div');
+      slide.className = 'photo-slide';
+      slide.style.setProperty('--photo-ratio', item.width / item.height);
+      const img = document.createElement('img');
+      img.src = item.src; img.width = item.width; img.height = item.height;
+      img.alt = `${s.title} — ${n + 1}`; img.draggable = false; img.decoding = 'async';
+      slide.append(img); slide.addEventListener('click', () => goTo(n));
+      track.append(slide);
+    });
+    if (push) history.pushState({photoViewer:s.id}, '');
+    if (!viewer.open) viewer.showModal();
+    document.body.classList.add('photo-viewer-open');
+    requestAnimationFrame(() => goTo(i, false));
+  }
+
+  function hideViewer() {
+    current = null;
+    if (viewer.open) viewer.close();
+    document.body.classList.remove('photo-viewer-open');
+    track.replaceChildren();
+    trigger?.focus({preventScroll:true});
+  }
+
+  function closeViewer() {
+    if (history.state?.photoViewer && viewer.open) history.back();
+    else hideViewer();
+  }
+
+  function renderSeries(s, section) {
+    section.replaceChildren();
+    const heading = document.createElement('h2'); heading.textContent = s.title;
+    if (s.items.length > 4) {
+      const count = document.createElement('span');
+      count.className = 'photo-series-count';
+      count.textContent = `${s.items.length} photos`;
+      heading.append(count);
+    }
+    const visibleItems = s.items.slice(0, 4);
+    const row = document.createElement('div'); row.className = 'photo-series-row';
+    // Each column is proportional to the image ratio: all images have equal height.
+    row.style.gridTemplateColumns = visibleItems.map(item => `${item.width / item.height}fr`).join(' ');
+    visibleItems.forEach((item, i) => {
+      const button = document.createElement('button'); button.type = 'button'; button.className = 'photo-tile';
+      button.setAttribute('aria-label', `Agrandir ${s.title}, photo ${i + 1} sur ${s.items.length}`);
+      const img = document.createElement('img');
+      img.src = item.src; img.width = item.width; img.height = item.height;
+      img.alt = `${s.title} — ${i + 1}`; img.loading = 'lazy'; img.decoding = 'async';
+      button.append(img); button.addEventListener('click', () => openSeries(s, i, button));
+      row.append(button);
+    });
+    section.append(heading, row);
+  }
+
+  document.getElementById('photoReturn').addEventListener('click', closeViewer);
+  document.getElementById('photoLightboxClose').addEventListener('click', closeViewer);
+  previous.addEventListener('click', () => goTo(index - 1));
+  next.addEventListener('click', () => goTo(index + 1));
+  viewer.addEventListener('cancel', event => { event.preventDefault(); closeViewer(); });
+  viewer.addEventListener('keydown', event => {
+    if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+      event.preventDefault(); goTo(index + (event.key === 'ArrowLeft' ? -1 : 1));
+    }
+  });
+  track.addEventListener('scroll', () => {
+    cancelAnimationFrame(frame);
+    frame = requestAnimationFrame(() => {
+      if (!current) return;
+      const center = track.scrollLeft + track.clientWidth / 2;
+      let closest = 0, distance = Infinity;
+      Array.from(track.children).forEach((slide, i) => {
+        const delta = Math.abs(slide.offsetLeft + slide.clientWidth / 2 - center);
+        if (delta < distance) { distance = delta; closest = i; }
+      });
+      index = closest; updateControls();
+    });
+  }, {passive:true});
+  window.addEventListener('resize', () => { if (current) goTo(index, false); });
+  window.addEventListener('popstate', () => {
+    const s = seriesList.find(s => s.id === history.state?.photoViewer);
+    if (s?.items) {
+      document.querySelector('[data-filter="photography"]').click();
+      openSeries(s, 0, null, false);
+    } else if (viewer.open) hideViewer();
+  });
+  document.addEventListener('portfoliofilter', event => {
+    gallery.hidden = event.detail !== 'photography';
+    const oldAlbum = document.getElementById('photoAlbum');
+    if (oldAlbum) oldAlbum.hidden = true;
+  });
+
+  async function init() {
+    try {
+      const response = await fetch('projects.txt');
+      if (!response.ok) throw new Error('Impossible de charger projects.txt.');
+      const block = (await response.text()).split('[PHOTOS]')[1] || '';
+      seriesList = block.split(/\r?\n/).map(line => line.trim()).filter(line => line && !line.startsWith('#')).map((line, i) => {
+        const [title, folder, prefix, count, cover, extension] = line.split('|').map(v => v.trim());
+        if (!title || !folder || !prefix || !/^(auto|[1-9]\d*)$/i.test(count || '') || [folder,prefix].some(v => v.includes('/') || v === '..')) throw new Error(`Ligne photo invalide : ${line}`);
+        return {id:`photo-${i}`, title, folder, prefix, count:count.toLowerCase() === 'auto' ? 0 : Number(count), extension:extension || 'JPG'};
+      });
+      gallery.replaceChildren();
+      if (!seriesList.length) { gallery.textContent = 'Aucune série photo pour le moment.'; return; }
+      // Placeholders keep the order from projects.txt, regardless of loading time.
+      await Promise.all(seriesList.map(async s => {
+        const section = document.createElement('section'); section.className = 'photo-series';
+        const status = document.createElement('p'); status.className = 'photo-status'; status.textContent = `${s.title} — chargement…`;
+        section.append(status); gallery.append(section);
+        try { await loadSeries(s); renderSeries(s, section); }
+        catch (error) { status.textContent = error.message; }
+      }));
+    } catch (error) { gallery.textContent = error.message; }
+  }
+  init();
 });
