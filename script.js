@@ -13,8 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
   let videoRequest = 0, photoTarget = null, photoTimer = 0, photoStarted = false;
   let beforeDialogScroll = 0;
   let renderingPhoto = false;
-  // A reload starts from the grid, rather than keeping a stale modal state.
-  if (history.state?.portfolio) history.replaceState(null, '');
+  // Each gallery is a browser-history entry; project viewers sit above it.
+  const initialView = history.state?.portfolioView === 'photos' ? 'photos' : 'films';
+  history.replaceState({portfolioView:initialView, filter:history.state?.filter || 'all', scroll:0}, '');
 
   function localPath(...parts) {
     return parts.map(part => encodeURIComponent(part)).join('/');
@@ -109,7 +110,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  function switchView(nextView) {
+  function switchView(nextView, push = false) {
+    if (push && nextView !== view) {
+      history.replaceState({...history.state, portfolioView:view, filter, scroll:window.scrollY}, '');
+      history.pushState({portfolioView:nextView, filter, scroll:0}, '');
+    }
     view = nextView;
     filmGallery.hidden = view !== 'films'; photoGallery.hidden = view !== 'photos';
     $('filmToolbar').hidden = view !== 'films';
@@ -159,7 +164,10 @@ document.addEventListener('DOMContentLoaded', () => {
     beforeDialogScroll = window.scrollY;
     lastTrigger = trigger || document.activeElement;
     current = {kind, project};
-    if (push) history.pushState({portfolio:kind, id:project?.id, index:index || 0}, '');
+    if (push) {
+      history.replaceState({...history.state, portfolioView:view, filter, scroll:beforeDialogScroll}, '');
+      history.pushState({portfolioView:view, filter, portfolio:kind, id:project?.id, index:index || 0}, '');
+    }
     document.querySelectorAll('.film-open video').forEach(video => video.pause());
     dialogs[kind].showModal(); dialogs[kind].scrollTop = 0; document.body.classList.add('dialog-open');
     if (kind === 'about') fitAbout();
@@ -181,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (history.state?.portfolio) history.back(); else dismiss();
   }
   function storeIndex(index) {
-    if (current && history.state?.portfolio) history.replaceState({portfolio:current.kind, id:current.project?.id, index}, '');
+    if (current && history.state?.portfolio) history.replaceState({...history.state, portfolio:current.kind, id:current.project?.id, index}, '');
   }
 
   function vimeoId(url) { return url.match(/vimeo\.com\/(?:video\/)?(\d+)/)?.[1]; }
@@ -382,9 +390,9 @@ document.addEventListener('DOMContentLoaded', () => {
     updatePhotoControls();
   }
 
-  document.querySelectorAll('[data-view]').forEach(button => button.addEventListener('click', () => switchView(button.dataset.view)));
+  document.querySelectorAll('[data-view]').forEach(button => button.addEventListener('click', () => { switchView(button.dataset.view, true); window.scrollTo({top:0, behavior:'instant'}); }));
   document.querySelectorAll('[data-filter]').forEach(button => button.addEventListener('click', () => { filter = button.dataset.filter; applyFilter(); }));
-  $('homeLink').addEventListener('click', event => { event.preventDefault(); switchView('films'); filter = 'all'; applyFilter(); window.scrollTo({top:0, behavior:reduceMotion.matches ? 'instant' : 'smooth'}); });
+  $('homeLink').addEventListener('click', event => { event.preventDefault(); switchView('films', true); filter = 'all'; applyFilter(); window.scrollTo({top:0, behavior:reduceMotion.matches ? 'instant' : 'smooth'}); });
   $('backToTop').addEventListener('click', () => window.scrollTo({top:0, behavior:reduceMotion.matches ? 'instant' : 'smooth'}));
   $('aboutButton').addEventListener('click', event => openProject('about', null, 0, event.currentTarget));
   ['videoBack', 'videoClose', 'photoBack', 'photoClose', 'aboutClose'].forEach(id => $(id).addEventListener('click', requestClose));
@@ -418,7 +426,13 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   window.addEventListener('popstate', () => {
     const state = history.state;
-    if (!state?.portfolio) { if (current) dismiss(); return; }
+    if (current) dismiss();
+    filter = state?.filter || 'all';
+    switchView(state?.portfolioView === 'photos' ? 'photos' : 'films');
+    if (!state?.portfolio) {
+      requestAnimationFrame(() => window.scrollTo({top:state?.scroll || 0, behavior:'instant'}));
+      return;
+    }
     if (state.portfolio === 'about') openProject('about', null, 0, null, false);
     else {
       const project = (state.portfolio === 'video' ? films : series).find(p => p.id === state.id);
@@ -438,7 +452,8 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!response.ok) throw new Error('Impossible de charger projects.txt.');
       parseProjects(await response.text()); filmGallery.replaceChildren();
       cards = films.map((film, i) => { const element = createFilm(film, i); filmGallery.append(element); return {film, element}; });
-      applyFilter();
+      filter = history.state?.filter || 'all';
+      switchView(initialView);
     } catch (error) {
       filmGallery.replaceChildren(); $('loadError').hidden = false; $('loadError').textContent = error.message;
     }
