@@ -2,43 +2,87 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
 
   <title>Lilian Hardouineau | Director / Visual Artist</title>
+
   <meta
     name="description"
     content="Portfolio of Lilian Hardouineau, Paris-based director working across music videos, fashion, beauty, art and commercial films."
   />
+
   <meta name="theme-color" content="#ffffff" />
 
-  <link rel="canonical" href="https://lilianhardouineau.com/" />
+  <link
+    rel="canonical"
+    href="https://lilianhardouineau.com/"
+  />
 
+  <!-- OPEN GRAPH -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Lilian Hardouineau | Director / Visual Artist" />
+
+  <meta
+    property="og:title"
+    content="Lilian Hardouineau | Director / Visual Artist"
+  />
+
   <meta
     property="og:description"
     content="Portfolio of Lilian Hardouineau, Paris-based director working across music videos, fashion, beauty, art and commercial films."
   />
-  <meta property="og:url" content="https://lilianhardouineau.com/" />
-  <meta property="og:site_name" content="Lilian Hardouineau" />
 
+  <meta
+    property="og:url"
+    content="https://lilianhardouineau.com/"
+  />
+
+  <meta
+    property="og:site_name"
+    content="Lilian Hardouineau"
+  />
+
+  <!-- TWITTER -->
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Lilian Hardouineau | Director / Visual Artist" />
+
+  <meta
+    name="twitter:title"
+    content="Lilian Hardouineau | Director / Visual Artist"
+  />
+
   <meta
     name="twitter:description"
     content="Portfolio of Lilian Hardouineau, Paris-based director working across music videos, fashion, beauty, art and commercial films."
   />
 
-  <link rel="preconnect" href="https://player.vimeo.com" />
-  <link rel="preconnect" href="https://vimeo.com" />
+  <!-- CONNECTIONS -->
+  <link
+    rel="preconnect"
+    href="https://player.vimeo.com"
+  />
 
+  <link
+    rel="preconnect"
+    href="https://vimeo.com"
+  />
+
+  <!-- CSS UNIQUE -->
   <link rel="stylesheet" href="style.css" />
+
+  <!-- JAVASCRIPT UNIQUE -->
+  <script src="script.js" defer></script>
 </head>
 
 <body>
 
   <!-- HEADER -->
-  <header class="top-header" id="topHeader">
+  <header
+    class="top-header"
+    id="topHeader"
+  >
 
     <div class="header-main-row">
 
@@ -46,30 +90,20 @@
         <h1>Lilian Hardouineau</h1>
       </div>
 
-      <nav class="desktop-nav" aria-label="Main navigation">
-
-        <a href="#" id="aboutButton">
+      <!-- DESKTOP NAVIGATION -->
+      <nav
+        class="desktop-nav"
+        aria-label="Main navigation"
+      >
+        <a
+          href="#"
+          id="aboutButton"
+        >
           About
         </a>
-
-        <a
-          href="https://www.instagram.com/lilian.hrdn/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Instagram
-        </a>
-
-        <a
-          href="https://vimeo.com/lilianhardouineau"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Vimeo
-        </a>
-
       </nav>
 
+      <!-- MOBILE ABOUT BUTTON -->
       <button
         id="menuToggle"
         class="menu-toggle"
@@ -84,7 +118,6 @@
       </button>
 
     </div>
-
 
     <!-- PROJECT FILTERS -->
     <nav
@@ -128,32 +161,57 @@
         Personal
       </button>
 
+      <button
+        class="filter-button"
+        type="button"
+        data-filter="photography"
+        aria-pressed="false"
+      >
+        Photography
+      </button>
+
     </nav>
 
   </header>
 
-
   <!-- MAIN CONTENT -->
   <main class="site-main">
 
+    <!-- VIDEO MOSAIC -->
     <section
       class="video-gallery"
-      aria-label="Projects"
+      aria-label="Film projects"
     >
       <!-- Projects injected by script.js -->
     </section>
 
+    <!-- PHOTO MOSAIC -->
+    <section
+      id="photoGallery"
+      class="photo-gallery"
+      aria-label="Photography"
+      hidden
+    >
+      <!-- Photo series injected by script.js -->
+    </section>
+
   </main>
 
+  <!-- PHOTO VIEWER -->
+  <dialog
+    id="photoLightbox"
+    class="photo-lightbox"
+    aria-label="Photographies agrandies"
+  >
+    <!-- Images and controls injected by script.js -->
+  </dialog>
 
   <!-- FOOTER -->
   <footer class="site-footer">
     <p>© Lilian Hardouineau</p>
   </footer>
 
-
   <!-- VIDEO MODAL -->
-
   <div
     id="videoModal"
     class="modal"
@@ -193,7 +251,7 @@
 
           </div>
 
-
+          <!-- VIDEO CAROUSEL CONTROLS -->
           <div class="modal-controls">
 
             <button
@@ -206,13 +264,11 @@
               <span class="arrow arrow-left"></span>
             </button>
 
-
             <div
               id="carouselThumbnails"
               class="carousel-thumbnails"
               style="display: none;"
             ></div>
-
 
             <button
               id="nextButton"
@@ -228,7 +284,7 @@
 
         </div>
 
-
+        <!-- PROJECT INFORMATION -->
         <aside
           class="video-info-panel"
           id="videoInfoPanel"
@@ -248,7 +304,6 @@
             ></p>
 
           </div>
-
 
           <div class="video-credits-block">
 
@@ -271,9 +326,7 @@
 
   </div>
 
-
   <!-- ABOUT MODAL -->
-
   <div
     class="about-modal"
     id="aboutModal"
@@ -292,34 +345,23 @@
       ×
     </button>
 
-
     <div class="about-inner">
 
       <div class="about-content">
 
-
-        <!-- CONTACT -->
-
+        <!-- CONTACT AND SOCIAL LINKS -->
         <div class="about-contact">
 
           <p>
-
-            <strong>
-              Contact
-            </strong>
+            <strong>Contact</strong>
 
             <a href="mailto:lilian.hardouineau@gmail.com">
               lilian.hardouineau@gmail.com
             </a>
-
           </p>
 
-
           <p>
-
-            <strong>
-              Instagram
-            </strong>
+            <strong>Instagram</strong>
 
             <a
               href="https://www.instagram.com/lilian.hrdn/"
@@ -328,14 +370,21 @@
             >
               @lilian.hrdn
             </a>
+          </p>
 
+          <p>
+            <a
+              href="https://vimeo.com/lilianhardouineau"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Vimeo
+            </a>
           </p>
 
         </div>
 
-
         <!-- LANGUAGE SWITCH -->
-
         <div class="about-language-switch">
 
           <button
@@ -360,14 +409,10 @@
 
         </div>
 
-
-        <!-- BIO -->
-
+        <!-- BIOGRAPHY -->
         <div class="about-bio">
 
-
           <!-- ENGLISH -->
-
           <div
             class="bio-text active"
             data-lang-content="en"
@@ -383,9 +428,7 @@
 
           </div>
 
-
           <!-- FRENCH -->
-
           <div
             class="bio-text"
             data-lang-content="fr"
@@ -402,9 +445,7 @@
 
         </div>
 
-
         <!-- CLIENTS -->
-
         <div class="about-section">
 
           <h3>
@@ -417,9 +458,7 @@
 
         </div>
 
-
         <!-- MUSIC -->
-
         <div class="about-section">
 
           <h3>
@@ -437,14 +476,6 @@
     </div>
 
   </div>
-
-
-  <!-- JAVASCRIPT -->
-
-  <script
-    src="script.js"
-    defer
-  ></script>
 
 </body>
 </html>
