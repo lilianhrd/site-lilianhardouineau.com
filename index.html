@@ -1,341 +1,345 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  />
-
-  <title>Lilian Hardouineau | Director / Visual Artist</title>
+  <title>Lilian Hardouineau | Director / Photographer</title>
 
   <meta
     name="description"
     content="Portfolio of Lilian Hardouineau, Paris-based director working across music videos, fashion, beauty, art and commercial films."
-  />
+  >
+  <meta name="theme-color" content="#ffffff">
 
-  <meta name="theme-color" content="#ffffff" />
+  <link rel="canonical" href="https://lilianhardouineau.com/">
 
-  <link
-    rel="canonical"
-    href="https://lilianhardouineau.com/"
-  />
-
-  <!-- OPEN GRAPH -->
-  <meta property="og:type" content="website" />
-
+  <meta property="og:type" content="website">
   <meta
     property="og:title"
-    content="Lilian Hardouineau | Director / Visual Artist"
-  />
-
+    content="Lilian Hardouineau | Director / Photographer"
+  >
   <meta
     property="og:description"
     content="Portfolio of Lilian Hardouineau, Paris-based director working across music videos, fashion, beauty, art and commercial films."
-  />
+  >
+  <meta property="og:url" content="https://lilianhardouineau.com/">
+  <meta property="og:site_name" content="Lilian Hardouineau">
 
-  <meta
-    property="og:url"
-    content="https://lilianhardouineau.com/"
-  />
-
-  <meta
-    property="og:site_name"
-    content="Lilian Hardouineau"
-  />
-
-  <!-- TWITTER -->
-  <meta name="twitter:card" content="summary" />
-
+  <meta name="twitter:card" content="summary">
   <meta
     name="twitter:title"
-    content="Lilian Hardouineau | Director / Visual Artist"
-  />
-
+    content="Lilian Hardouineau | Director / Photographer"
+  >
   <meta
     name="twitter:description"
     content="Portfolio of Lilian Hardouineau, Paris-based director working across music videos, fashion, beauty, art and commercial films."
-  />
+  >
 
-  <!-- CONNECTIONS -->
-  <link
-    rel="preconnect"
-    href="https://player.vimeo.com"
-  />
+  <link rel="preconnect" href="https://player.vimeo.com">
+  <link rel="preconnect" href="https://vimeo.com">
 
-  <link
-    rel="preconnect"
-    href="https://vimeo.com"
-  />
-
-  <!-- CSS UNIQUE -->
-  <link rel="stylesheet" href="style.css" />
-
-  <!-- JAVASCRIPT UNIQUE -->
+  <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
 
 <body>
+  <a class="skip-link" href="#work">Skip to work</a>
 
   <!-- HEADER -->
-  <header
-    class="top-header"
-    id="topHeader"
-  >
 
-    <div class="header-main-row">
-
-      <div class="left-header">
-        <h1>Lilian Hardouineau</h1>
-      </div>
-
-      <!-- DESKTOP NAVIGATION -->
-      <nav
-        class="desktop-nav"
-        aria-label="Main navigation"
+  <header class="site-header">
+    <h1 class="wordmark">
+      <a
+        href="#"
+        id="homeLink"
+        aria-label="Lilian Hardouineau, home"
       >
-        <a
-          href="#"
-          id="aboutButton"
-        >
-          About
-        </a>
-      </nav>
+        Lilian Hardouineau
+      </a>
+    </h1>
 
-      <!-- MOBILE ABOUT BUTTON -->
+    <nav class="main-nav" aria-label="Main navigation">
       <button
-        id="menuToggle"
-        class="menu-toggle"
         type="button"
-        aria-label="Open About"
-        aria-expanded="false"
-        aria-controls="aboutModal"
-      >
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-
-    </div>
-
-    <!-- PROJECT FILTERS -->
-    <nav
-      class="project-filters"
-      aria-label="Project categories"
-    >
-
-      <button
-        class="filter-button active"
-        type="button"
-        data-filter="all"
+        class="nav-link active"
+        data-view="films"
         aria-pressed="true"
       >
-        All
+        Films
       </button>
 
       <button
-        class="filter-button"
         type="button"
-        data-filter="music-video"
-        aria-pressed="false"
-      >
-        Music Videos
-      </button>
-
-      <button
-        class="filter-button"
-        type="button"
-        data-filter="commercial"
-        aria-pressed="false"
-      >
-        Fashion &amp; Beauty
-      </button>
-
-      <button
-        class="filter-button"
-        type="button"
-        data-filter="personal"
-        aria-pressed="false"
-      >
-        Personal
-      </button>
-
-      <button
-        class="filter-button"
-        type="button"
-        data-filter="photography"
+        class="nav-link"
+        data-view="photos"
         aria-pressed="false"
       >
         Photography
       </button>
 
+      <button
+        type="button"
+        class="nav-link"
+        id="aboutButton"
+      >
+        About
+      </button>
     </nav>
-
   </header>
 
-  <!-- MAIN CONTENT -->
-  <main class="site-main">
+  <!-- GALLERIES -->
 
-    <!-- VIDEO MOSAIC -->
+  <main id="work">
+    <div class="work-toolbar" id="filmToolbar">
+      <nav
+        id="filmFilters"
+        class="project-filters"
+        aria-label="Film categories"
+      >
+        <button
+          class="filter-button active"
+          type="button"
+          data-filter="all"
+          aria-pressed="true"
+        >
+          All
+        </button>
+
+        <button
+          class="filter-button"
+          type="button"
+          data-filter="music-video"
+          aria-pressed="false"
+        >
+          Music Videos
+        </button>
+
+        <button
+          class="filter-button"
+          type="button"
+          data-filter="commercial"
+          aria-pressed="false"
+        >
+          Fashion &amp; Beauty
+        </button>
+
+        <button
+          class="filter-button"
+          type="button"
+          data-filter="personal"
+          aria-pressed="false"
+        >
+          Personal
+        </button>
+      </nav>
+    </div>
+
     <section
-      class="video-gallery"
-      aria-label="Film projects"
+      id="filmGallery"
+      class="film-gallery"
+      aria-label="Films"
     >
-      <!-- Projects injected by script.js -->
+      <p class="load-status" role="status">
+        Loading films…
+      </p>
     </section>
 
-    <!-- PHOTO MOSAIC -->
     <section
       id="photoGallery"
       class="photo-gallery"
       aria-label="Photography"
       hidden
-    >
-      <!-- Photo series injected by script.js -->
-    </section>
+    ></section>
 
+    <p
+      id="loadError"
+      class="load-status"
+      role="status"
+      hidden
+    ></p>
   </main>
 
-  <!-- PHOTO VIEWER -->
-  <dialog
-    id="photoLightbox"
-    class="photo-lightbox"
-    aria-label="Photographies agrandies"
-  >
-    <!-- Images and controls injected by script.js -->
-  </dialog>
-
   <!-- FOOTER -->
+
   <footer class="site-footer">
-    <p>© Lilian Hardouineau</p>
+    <span>Lilian Hardouineau</span>
+
+    <a href="mailto:lilian.hardouineau@gmail.com">
+      Get in touch ↗
+    </a>
+
+    <button id="backToTop" type="button">
+      Back to top ↑
+    </button>
   </footer>
 
-  <!-- VIDEO MODAL -->
-  <div
+  <!-- FILM VIEWER -->
+
+  <dialog
     id="videoModal"
-    class="modal"
-    aria-hidden="true"
-    role="dialog"
-    aria-modal="true"
-    aria-label="Project video"
+    class="project-dialog"
+    aria-label="Film viewer"
   >
-
-    <button
-      id="closeButton"
-      class="close"
-      type="button"
-      aria-label="Close video"
-    >
-      ×
-    </button>
-
-    <div class="modal-shell">
-
-      <div
-        class="modal-inner"
-        id="modalInner"
+    <div class="viewer-header">
+      <button
+        type="button"
+        class="icon-button"
+        id="videoBack"
+        aria-label="Back to films"
       >
+        ←
+      </button>
 
-        <div class="video-stage">
-
-          <div class="video-frame-wrapper">
-
-            <iframe
-              id="videoFrame"
-              src=""
-              title="Project video"
-              allow="autoplay; fullscreen; picture-in-picture"
-              allowfullscreen
-            ></iframe>
-
-          </div>
-
-          <!-- VIDEO CAROUSEL CONTROLS -->
-          <div class="modal-controls">
-
-            <button
-              id="previousButton"
-              class="carousel-button"
-              type="button"
-              style="display: none;"
-              aria-label="Previous video"
-            >
-              <span class="arrow arrow-left"></span>
-            </button>
-
-            <div
-              id="carouselThumbnails"
-              class="carousel-thumbnails"
-              style="display: none;"
-            ></div>
-
-            <button
-              id="nextButton"
-              class="carousel-button"
-              type="button"
-              style="display: none;"
-              aria-label="Next video"
-            >
-              <span class="arrow arrow-right"></span>
-            </button>
-
-          </div>
-
-        </div>
-
-        <!-- PROJECT INFORMATION -->
-        <aside
-          class="video-info-panel"
-          id="videoInfoPanel"
-          aria-live="polite"
-        >
-
-          <div class="video-meta-head">
-
-            <h2
-              id="videoInfoTitle"
-              class="video-info-title"
-            ></h2>
-
-            <p
-              id="videoInfoSubtitle"
-              class="video-info-subtitle"
-            ></p>
-
-          </div>
-
-          <div class="video-credits-block">
-
-            <p class="video-credits-label">
-              Credits
-            </p>
-
-            <div
-              id="videoCredits"
-              class="video-credits-content"
-            ></div>
-
-          </div>
-
-        </aside>
-
-      </div>
-
+      <button
+        type="button"
+        class="icon-button"
+        id="videoClose"
+        aria-label="Close film"
+      >
+        ×
+      </button>
     </div>
 
-  </div>
+    <div class="video-layout">
+      <div class="video-main">
+        <div class="video-player-stage">
+          <div
+            id="videoFrameWrapper"
+            class="video-frame-wrapper"
+          ></div>
+        </div>
 
-  <!-- ABOUT MODAL -->
-  <div
-    class="about-modal"
+        <div class="video-navigation">
+          <div
+            id="videoVersions"
+            class="video-versions"
+            aria-label="Videos in this project"
+          ></div>
+
+          <div
+            class="video-pagination"
+            aria-label="Video navigation"
+          >
+            <button
+              type="button"
+              class="icon-button"
+              id="previousVideo"
+              aria-label="Previous video"
+            >
+              ←
+            </button>
+
+            <span
+              id="videoCounter"
+              aria-live="polite"
+            ></span>
+
+            <button
+              type="button"
+              class="icon-button"
+              id="nextVideo"
+              aria-label="Next video"
+            >
+              →
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <aside
+        class="video-sidebar"
+        aria-labelledby="videoInfoTitle"
+      >
+        <div class="video-details">
+          <h2 id="videoInfoTitle"></h2>
+          <p id="videoInfoSubtitle"></p>
+        </div>
+
+        <section
+          id="videoCreditsDetails"
+          class="video-credits"
+          tabindex="0"
+          aria-label="Project credits"
+        >
+          <div
+            id="videoCredits"
+            aria-live="polite"
+          ></div>
+        </section>
+      </aside>
+    </div>
+  </dialog>
+
+  <!-- PHOTOGRAPH VIEWER -->
+
+  <dialog
+    id="photoLightbox"
+    class="project-dialog photo-dialog"
+    aria-label="Photograph viewer"
+  >
+    <div class="viewer-header">
+      <button
+        type="button"
+        class="icon-button"
+        id="photoBack"
+        aria-label="Back to photographs"
+      >
+        ←
+      </button>
+
+      <p id="photoHeaderTitle"></p>
+
+      <button
+        type="button"
+        class="icon-button"
+        id="photoClose"
+        aria-label="Close photograph"
+      >
+        ×
+      </button>
+    </div>
+
+    <div
+      id="photoTrack"
+      class="photo-track"
+      tabindex="0"
+      aria-label="Scroll photographs"
+    ></div>
+
+    <div class="photo-pagination">
+      <button
+        type="button"
+        class="icon-button"
+        id="previousPhoto"
+        aria-label="Previous photograph"
+      >
+        ←
+      </button>
+
+      <span
+        id="photoCounter"
+        aria-live="polite"
+      ></span>
+
+      <button
+        type="button"
+        class="icon-button"
+        id="nextPhoto"
+        aria-label="Next photograph"
+      >
+        →
+      </button>
+    </div>
+  </dialog>
+
+  <!-- ABOUT -->
+
+  <dialog
     id="aboutModal"
-    aria-hidden="true"
-    role="dialog"
-    aria-modal="true"
+    class="about-modal"
     aria-label="About Lilian Hardouineau"
   >
-
     <button
       class="about-close"
       id="aboutClose"
@@ -346,11 +350,15 @@
     </button>
 
     <div class="about-inner">
-
       <div class="about-content">
 
-        <!-- CONTACT AND SOCIAL LINKS -->
+        <!-- CONTACT -->
+
         <div class="about-contact">
+          <p class="about-role">
+            Director / Photographer<br>
+            Paris, France
+          </p>
 
           <p>
             <strong>Contact</strong>
@@ -381,101 +389,131 @@
               Vimeo
             </a>
           </p>
-
         </div>
 
         <!-- LANGUAGE SWITCH -->
-        <div class="about-language-switch">
 
+        <div class="about-language-switch">
           <button
             class="lang-button active"
             type="button"
             data-lang="en"
+            aria-pressed="true"
           >
             Eng
           </button>
 
-          <span class="lang-separator">
-            /
-          </span>
+          <span class="lang-separator">/</span>
 
           <button
             class="lang-button"
             type="button"
             data-lang="fr"
+            aria-pressed="false"
           >
             Fr
           </button>
-
         </div>
 
-        <!-- BIOGRAPHY -->
-        <div class="about-bio">
+        <!-- COMPLETE BIOGRAPHIES -->
 
-          <!-- ENGLISH -->
+        <div class="about-bio">
           <div
             class="bio-text active"
             data-lang-content="en"
           >
+            <p class="bio-full">
+              Lilian Hardouineau is a Paris-based director. His work
+              moves between artistic, musical, fashion/beauty, and
+              commercial projects.<br>
 
-            <p>
-              Lilian Hardouineau is a Paris-based director. His work moves between artistic, musical, fashion/beauty, and commercial projects.<br>
-              After practicing painting in his teenage years, he went on to study cinema. Project after project, he built his visual language, nourished as much by avant-garde cinema as by pop culture. His work is also rooted in a close, meditative observation of nature.<br>
-              Known for his visual research, he develops his own optical setups and crafts a distinctive, sensory language driven by a strong sense of framing and movement. Editing plays a central role in his practice, with an organic approach that structures his films.<br>
-              This strong technical command allows him to fully deploy his vision and turn his films into true emotional experiences.<br>
-              His versatility and sensitivity have led him to collaborate with a wide range of artists and prestigious brands, working across both free-form projects and large-scale productions.
+              After practicing painting in his teenage years, he
+              went on to study cinema. Project after project, he
+              built his visual language, nourished as much by
+              avant-garde cinema as by pop culture. His work is
+              also rooted in a close, meditative observation
+              of nature.<br>
+
+              Known for his visual research, he develops his own
+              optical setups and crafts a distinctive, sensory
+              language driven by a strong sense of framing and
+              movement. Editing plays a central role in his
+              practice, with an organic approach that structures
+              his films.<br>
+
+              This strong technical command allows him to fully
+              deploy his vision and turn his films into true
+              emotional experiences.<br>
+
+              His versatility and sensitivity have led him to
+              collaborate with a wide range of artists and
+              prestigious brands, working across both free-form
+              projects and large-scale productions.
             </p>
-
           </div>
 
-          <!-- FRENCH -->
           <div
             class="bio-text"
             data-lang-content="fr"
           >
+            <p class="bio-full">
+              Lilian Hardouineau est un réalisateur basé à Paris.
+              Son travail navigue entre projets artistiques,
+              musicaux, fashion/beauty et films commerciaux.<br>
 
-            <p>
-              Lilian Hardouineau est un réalisateur basé à Paris. Son travail navigue entre projets artistiques, musicaux, fashion/beauty et films commerciaux.<br>
-              Après une pratique de la peinture durant son adolescence, il se tourne vers des études de cinéma. Projet après projet, il pose les bases de son univers esthétique, nourri autant par les œuvres d’avant-garde que par la culture pop. Il puise aussi son inspiration dans une observation fine et méditative de la nature.<br>
-              Reconnu pour ses recherches visuelles, il conçoit ses propres dispositifs optiques et façonne un langage sensoriel singulier grâce à son sens du cadre et du mouvement. Il a également développé une pratique du montage organique qui est centrale dans son œuvre. Cette grande maîtrise technique lui permet de déployer sa vision et de faire de ses films de véritables expériences émotionnelles.<br>
-              Sa polyvalence et sa sensibilité lui ont permis de collaborer avec de nombreux artistes et des marques prestigieuses, et de s’affirmer aussi bien à travers des formes libres qu’à l’échelle de productions ambitieuses.
+              Après une pratique de la peinture durant son
+              adolescence, il se tourne vers des études de cinéma.
+              Projet après projet, il pose les bases de son
+              univers esthétique, nourri autant par les œuvres
+              d’avant-garde que par la culture pop. Il puise aussi
+              son inspiration dans une observation fine et
+              méditative de la nature.<br>
+
+              Reconnu pour ses recherches visuelles, il conçoit
+              ses propres dispositifs optiques et façonne un
+              langage sensoriel singulier grâce à son sens du
+              cadre et du mouvement. Il a également développé
+              une pratique du montage organique qui est centrale
+              dans son œuvre. Cette grande maîtrise technique
+              lui permet de déployer sa vision et de faire de
+              ses films de véritables expériences émotionnelles.<br>
+
+              Sa polyvalence et sa sensibilité lui ont permis
+              de collaborer avec de nombreux artistes et des
+              marques prestigieuses, et de s’affirmer aussi
+              bien à travers des formes libres qu’à l’échelle
+              de productions ambitieuses.
             </p>
-
           </div>
-
         </div>
 
         <!-- CLIENTS -->
-        <div class="about-section">
 
-          <h3>
-            Clients / Brands
-          </h3>
+        <div class="about-section">
+          <h3>Clients / Brands</h3>
 
           <p>
-            Louis Vuitton, Dior, Jean Paul Gaultier, Mugler, Courrèges, Moncler, Kenzo, Givenchy, Diesel, Louboutin, Hublot, Make Up For Ever, Andrea Crews, Causeyoudontfeellikeme, Numéro Magazine
+            Louis Vuitton, Dior, Jean Paul Gaultier, Mugler,
+            Courrèges, Moncler, Kenzo, Givenchy, Diesel,
+            Louboutin, Hublot, Make Up For Ever, Andrea Crews,
+            Causeyoudontfeellikeme, Numéro Magazine
           </p>
-
         </div>
 
         <!-- MUSIC -->
-        <div class="about-section">
 
-          <h3>
-            Music
-          </h3>
+        <div class="about-section">
+          <h3>Music</h3>
 
           <p>
-            Judeline, Danny L Harle, Eartheater, Malibu, Agar Agar, Simili Gum, Détente, Babysolo, Ines Cherifi, Salome, Ange Halliwell, Pablo Altar
+            Judeline, Danny L Harle, Eartheater, Malibu,
+            Agar Agar, Simili Gum, Détente, Babysolo,
+            Ines Cherifi, Salome, Ange Halliwell, Pablo Altar
           </p>
-
         </div>
 
       </div>
-
     </div>
-
-  </div>
-
+  </dialog>
 </body>
 </html>
