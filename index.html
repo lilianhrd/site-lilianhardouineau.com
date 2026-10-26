@@ -1157,7 +1157,7 @@
       .photo-series-row .photo-tile,
       .photo-series-row .photo-tile.mobile-only {
         display: block;
-        flex: 0 0 100%;
+        flex: 0 0 92%;
         scroll-snap-align: start;
         scroll-snap-stop: always;
       }
@@ -1293,6 +1293,25 @@
         animation: none !important;
       }
     }
+@media (max-width: 600px) {
+  .photo-series-row::after {
+    content: "";
+    flex: 0 0 0;
+  }
+
+  .photo-series:has(.photo-tile:nth-child(2))::after {
+    content: "Swipe to explore →";
+    display: block;
+    margin-top: 8px;
+
+    font-family: var(--sans);
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: var(--muted);
+  }
+}
+
   </style>
 </head>
 
